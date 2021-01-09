@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,9 +7,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.Collections.Generic;
 using Xant.Core;
 using Xant.Core.Domain;
 using Xant.MVC.Models.Constants;
+using Xant.MVC.Services.EmailSender;
+using Xant.MVC.Services.FileUploader;
 using Xant.Persistence;
 
 namespace Xant.MVC
@@ -31,6 +33,9 @@ namespace Xant.MVC
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IFileUploader, FileUploader>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {
