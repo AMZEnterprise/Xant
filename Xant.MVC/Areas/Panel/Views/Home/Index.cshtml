@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Xant.Core.Domain
+@inject UserManager<User> UserManager
+@{
+    ViewData["Title"] = "داشبورد";
+}
+
+<!----------------------------Top Label Start---------------------------->
+<section id="topLabel">
+    <div class="container-fluid">
+        <div class="row text-danger py-5">
+            <div class="col-12 text-center">
+                <h2>
+                    <span class="fa fa-user"></span>
+                    پنل مدیریت ژانت
+                </h2>
+            </div>
+            <div class="col-12 text-center">
+                <a class="btn btn-danger py-2" asp-area="" asp-controller="Home" asp-action="Index">
+                    <span>بازگشت به وبسایت</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!----------------------------Top Label End---------------------------->
+
+<section>
+    <div class="container-fluid">
+        <div class="row my-5 justify-content-center">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                <a asp-controller="Posts" asp-action="Index" class="btn btn-warning text-white p-5 btn-block rounded-0 mt-lg-0 mt-md-0 mt-sm-3 mt-3">
+                    <span class="fa fa-table h4"></span>
+                    <span class="h4">مطلب ها</span>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                <a asp-controller="Portfolios" asp-action="Index" class="btn btn-danger text-white p-5 btn-block rounded-0 mt-lg-0 mt-md-0 mt-sm-3 mt-3">
+                    <span class="fa fa-table h4"></span>
+                    <span class="h4">نمونه کارها</span>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                <a asp-controller="Forms" asp-action="Index" class="btn btn-secondary text-white p-5 btn-block rounded-0 mt-lg-0 mt-md-0 mt-sm-3 mt-3">
+                    <span class="fa fa-table h4"></span>
+                    <span class="h4">فرم ها</span>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                <a asp-controller="Settings" asp-action="Index" class="btn btn-success p-5 btn-block rounded-0 mt-lg-0 mt-md-0 mt-sm-3 mt-3">
+                    <span class="fa fa-cogs h4"></span>
+                    <span class="h4">تنظیمات</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
