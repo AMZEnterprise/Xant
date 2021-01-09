@@ -14,7 +14,7 @@ using Xant.Core;
 using Xant.Core.Domain;
 using Xant.MVC.Models.Constants;
 using Xant.MVC.Services.EmailSender;
-using Xant.MVC.Services.FileUploader;
+using Xant.MVC.Services.FileHandler;
 using Xant.Persistence;
 
 namespace Xant.MVC
@@ -36,7 +36,7 @@ namespace Xant.MVC
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddTransient<IEmailSender, EmailSender>();
-            services.AddTransient<IFileUploader, FileUploader>();
+            services.AddTransient<IFileHandler, FileHandler>();
 
             //Breadcrumbs NavigationDefault (Bootstrap 4.1) CSS
             services.AddBreadcrumbs(GetType().Assembly, options =>
