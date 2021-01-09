@@ -1,0 +1,19 @@
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using Xant.Core.Domain;
+
+namespace Xant.MVC.Areas.Panel.Models.ViewModels
+{
+    public class PostCategoryIndexViewModel : IEntity
+    {
+        public int Id { get; set; }
+        [Display(Name = "عنوان")]
+        public string Title { get; set; }
+        [Display(Name = "تاریخ ایجاد")]
+        public DateTime CreateDate { get; set; }
+        [Display(Name = "تاریخ آخرین ویرایش")]
+        public DateTime LastEditDate { get; set; }
+        [Display(Name = "نوع دسته بندی")]
+        public PostCategoryTypeEnumViewModel Type { get; set; }
+    }
+}
