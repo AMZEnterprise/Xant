@@ -5,10 +5,10 @@ using Xant.Core.Repositories;
 
 namespace Xant.Persistence.EfCoreRepositories
 {
-    class EfCoreSettingRepository : ISettingRepository
+    public class EfCoreSettingRepository : ISettingRepository
     {
         private readonly IApplicationDbContext _context;
-        public EfCoreSettingRepository(ApplicationDbContext context)
+        public EfCoreSettingRepository(IApplicationDbContext context)
         {
             _context = context;
         }
