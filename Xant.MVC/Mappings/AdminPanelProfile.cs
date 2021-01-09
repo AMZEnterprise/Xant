@@ -14,6 +14,10 @@ namespace Xant.MVC.Mappings
            CreateMap<PostCategoryFormViewModel, PostCategory>();
            CreateMap<PostCategoryType, PostCategoryTypeEnumViewModel>();
            CreateMap<PostCategoryTypeEnumViewModel, PostCategoryType>();
+
+            //Setting mappings
+            CreateMap<Setting, SettingFormViewModel>();
+            CreateMap<SettingFormViewModel, Setting>();
         }
     }
 }
