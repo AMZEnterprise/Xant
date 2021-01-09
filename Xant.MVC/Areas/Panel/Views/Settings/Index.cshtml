@@ -1,0 +1,86 @@
+﻿@model Xant.MVC.Areas.Panel.Models.ViewModels.SettingFormViewModel
+
+@{
+    Layout = "_FormLayout";
+    ViewData["Title"] = "ویرایش تنظیمات";
+}
+
+<form asp-action="Index">
+    <div class="form-group">
+        <label asp-for="Phone1"></label>
+        <input asp-for="Phone1" class="form-control" />
+        <span asp-validation-for="Phone1"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Phone2"></label>
+        <input asp-for="Phone2" class="form-control" />
+        <span asp-validation-for="Phone2"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email1"></label>
+        <input asp-for="Email1" class="form-control" />
+        <span asp-validation-for="Email1"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email2"></label>
+        <input asp-for="Email2" class="form-control" />
+        <span asp-validation-for="Email2"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address1"></label>
+        <textarea asp-for="Address1" rows="4" class="form-control"></textarea>
+        <span asp-validation-for="Address1"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address2"></label>
+        <textarea asp-for="Address2" rows="4" class="form-control"></textarea>
+        <span asp-validation-for="Address2"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Instagram"></label>
+        <input asp-for="Instagram" class="form-control" />
+        <span asp-validation-for="Instagram"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Telegram"></label>
+        <input asp-for="Telegram" class="form-control" />
+        <span asp-validation-for="Telegram"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="GooglePlus"></label>
+        <input asp-for="GooglePlus" class="form-control" />
+        <span asp-validation-for="GooglePlus"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FaceBook"></label>
+        <input asp-for="FaceBook" class="form-control" />
+        <span asp-validation-for="FaceBook"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LinkedIn"></label>
+        <input asp-for="LinkedIn" class="form-control" />
+        <span asp-validation-for="LinkedIn"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Youtube"></label>
+        <input asp-for="Youtube" class="form-control" />
+        <span asp-validation-for="Youtube"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Aparat"></label>
+        <input asp-for="Aparat" class="form-control" />
+        <span asp-validation-for="Aparat"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="GitHub"></label>
+        <input asp-for="GitHub" class="form-control" />
+        <span asp-validation-for="GitHub"></span>
+    </div>
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <button class="btn btn-primary float-left" type="submit">ویرایش</button>
+        <a asp-action="Index" class="btn btn-danger float-right">بازگشت</a>
+    </div>
+</form>
