@@ -48,6 +48,28 @@ namespace Xant.MVC
                 );
             });
 
+            services.AddIdentity<User, IdentityRole>(
+                    options =>
+                    {
+                        options.Lockout.AllowedForNewUsers = true;
+                        options.Lockout.MaxFailedAccessAttempts = 3;
+                        options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+                        options.User.RequireUniqueEmail = true;
+                        options.Password.RequireDigit = false;
+                        options.Password.RequiredLength = 6;
+                        options.SignIn.RequireConfirmedPhoneNumber = true;
+                    }
+                )
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddAutoMapper(typeof(Startup));
 
             services.AddMvc()
