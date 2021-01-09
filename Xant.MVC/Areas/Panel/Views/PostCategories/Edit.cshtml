@@ -1,0 +1,24 @@
+﻿@model Xant.MVC.Areas.Panel.Models.ViewModels.PostCategoryFormViewModel
+
+@{
+    Layout = "_FormLayout";
+    ViewData["Title"] = "ویرایش دسته بندی";
+}
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title"></span>
+    </div>
+
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="CreateDate" />
+    <input type="hidden" asp-for="LastEditDate" />
+    <input type="hidden" asp-for="Type" />
+
+    <div class="form-group">
+        <button class="btn btn-primary float-left" type="submit">ویرایش</button>
+        <a asp-action="Index" class="btn btn-danger float-right">بازگشت</a>
+    </div>
+</form>

@@ -1,0 +1,32 @@
+﻿@using Xant.MVC.Areas.Panel.Models.ViewModels
+@using Xant.MVC.Utility
+@model Xant.MVC.Areas.Panel.Models.ViewModels.PostCategoryFormViewModel
+
+@{
+    Layout = "_FormLayout";
+    ViewData["Title"] = "جزئیات دسته بندی";
+}
+
+<div class="form-group">
+    <label asp-for="Title"></label>
+    <input asp-for="Title" class="form-control" disabled="disabled"/>
+</div>
+<div class="form-group">
+    <label asp-for="Type"></label>
+    <select asp-for="Type"
+            asp-items="Html.GetEnumSelectList<PostCategoryTypeEnumViewModel>()"
+            class="custom-select" disabled="disabled"></select>
+</div>
+<div class="form-group">
+    <label asp-for="CreateDate"></label>
+    <input type="text" value="@FriendlyDate.LongDate(Model.CreateDate)" class="form-control" disabled="disabled" />
+</div>
+<div class="form-group">
+    <label asp-for="LastEditDate"></label>
+    <input type="text" value="@FriendlyDate.LongDate(Model.LastEditDate)" class="form-control" disabled="disabled" />
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary float-left">ویرایش</a>
+    <a asp-action="Index" class="btn btn-danger float-right">بازگشت</a>
+</div>
