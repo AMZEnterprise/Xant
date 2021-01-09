@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SmartBreadcrumbs.Extensions;
 using System;
 using System.Collections.Generic;
 using Xant.Core;
@@ -36,6 +37,16 @@ namespace Xant.MVC
 
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IFileUploader, FileUploader>();
+
+            //Breadcrumbs NavigationDefault (Bootstrap 4.1) CSS
+            services.AddBreadcrumbs(GetType().Assembly, options =>
+            {
+                options.TagName = "nav";
+                options.TagClasses = "";
+                options.OlClasses = "breadcrumb";
+                options.LiClasses = "breadcrumb-item";
+                options.ActiveLiClasses = "breadcrumb-item active";
+            });
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {
