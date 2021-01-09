@@ -1,0 +1,156 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Xant.Core.Domain
+@inject UserManager<User> UserManager
+
+<!DOCTYPE html>
+<html dir="rtl" lang="fa-IR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>پنل مدیریت - @ViewData["Title"]</title>
+
+
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
+
+    <link rel="stylesheet" href="~/lib/datatables/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="~/lib/datatables/css/responsive.bootstrap4.min.css" />
+
+    <link href="~/lib/tagger/tagger.css" rel="stylesheet" />
+
+    <link href="~/lib/tagger/tagger.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/panel/css/admin-panel-default.css" />
+
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a asp-controller="Home" asp-action="Index" class="navbar-brand text-danger mr-4 ml-4"><span class="fa fa-home"></span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavbarTop">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="NavbarTop">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link dropdown-toggle mr-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="fa fa-newspaper"></span>
+                            مطالب
+                        </a>
+                        <div class="dropdown-menu">
+                            <a asp-controller="Posts" asp-action="Index" class="dropdown-item">
+                                <span class="fa fa-pencil-alt"></span>
+                                مطالب
+                            </a>
+                            <a asp-controller="PostCategories" asp-action="Index" class="dropdown-item">
+                                <span class="fa fa-list"></span>
+                                دسته بندی ها
+                            </a>
+                            <a asp-controller="PostComments" asp-action="Index" class="dropdown-item">
+                                <span class="fa fa-comment"></span>
+                                نظرات
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Contacts" asp-action="Index">
+                            <span class="fa fa-phone mr-2"></span>
+                            تماس ها
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Users" asp-action="Index">
+                            <span class="fa fa-users mr-2"></span>
+                            مدیریت کاربران
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Settings" asp-action="Index" class="nav-link">
+                            <span class="fa fa-cogs"></span>
+                            تنظیمات
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav ml-auto">
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link dropdown-toggle mr-2" id="userSetting" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-circle"></i>
+                            <span id="username">
+                                @User.Identity.Name
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            @{
+                                var currentUser = await UserManager.GetUserAsync(Context.User);
+                            }
+                            @*<a asp-controller="Users" asp-action="Details" asp-route-id="@currentUser.Id" class="dropdown-item">
+                                    <i class="fa fa-edit mr-3"></i>پروفایل
+                                </a>*@
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <form asp-controller="Users" asp-action="Logout">
+                            <button type="submit" class="btn btn-danger">خروج</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+
+
+
+    <footer class="pt-5">
+        <div class="container-fluid">
+            <div class="row pt-2 text-dark text-center">
+                <div class="col-12">
+                    <p>
+                        <a href="http://www.xant.ir" class="text-white" title="تیم طراحی وب ژانت">
+                            ژانت
+                            &copy;
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="~/lib/datatables/js/responsive.bootstrap4.min.js"></script>
+
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+    <script src="~/lib/ckeditor/config.js"></script>
+    <script src="~/lib/ckeditor/adapters/jquery.js"></script>
+    <script src="~/lib/tagger/tagger.js"></script>
+
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+    <script src="~/lib/ckeditor/config.js"></script>
+    <script src="~/lib/ckeditor/adapters/jquery.js"></script>
+
+    <script src="~/lib/tagger/tagger.js"></script>
+
+    <script src="~/lib/jalali-moment/dist/jalali-moment.browser.min.js"></script>
+
+    <script src="~/panel/js/admin.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

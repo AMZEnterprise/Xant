@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@section Styles{
+    @await RenderSectionAsync("Styles", false)
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @await RenderSectionAsync("Scripts", false)
+}
+
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12 col-12 mt-5 form-box">
+        <h4 class="form-box-title">@ViewData["Title"]</h4>
+        @RenderBody()
+
+    </div>
+</div>
