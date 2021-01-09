@@ -84,6 +84,7 @@ namespace Xant.MVC
             services.AddAutoMapper(typeof(Startup));
 
             services.AddMvc()
+                .AddNewtonsoftJson()
                 .AddRazorRuntimeCompilation();
         }
 
