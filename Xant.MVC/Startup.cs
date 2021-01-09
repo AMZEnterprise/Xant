@@ -109,6 +109,13 @@ namespace Xant.MVC
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
+
+                endpoints.MapAreaControllerRoute(
+                    areaName: "Panel",
+                    name: "panel",
+                    pattern: "panel/{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
