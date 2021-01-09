@@ -23,12 +23,18 @@ namespace Xant.MVC.Areas.Panel.Controllers
         public async Task<IActionResult> Index()
         {
             var setting = await _unitOfWork.SettingRepository.Get();
+
+            if (setting == null)
+            {
+                return NotFound();
+            }
+
             return View(_mapper.Map<Setting, SettingFormViewModel>(setting));
         }
 
-        [HttpPost]
+        [HttpPost, ActionName(nameof(Index))]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(int id , SettingFormViewModel settingFormViewModel)
+        public async Task<IActionResult> IndexPost(int id, SettingFormViewModel settingFormViewModel)
         {
             if (id != settingFormViewModel.Id)
             {
