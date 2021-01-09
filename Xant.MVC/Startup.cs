@@ -1,12 +1,17 @@
+using System;
+using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Xant.Core;
+using Xant.Core.Domain;
+using Xant.MVC.Models.Constants;
 using Xant.Persistence;
 
 namespace Xant.MVC
@@ -70,6 +75,37 @@ namespace Xant.MVC
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //Database Creation
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
+                var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
+                var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                context.Database.EnsureCreated();
+
+                var roles = new List<string>()
+                {
+                    ConstantUserRoles.SuperAdmin,
+                    ConstantUserRoles.Admin,
+                    ConstantUserRoles.Writer
+                };
+
+                User user = new User()
+                {
+                    FirstName = "FirstName",
+                    LastName = "LastName",
+                    UserName = "Admin",
+                    PhoneNumber = "0000000000",
+                    Email = "example@gmail.com",
+                    EmailConfirmed = true,
+                    CreateDate = DateTime.Now,
+                    IsActive = true
+                };
+
+                ApplicationDbInitializer.SeedData(context, userManager, roleManager, roles,
+                    ConstantUserRoles.SuperAdmin, user, "p@sS123");
+            }
         }
     }
 }
