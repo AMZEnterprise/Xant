@@ -35,6 +35,7 @@ namespace Xant.Persistence.EfCoreRepositories
 
         public void Insert(PostComment postComment)
         {
+            postComment.IsEdited = false;
             postComment.CreateDate = postComment.LastEditDate = DateTime.Now;
 
             _context.PostComments.Add(postComment);
