@@ -47,6 +47,12 @@ namespace Xant.Persistence.EfCoreRepositories
                 _context.PostCategories.Remove(postCategory);
         }
 
+        public async Task<bool> IsPostCategoryExists(PostCategory postCategory)
+        {
+            return await _context.PostCategories
+                .AnyAsync(x => x.Title == postCategory.Title);
+        }
+
         public async Task<int> Count()
         {
             return await _context.PostCategories.CountAsync();

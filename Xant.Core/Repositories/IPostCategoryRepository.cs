@@ -37,6 +37,12 @@ namespace Xant.Core.Repositories
         /// <returns></returns>
         Task Delete(int id);
         /// <summary>
+        /// Check whether post category currently exists
+        /// </summary>
+        /// <param name="postCategory">post category</param>
+        /// <returns>true if exists, false if not</returns>
+        Task<bool> IsPostCategoryExists(PostCategory postCategory);
+        /// <summary>
         /// Count total post categories
         /// </summary>
         /// <returns>returns post categories count</returns>
