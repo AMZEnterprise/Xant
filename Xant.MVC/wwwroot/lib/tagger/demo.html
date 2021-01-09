@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Tagger Example</title>
+<link href="tagger.css" rel="stylesheet">
+<style>
+.tagger + .tagger {
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+  <h1>Tagger Example</h1>
+  <input type="text" value="charles,louis,michel" name="tags" />
+  <input type="text" value="charles,louis,michel" name="tags2" />
+  <input type="text" value="charles,louis,michel" name="tags3a" />
+  <input type="text" value="charles,louis,michel" name="tags3b" />
+<script src="tagger.js"></script>
+<script>
+  var t1 = tagger(document.querySelector('[name="tags"]'), {
+    allow_duplicates: false,
+    allow_spaces: true,
+    completion: {list: ['foo', 'bar', 'baz']}
+  });
+  var t2 = tagger(document.querySelector('[name="tags2"]'), {
+    allow_duplicates: false,
+    allow_spaces: true,
+    completion: {
+      list: function() {
+        return Promise.resolve(['foo', 'bar', 'baz']);
+      }
+    },
+    link: function() { return false; }
+  });
+  var t3 = tagger(document.querySelectorAll('[name^="tags3"]'), {
+    allow_duplicates: false,
+    allow_spaces: true,
+    link: function(name) {
+      return `javascript:alert('${name}');`;
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 63 63" enable-background="new 0 0 63 63" xml:space="preserve">
+<g id="Background" display="none">
+	<rect x="-2398" y="-535" display="inline" fill="#808080" width="150" height="70"/>
+	<rect x="-2248" y="-535" display="inline" fill="#666666" width="150" height="70"/>
+	<rect x="-2098" y="-535" display="inline" fill="#808080" width="150" height="70"/>
+	<rect x="-1948" y="-535" display="inline" fill="#666666" width="150" height="70"/>
+	<rect x="-1798" y="-535" display="inline" fill="#808080" width="150" height="70"/>
+	<rect x="-2398" y="-675" display="inline" fill="#808080" width="150" height="70"/>
+	<rect x="-2248" y="-675" display="inline" fill="#666666" width="150" height="70"/>
+	<rect x="-2098" y="-675" display="inline" fill="#808080" width="150" height="70"/>
+	<rect x="-1948" y="-675" display="inline" fill="#666666" width="150" height="70"/>
+	<rect x="-1798" y="-675" display="inline" fill="#808080" width="150" height="70"/>
+	<rect x="-2398" y="-605" display="inline" fill="#666666" width="150" height="70"/>
+	<rect x="-2248" y="-605" display="inline" fill="#808080" width="150" height="70"/>
+	<rect x="-2098" y="-605" display="inline" fill="#666666" width="150" height="70"/>
+	<rect x="-1948" y="-605" display="inline" fill="#808080" width="150" height="70"/>
+	<rect x="-1798" y="-605" display="inline" fill="#666666" width="150" height="70"/>
+</g>
+<g id="Content">
+	<path fill="#FFFFFF" stroke="#EEEEEE" stroke-width="2" stroke-miterlimit="10" d="M1,31.1C1,48,14.1,62,31,62   c16.9,0,31-14.1,31-31C62,14.1,47.9,1,31,1C14.1,1,1,14.2,1,31.1z"/>
+	<rect x="-4235" y="1888" fill="#FC5EA6" width="0" height="3"/>
+	<g id="Sprout_Navigation">
+	</g>
+	<g>
+		<path fill="#FFFFFF" stroke="#EEEEEE" stroke-width="2" stroke-miterlimit="10" d="M1,31.1C1,48,14.1,62,31,62    c16.9,0,31-14.1,31-31C62,14.1,47.9,1,31,1C14.1,1,1,14.2,1,31.1z"/>
+		<g>
+			<path fill="#A5C2DC" d="M35,34.9v-1.1c1-1,2.7-3.7,2.7-6.9c0-4.9-1.7-7.7-5.7-8v0c0,0-0.2,0-0.2,0c-0.1,0-0.2,0-0.4,0     c-0.1,0-0.2,0-0.3,0c-0.1,0-0.1,0-0.1,0v0c-4,0.4-5.7,3.1-5.7,8c0,3.2,1.7,5.9,2.7,6.9v1.1c0,2.2-9,2.2-9,7V44h25v-2.1     C44,37.1,35,37.1,35,34.9z"/>
+		</g>
+		<g>
+			<ellipse fill="#7AC043" stroke="#FFFFFF" stroke-miterlimit="10" cx="43.7" cy="43.4" rx="7.4" ry="7.3"/>
+			<g>
+				<polygon fill="#FFFFFF" points="42.4,46.8 39.7,43.8 40.8,42.8 42.4,44.5 46.5,39.9 47.7,40.9     "/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

@@ -1,0 +1,519 @@
+/* ************************************************************
+:: Template Name: Digimax - SEO & Digital Marketing Agency HTML Template
+:: Template URI: https://theme-land.com/digimax/
+:: Template Author Name: theme_land
+:: Template Author URI: hridoy1272@gmail.com
+:: Version: 1.0.0
+:: Created: 15 Aug 2020
+************************************************************ 
+*
+*
+******* :: INDEX OF RESPONSIVE CSS :: *******
+:: 1.0 COMMON CSS
+:: 2.0 HEADER AREA CSS
+:: 3.0 WELCOME AREA CSS
+:: 4.0 PROMO AREA CSS
+:: 5.0 CONTENT AREA CSS
+:: 6.0 SERVICE AREA CSS
+:: 7.0 PRICE PLAN AREA CSS
+:: 8.0 FAQ AREA CSS
+:: 9.0 REVIEWS AREA CSS
+:: 10.0 TEAM AREA CSS
+:: 11.0 BREADCRUMB AREA CSS
+:: 12.0 BLOG PAGE DETAILS AREA CSS
+:: 13.0 CONTACT AREA CSS
+:: 14.0 FOOTER AREA CSS
+:: 15.0 ERROR AREA CSS
+:: 16.0 PREVIEW AREA CSS
+****************************** */
+
+/* ******************************
+:: 1.0 COMMON CSS
+****************************** */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .ptb_180 {
+        padding: 130px 0;
+    }
+
+    .ptb_150 {
+        padding: 100px 0;
+    }
+
+    .ptb_100 {
+        padding: 70px 0;
+    }
+}
+
+@media (max-width: 991px) {
+    .res-margin {
+        margin-bottom: 45px;
+    }
+}
+
+@media (max-width: 767px) {
+    .ptb_180 {
+        padding: 130px 0;
+    }
+
+    .ptb_150,
+    .ptb_100 {
+        padding: 50px 0;
+    }
+
+    .res-margin {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 575px) {
+    .avatar-lg {
+        height: 4rem;
+        width: 4rem;
+    }
+
+    .ptb_180 {
+        padding: 80px 0;
+    }
+
+    .single-counter span {
+        font-size: 3em;
+    }
+}
+
+/*SECTION HEADING*/
+@media (max-width: 991px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 36px;
+    }
+
+    .section-heading {
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    h1 {
+        font-size: 2.8em;
+    }
+
+    h2 {
+        font-size: 30px;
+        line-height: 1.4;
+    }
+}
+
+@media (max-width: 575px) {
+    h1 {
+        font-size: 2em;
+        line-height: 1.4;
+    }
+
+    h2 {
+        font-size: 24px;
+        line-height: 1.4;
+    }
+
+    h3 {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    p {
+        line-height: 26px;
+    }
+}
+
+/*BUTTONS*/
+@media (max-width: 575px) {
+    .button-group a {
+        margin-top: 0;
+        margin-right: 5px;
+    }
+}
+
+/* ******************************
+:: 2.0 HEADER AREA CSS
+****************************** */
+@media(max-width: 1199px) {
+    header .navbar-expand .navbar-nav.toggle {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    header .navbar-expand .navbar-nav.items,
+    header .navbar-expand .navbar-nav.icons .social {
+        display: none;
+    }
+}
+
+@media(max-width: 767px) {
+    header .navbar-expand .navbar-nav.action .btn {
+        padding: 5px 10px;
+        font-size: 0;
+    }
+
+    header .navbar-expand .navbar-nav.action .btn .contact-icon {
+        font-size: initial;
+        margin: 0;
+    }
+
+    .navbar-brand {
+        margin: 0;
+    }
+}
+
+@media (max-width: 575px) {
+    .modal-body {
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: start;
+    }
+
+    .search-title {
+        font-size: 40px;
+    }
+}
+
+/* ******************************
+:: 3.0 WELCOME AREA CSS
+****************************** */
+@media (min-width: 992px) {
+    .homepage-3 .welcome-intro h1 {
+        font-size: 65px;
+    }
+}
+
+@media (max-width: 991px) {
+    .welcome-area,
+    .inner .welcome-area {
+        height: 700px !important;
+    }
+
+    .welcome-thumb-2 {
+        right: -22%;
+    }
+
+    .welcome-thumb-3 {
+        right: 25%;
+    }
+
+    .welcome-thumb-4 {
+        left: -16%;
+    }
+
+    .welcome-thumb-5 {
+        top: -25%;
+        right: 2%;
+    }
+
+    .welcome-thumb-6 {
+        top: -16%;
+    }
+}
+
+@media (max-width: 767px) {
+    .welcome-area {
+        height: 100% !important;
+        padding-top: 90px;
+    }
+
+    .welcome-intro {
+        margin-top: 30px;
+    }
+
+    .welcome-intro h1 {
+        font-size: 50px;
+    }
+
+    .welcome-thumb-2 {
+        right: 15%;
+    }
+
+    .welcome-thumb-3 {
+        right: 48%;
+    }
+
+    .welcome-thumb-4 {
+        left: 0;
+    }
+
+    .welcome-thumb-5 {
+        top: -10%;
+        right: 25%;
+    }
+
+    .welcome-thumb-6 {
+        top: -8%;
+    }
+
+    .homepage-3 .welcome-thumb-1 {
+        width: auto;
+    }
+
+    .homepage-3 .welcome-thumb-2,
+    .homepage-3 .welcome-thumb-3,
+    .homepage-3 .welcome-thumb-4 {
+        width: auto;
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 575px) {
+    .welcome-intro {
+        margin-top: 0;
+    }
+
+    .welcome-intro h1 {
+        font-size: 45px;
+    }
+
+    .welcome-thumb-2 {
+        right: -4%;
+    }
+
+    .welcome-thumb-3 {
+        right: 38%;
+    }
+
+    .welcome-thumb-4 {
+        left: -13%;
+    }
+
+    .welcome-thumb-5 {
+        right: 2%;
+    }
+
+    .welcome-thumb-6 {
+        top: -6%;
+    }
+
+    .homepage-3 .welcome-thumb-2,
+    .homepage-3 .welcome-thumb-3,
+    .homepage-3 .welcome-thumb-4 {
+        width: auto;
+        max-width: 250px;
+    }
+}
+
+/* ******************************
+:: 4.0 PROMO AREA CSS
+****************************** */
+@media (max-width: 991px) {
+    .single-promo h3 {
+        font-size: 45px;
+    }
+}
+
+@media (max-width: 767px) {
+    .single-promo h3 {
+        font-size: 40px;
+    }
+}
+
+/* ******************************
+:: 5.0 CONTENT AREA CSS
+****************************** */
+@media (max-width: 991px) {
+    .profile-circle-wrapper {
+        overflow: hidden;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+    }
+}
+
+/* ******************************
+:: 6.0 SERVICE AREA CSS
+****************************** */
+@media (max-width: 575px) {
+    .service-area .col-12:last-of-type .single-service.service-gallery {
+        margin-bottom: 0;
+    }
+}
+
+/* ******************************
+:: 7.0 PRICE PLAN AREA CSS
+****************************** */
+@media(max-width: 991px) {
+    .plan-price span:not(.h1) {
+        font-size: 30px;
+    }
+
+    .plan-price sub {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 575px) {
+    .plan-price span:not(.h1) {
+        font-size: 26px;
+    }
+}
+
+/* ******************************
+:: 8.0 FAQ AREA CSS
+****************************** */
+@media (max-width: 575px) {
+    .card-header .btn {
+        line-height: 1.4;
+    }
+}
+
+/* ******************************
+:: 9.0 REVIEWS AREA CSS
+****************************** */
+@media (max-width: 575px) {
+    .single-review {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .owl-item.active.center .single-review {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+/* ******************************
+:: 10.0 TEAM AREA CSS
+****************************** */
+@media (max-width: 575px) {
+    .team-area .col-12:last-of-type .single-team {
+        margin-bottom: 0;
+    }
+}
+
+/* ******************************
+:: 11.0 BREADCRUMB AREA CSS
+****************************** */
+@media (max-width: 991px) {
+    .breadcrumb-content > h2 {
+        font-size: 54px;
+    }
+}
+
+@media (max-width: 575px) {
+    .breadcrumb-content > h2 {
+        font-size: 45px;
+    }
+}
+
+/* **********************************
+:: 12.0 BLOG PAGE DETAILS AREA CSS
+*************************************/
+@media (max-width: 991px) {
+
+    .comments,
+    .blog-contact {
+        margin-left: 0;
+        margin-right: 200px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .comments,
+    .blog-contact {
+        margin-right: 0;
+    }
+}
+
+/* ******************************
+:: 13.0 CONTACT AREA CSS
+****************************** */
+@media (max-width: 575px) {
+    .contact-info h3 {
+        font-size: 28px;
+    }
+
+    .map-area {
+        height: 450px;
+    }
+}
+
+/* ******************************
+:: 14.0 FOOTER AREA CSS
+****************************** */
+@media only screen and (min-width: 576px) and (max-width: 991px) {
+    .footer-items {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 575px) {
+    .footer-items {
+        margin-bottom: 30px;
+    }
+
+    .footer-area .col-12:last-of-type .footer-items {
+        margin-bottom: 0;
+    }
+}
+
+/* ******************************
+:: 15.0 ERROR AREA CSS
+****************************** */
+@media only screen and (max-width: 991px) {
+    .error-content {
+        padding-top: 45%;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .error-content {
+        padding-top: 50%;
+    }
+
+    .thumb-2 {
+        top: 12%;
+        left: 8%;
+    }
+
+    .thumb-3 {
+        top: 5%;
+        left: 30%;
+    }
+
+    .astronaut {
+        top: 70%;
+    }
+}
+
+/* ******************************
+:: 16.0 PREVIEW AREA CSS
+****************************** */
+@media (min-width: 992px) {
+    .preview .welcome-intro p {
+        font-size: 15px;
+        line-height: 28px;
+    }
+}
+
+@media (max-width: 991px) {
+    .preview .welcome-area {
+        background-position: unset;
+    }
+
+    .preview .welcome-intro h2,
+    .preview-area h2 {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .preview .welcome-area {
+        height: 700px !important;
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 575px) {
+
+    .preview .welcome-intro h2,
+    .preview-area h2 {
+        font-size: 42px;
+    }
+}

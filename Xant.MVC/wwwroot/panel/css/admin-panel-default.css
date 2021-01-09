@@ -1,0 +1,907 @@
+﻿/*------------------------Basic Start------------------------*/
+
+:root {
+    --light: #e2e2d5;
+    --dark: #323232;
+    --black: #323232;
+    --pink: #E91E63;
+    --red: #F50057;
+    --yellow: #ffe600;
+    --blue: #0051ff;
+    --purple: #8400db;
+    --purple1: #8400db;
+}
+
+.control-label {
+    color: rgb(89, 89, 89);
+}
+
+textarea {
+    resize: none;
+}
+
+@font-face {
+    font-family: 'Vazir';
+    src: url('../fonts/Vazir.eot?#') format('eot'), /* IE6–8 */
+    url('../fonts/Vazir.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../fonts/Vazir.ttf') format('truetype'); /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+
+body {
+    font-family: Vazir !important;
+    font-size: 1rem;
+    font-weight: 400;
+    /*background-color: var(--light)*/
+    background: url("../../img/panel-background.jpg") no-repeat;
+    background-size: cover;
+}
+
+.title-bar, .dataTables_filter, .dataTables_length {
+    color: #ffffff;
+}
+
+.field-validation-error {
+    color: var(--danger);
+}
+
+.btn.btn-warning {
+    color: #ffffff !important;
+}
+/*------------------------Custom Buttons And Links Start------------------------*/
+.myBtn {
+    color: var(--light) !important;
+    text-decoration: none !important;
+    background-color: transparent;
+    padding: 20px;
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 35px;
+    border: 2px solid var(--light);
+    transition: all 0.2s ease-in-out;
+}
+
+    .myBtn:hover {
+        background-color: var(--red) !important;
+        border-color: var(--red);
+    }
+
+.BtnRed {
+    background-color: var(--red);
+    padding: 10px;
+    text-align: center;
+    border: 2px solid var(--red);
+    transition: all 0.3s ease-in-out;
+    color: white;
+    cursor: pointer;
+}
+
+    .BtnRed:hover {
+        background-color: white;
+        ;
+        color: var(--red);
+    }
+
+.LinkPurple {
+    color: var(--purple);
+    text-decoration: none !important;
+    transition: all 0.2s ease-in;
+}
+
+    .LinkPurple:hover {
+        color: var(--pink);
+    }
+
+
+/*------------------------Custom Buttons And Links End------------------------*/
+
+
+/*------------------------Input Group Start------------------------*/
+
+.InputGroup {
+    display: block;
+    width: 100%;
+    height: 50px;
+}
+
+    .InputGroup .InputGropInput {
+        padding: 10px;
+        width: 80%;
+        float: left;
+        height: 100%;
+        border: 1px solid var(--gray);
+        border-right: none;
+    }
+
+    .InputGroup .InputGroupIcon {
+        width: 20%;
+        float: right;
+        height: 100%;
+        color: var(--red);
+        border: 1px solid var(--gray);
+        border-left: none;
+        background-color: white;
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+    }
+
+        .InputGroup .InputGroupIcon:hover {
+            color: white;
+            background-color: var(--red);
+        }
+
+
+/*------------------------Input Group End------------------------*/
+
+
+/*------------------------Basic End------------------------*/
+
+/*======================================================
+                    Top - Header Start
+======================================================*/
+
+.navbar {
+    background: rgba(0, 0, 0,0.5);
+}
+
+#outterBar {
+    width: 100%;
+    background: rgb(48, 46, 46);
+    position: fixed;
+    top: 0;
+    z-index: 20000;
+}
+
+#innerBar {
+    width: 0%;
+    background: var(--purple);
+    height: 4px;
+}
+
+#top {
+    z-index: 100 !important;
+    width: 100%;
+}
+
+#navigation {
+    z-index: 2000;
+    position: fixed;
+    width: 100%;
+    transition: all 0.4s ease-in-out;
+}
+
+    #navigation #navLinks {
+        display: inline-block;
+        list-style-type: none;
+        margin-top: 30px;
+    }
+
+        #navigation #navLinks li {
+            display: inline-block;
+        }
+
+#navLogo img {
+    width: 200px;
+    height: 100%;
+    float: left;
+    margin-left: 10px;
+}
+
+.navigationBefore {
+    background-color: transparent;
+    height: 60px;
+}
+
+.navigationAfter {
+    background-color: var(--red);
+    top: 0px;
+    height: 100px;
+}
+
+#navigation a {
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.navlink {
+    margin: 20px;
+}
+
+.drop {
+    position: relative;
+    display: inline-block;
+}
+
+    .drop::after {
+        position: absolute;
+        display: inline-block;
+        width: 100%;
+        height: 20px;
+        border: 2px solid red;
+        bottom: 20px;
+        left: 0;
+    }
+
+.dropContent {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    background-color: var(--black);
+    text-align: center;
+    width: 100%;
+    z-index: 2000;
+    transition: all 0.3s ease-in-out;
+    padding-top: 10px;
+    display: block;
+}
+
+.droplink {
+    display: block;
+    padding: 10px;
+}
+
+.drop:hover .dropContent {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*============== Side Menu (Tablet And Mobile) ==============*/
+
+#sideToggler {
+    background: transparent;
+    color: white;
+    border: 0px;
+    font-size: 25px;
+    padding: 2px 10px;
+    transition: all 0.3s ease-in;
+    display: block;
+    background: var(--purple);
+    outline: none;
+    display: none;
+}
+
+    #sideToggler:hover {
+        transform: scale(0.95, 0.95);
+    }
+
+#side {
+    width: 100%;
+    height: 0px;
+    background-color: var(--black);
+    z-index: 1000 !important;
+    transition: all 0.2s ease-in-out !important;
+    visibility: hidden;
+    border-left: 5px solid var(--blue);
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.sideShow {
+    visibility: visible !important;
+    height: 100% !important;
+}
+
+#side span {
+    color: white;
+    margin-right: 40px;
+    margin-top: 40px;
+    font-size: 30px;
+    transition: all 0.4s ease-in-out;
+}
+
+    #side span:hover {
+        color: var(--purple);
+        transform: scale(0.95, 0.95);
+    }
+
+#side ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+    #side ul li a {
+        color: white;
+        display: block;
+        text-decoration: none;
+    }
+
+        #side ul li a:hover {
+            color: var(--purple) !important;
+        }
+
+
+/*======================================================
+                    Top - Header End
+======================================================*/
+
+
+/*======================================================
+                    Footer And Copyright Start
+======================================================*/
+
+#bottom {
+    background-color: var(--dark);
+    color: white !important;
+}
+
+#bottomSocialMediaLink a {
+    color: var(--white);
+    padding: 5px 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+    #bottomSocialMediaLink a:hover {
+        color: var(--red);
+        background: white;
+        border-radius: 25px;
+    }
+
+#viewpointForm {
+    padding: 20px 100px;
+    background-color: var(--pink);
+}
+
+    #viewpointForm form input[type="text"] {
+        outline: none;
+        border: 0;
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: var(--light);
+        color: var(--dark);
+    }
+
+    #viewpointForm form textarea {
+        outline: none;
+        border: 0;
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background: transparent;
+        color: var(--dark);
+        background-color: var(--light);
+        resize: none;
+        height: 100px;
+    }
+
+#bottom button {
+    border: 1px solid var(--purple1);
+    font-weight: 800;
+    border-radius: 25px !important;
+}
+
+    #bottom button:hover {
+        background: var(--purple) !important;
+    }
+
+#contactInfo span {
+    font-size: 18px;
+    color: white;
+}
+
+.contactInfoIcon {
+    color: var(--red) !important;
+}
+
+#bottomLinksList1 a,
+#bottomLinksList2 a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    padding-right: 10px;
+}
+
+    #bottomLinksList1 a:hover,
+    #bottomLinksList2 a:hover {
+        background-color: var(--red);
+        padding-right: 20px;
+    }
+
+#bottom li a {
+    color: var(--white) !important;
+}
+
+#copyright {
+    font-weight: 700;
+    letter-spacing: 10px;
+    border-top: 1px solid var(--red);
+    padding: 50px 0;
+}
+
+
+/*======================================================
+                    Footer And Copyright End
+======================================================*/
+
+
+/*======================================================
+                    GotoTop Arrow Start
+======================================================*/
+
+#GoToTopArrow {
+    clear: both;
+    position: fixed;
+    display: inline-block;
+    color: white;
+    background-color: var(--red);
+    left: 2%;
+    bottom: 2%;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: 10px 18px;
+    border-radius: 50%;
+}
+
+    #GoToTopArrow:hover {
+        box-shadow: 0 0 5px 2px var(--red);
+    }
+
+    #GoToTopArrow i {
+        font-size: 15px;
+    }
+
+.GoToTopArrowSecond {
+    visibility: visible !important;
+}
+
+
+/*======================================================
+                    GotoTop Arrow Ends
+======================================================*/
+
+
+/*======================================================
+                    BreadCrumbs Start
+======================================================*/
+
+#BreadCrumbs {
+    position: relative;
+}
+
+.parallax {
+    background-image: url(../images/index/slideshow/3.jpg);
+    min-height: 400px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#BreadCrumbs .breadcrumb {
+    display: block;
+    display: inline-block;
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.418);
+    border-radius: 0;
+}
+
+    #BreadCrumbs .breadcrumb a {
+        font-weight: 800;
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+        transition: all 0.2s ease-in-out;
+    }
+
+        #BreadCrumbs .breadcrumb a:hover {
+            color: var(--pink) !important;
+        }
+
+
+/*======================================================
+                    BreadCrumbs End
+======================================================*/
+
+
+/*======================================================
+                    Blog Card Start
+======================================================*/
+
+.BlogCard {
+    padding: 10px;
+}
+
+    .BlogCard img {
+        width: 100%;
+        height: 250px;
+    }
+
+.BlogCardHeader ul,
+.BlogCardFooter ul {
+    list-style: none;
+    text-align: center;
+    color: rgb(60, 60, 60);
+}
+
+    .BlogCardHeader ul li,
+    .BlogCardFooter ul li {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+.BlogCardTitle {
+    font-size: 20px;
+    color: var(--pink);
+}
+
+.BlogCardContent {
+    height: 140px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.BlogCardFooter a {
+    display: block;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    background-color: var(--dark);
+    color: white;
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+    .BlogCardFooter a:hover {
+        background-color: var(--purple);
+    }
+
+
+/*======================================================
+                    Blog Card End
+======================================================*/
+
+
+/*======================================================
+                    Blog Start 
+======================================================*/
+
+#Main {
+    padding: 0 100px;
+    margin-top: 20px;
+}
+
+#MainRightCol {
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px 2px rgb(236, 232, 232);
+}
+
+#MainLeftCol {
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px 2px rgb(236, 232, 232);
+}
+
+.Cat {
+    clear: both;
+    margin-top: 20px;
+}
+
+.CatHeader {
+    margin-right: 30px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.CatBody {
+    padding: 10px;
+}
+
+#Subjects ul {
+    list-style: none;
+    display: inline-block;
+    width: 100%;
+}
+
+    #Subjects ul li {
+        display: block;
+        width: 100%;
+    }
+
+        #Subjects ul li a {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            color: var(--red);
+        }
+
+            #Subjects ul li a:hover {
+                color: var(--purple);
+            }
+
+            #Subjects ul li a span:nth-child(1) {
+                float: right;
+                width: 80%;
+                text-align: right;
+            }
+
+            #Subjects ul li a span:nth-child(2) {
+                float: left;
+                width: 20%;
+                text-align: left;
+            }
+
+#Tags a {
+    display: inline-block;
+    border: 1px solid var(--red);
+    text-decoration: none;
+    margin-top: 5px;
+    background-color: transparent;
+    transition: all 0.4s ease-in-out;
+    padding: 2px;
+    color: var(--red);
+    border-radius: 5px;
+}
+
+    #Tags a:hover {
+        background-color: var(--purple);
+        border-color: var(--purple);
+        color: white !important;
+    }
+
+#Links ul {
+    list-style: none;
+}
+
+    #Links ul li {
+        display: block;
+    }
+
+        #Links ul li a {
+            display: block;
+            text-decoration: none;
+            color: var(--red);
+        }
+
+            #Links ul li a:hover {
+                color: var(--purple);
+            }
+
+#Archive ul {
+    list-style: none;
+    display: inline-block;
+    width: 100%;
+}
+
+    #Archive ul li {
+        display: block;
+        width: 100%;
+    }
+
+        #Archive ul li a {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            color: var(--red);
+        }
+
+            #Archive ul li a:hover {
+                color: var(--purple);
+            }
+
+            #Archive ul li a span:nth-child(1) {
+                float: right;
+                width: 80%;
+                text-align: right;
+            }
+
+            #Archive ul li a span:nth-child(2) {
+                float: left;
+                width: 20%;
+                text-align: left;
+            }
+
+
+/*======================================================
+                    Blog End 
+======================================================*/
+
+
+/*==========================================
+            Login Panel Start
+==========================================*/
+
+#loginPanel {
+    margin-top: 25vh;
+}
+
+.validationError {
+    box-shadow: 0 0 10px 2px rgba(255, 0, 0, 0.705);
+}
+
+#btnLogin {
+    border-radius: 25px !important;
+}
+
+
+/*==========================================
+            Login Panel End
+==========================================*/
+
+#fullEditor {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+/* Basic styles for Table of Contents plugin (toc) */
+
+.mce-toc {
+    border: 1px solid gray;
+}
+
+    .mce-toc h2 {
+        margin: 4px;
+    }
+
+    .mce-toc li {
+        list-style-type: none;
+    }
+
+
+/*==========================================
+            Top Label End
+==========================================*/
+
+#topLabel {
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
+    #topLabel .container-fluid {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+/*==========================================
+            Top Label End
+==========================================*/
+/*==========================================
+            Form Start
+==========================================*/
+#profileImage {
+    background-color: rgb(163, 157, 157);
+    height: 200px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 10px 1px rgb(131, 131, 131);
+    border-radius: 5px;
+}
+
+    #profileImage img {
+        width: 100%;
+        height: 100%;
+    }
+
+.validationError {
+    box-shadow: 0 0 15px 2px rgb(255, 4, 58);
+}
+
+
+/*==========================================
+            Form End
+==========================================*/
+
+#projectsTable tr td:hover {
+    cursor: pointer;
+}
+
+
+/*==========================================
+            Login Start
+==========================================*/
+.login-card {
+    background-color: white;
+    padding: 30px 10px;
+    margin-top: 5vh;
+    border-radius: 10px;
+    color: var(--gray)
+}
+
+.login-card-header {
+    text-align: center;
+}
+
+    .login-card-header img {
+        height: 20vh !important;
+        width: 50%;
+    }
+
+.login-card-body {
+    padding-top: 25px;
+}
+
+#profile-img {
+    max-width: 100%;
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+/*==========================================
+            Login End
+==========================================*/
+#post-tags-box {
+    width: 100%;
+}
+
+    #post-tags-box span {
+        background-color: #e4e4e4;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        cursor: default;
+        margin-right: 5px;
+        margin-top: 5px;
+        padding: 0 5px;
+    }
+
+
+#pictures-grid img {
+    width: 100%;
+    height: 30vh;
+    margin-top: 20px;
+}
+
+
+
+.tagger {
+    padding: 20px 0 !important;
+    border: 1px solid #e8ebf1 !important;
+    border-radius: 4px !important;
+}
+
+    .tagger > ul {
+        display: inline-block !important;
+    }
+
+        .tagger > ul li {
+            display: inline-block !important;
+            margin-bottom: 20px;
+        }
+
+            .tagger > ul li:first-child {
+                padding-left: 10px
+            }
+
+            .tagger > ul li > span{
+                color: #ffffff;
+                background-color: var(--primary) !important;
+                border: none !important;
+                cursor: default !important
+            }
+
+            .tagger > ul li.tagger-new input {
+                color: #ffffff;
+            }
+
+            .form-box {
+                border-radius: 5px;
+                background-color: rgba(0, 0, 0, 0.36);
+                padding: 30px;
+            }
+
+    .form-box .form-box-title,
+    .form-box form label {
+        color: #ffffff;
+    }
+
+    .form-box .form-box-title {
+        padding-top: 10px;
+        padding-bottom: 25px;
+    }
+
+#files-preview .thumbnail {
+    height: 100px;
+    margin: 10px;
+    display: inline-block;
+}

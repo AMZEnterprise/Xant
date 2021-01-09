@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 63 63" enable-background="new 0 0 63 63" xml:space="preserve">
+<g id="Background" display="none">
+	<rect x="-2483" y="-535" display="inline" fill="#808080" width="150" height="70"/>
+	<rect x="-2333" y="-535" display="inline" fill="#666666" width="150" height="70"/>
+	<rect x="-2183" y="-535" display="inline" fill="#808080" width="150" height="70"/>
+	<rect x="-2033" y="-535" display="inline" fill="#666666" width="150" height="70"/>
+	<rect x="-1883" y="-535" display="inline" fill="#808080" width="150" height="70"/>
+	<rect x="-2483" y="-675" display="inline" fill="#808080" width="150" height="70"/>
+	<rect x="-2333" y="-675" display="inline" fill="#666666" width="150" height="70"/>
+	<rect x="-2183" y="-675" display="inline" fill="#808080" width="150" height="70"/>
+	<rect x="-2033" y="-675" display="inline" fill="#666666" width="150" height="70"/>
+	<rect x="-1883" y="-675" display="inline" fill="#808080" width="150" height="70"/>
+	<rect x="-2483" y="-605" display="inline" fill="#666666" width="150" height="70"/>
+	<rect x="-2333" y="-605" display="inline" fill="#808080" width="150" height="70"/>
+	<rect x="-2183" y="-605" display="inline" fill="#666666" width="150" height="70"/>
+	<rect x="-2033" y="-605" display="inline" fill="#808080" width="150" height="70"/>
+	<rect x="-1883" y="-605" display="inline" fill="#666666" width="150" height="70"/>
+</g>
+<g id="Content">
+	<rect x="-4320" y="1888" fill="#FC5EA6" width="0" height="3"/>
+	<g id="Sprout_Navigation">
+	</g>
+	<g>
+		<path fill="#FFFFFF" stroke="#EEEEEE" stroke-width="2" stroke-miterlimit="10" d="M1,31.1C1,48,14.1,62,31,62    c16.9,0,31-14.1,31-31C62,14.1,47.9,1,31,1C14.1,1,1,14.2,1,31.1z"/>
+		<g>
+			<path fill="#D2E1ED" d="M35,34.9v-1.1c1-1,2.7-3.7,2.7-6.9c0-4.9-1.7-7.7-5.7-8v0v0c-1,0-0.3,0-0.4,0c-0.1,0-0.2,0-0.4,0     c-0.1,0-0.2,0-0.2,0v0c-3,0.4-5.7,3.1-5.7,8c0,3.2,2.7,5.9,2.7,6.9v1.1c0,2.2-9,2.2-9,7V44h26v-2.1C45,37.1,35,37.1,35,34.9z"/>
+		</g>
+		<g>
+			<g>
+				<circle fill="#808080" cx="44.2" cy="43.4" r="7.3"/>
+				<circle fill="none" stroke="#FFFFFF" stroke-miterlimit="10" cx="44.2" cy="43.4" r="7.3"/>
+			</g>
+			<path fill="#FFFFFF" d="M38.9,43.4c0,0,2.4-2.9,5.3-2.9c2.9,0,5.3,2.9,5.3,2.9s-2.4,2.9-5.3,2.9C41.3,46.2,38.9,43.4,38.9,43.4z      M44.2,45.2c1,0,1.8-0.8,1.8-1.8c0-1-0.8-1.8-1.8-1.8c-1,0-1.8,0.8-1.8,1.8C42.4,44.4,43.2,45.2,44.2,45.2z"/>
+		</g>
+	</g>
+</g>
+</svg>
