@@ -61,4 +61,8 @@
     <Folder Include="wwwroot\uploads\profiles\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Xant.Persistence\Xant.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>
