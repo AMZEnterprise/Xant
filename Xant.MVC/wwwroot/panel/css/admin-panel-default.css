@@ -37,7 +37,7 @@ body {
     background-size: cover;
 }
 
-.title-bar, .dataTables_filter, .dataTables_length {
+.title-bar, .dataTables_filter, .dataTables_length, .dataTables_info {
     color: #ffffff;
 }
 
