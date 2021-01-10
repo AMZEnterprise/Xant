@@ -8,6 +8,11 @@ namespace Xant.MVC.Mappings
     {
         public AdminPanelProfile()
         {
+            //Contact mappings
+            CreateMap<Contact, ContactIndexViewModel>();
+            CreateMap<Contact, ContactFormViewModel>();
+            CreateMap<ContactFormViewModel, Contact>();
+
            //PostCategory mappings
            CreateMap<PostCategory, PostCategoryIndexViewModel>();
            CreateMap<PostCategory, PostCategoryFormViewModel>();
