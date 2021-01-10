@@ -1,0 +1,49 @@
+﻿@model Xant.MVC.Areas.Panel.Models.ViewModels.ContactIndexViewModel
+@{
+    ViewData["Title"] = "تماس ها";
+}
+
+@section Scripts
+{
+    <script>
+        AdminPanel.LoadContacts(
+            "@Url.Action("LoadContactsTable")",
+            "@Url.Action("Edit")",
+            "@Url.Action("Details")",
+            "@Url.Action("Delete")"
+        )
+    </script>
+}
+
+<div class="my-5 title-bar">
+    <h1>@ViewData["Title"]</h1>
+</div>
+
+<table id="jq-table" class="table table-striped table-bordered dt-responsive nowrap table-light" width="100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Body)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastEditDate)
+            </th>
+            <th class="no-sort"></th>
+        </tr>
+    </thead>
+</table>
