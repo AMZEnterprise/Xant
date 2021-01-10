@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xant.Core", "Xant.Core\Xant.Core.csproj", "{CC9B0251-12EE-408C-9453-A795AAF76381}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xant.Core", "Xant.Core\Xant.Core.csproj", "{CC9B0251-12EE-408C-9453-A795AAF76381}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xant.Persistence", "Xant.Persistence\Xant.Persistence.csproj", "{7F843632-1954-4D6F-BA5E-2E5B982DE30C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xant.Persistence", "Xant.Persistence\Xant.Persistence.csproj", "{7F843632-1954-4D6F-BA5E-2E5B982DE30C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xant.Tests", "Xant.Tests\Xant.Tests.csproj", "{2D19AE3C-6B75-47A8-92D0-02AFA8EAF953}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xant.Tests", "Xant.Tests\Xant.Tests.csproj", "{2D19AE3C-6B75-47A8-92D0-02AFA8EAF953}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xant.MVC", "Xant.MVC\Xant.MVC.csproj", "{DDFB06B2-3C32-466C-BA7F-1D280B75740B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xant.MVC", "Xant.MVC\Xant.MVC.csproj", "{DDFB06B2-3C32-466C-BA7F-1D280B75740B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
