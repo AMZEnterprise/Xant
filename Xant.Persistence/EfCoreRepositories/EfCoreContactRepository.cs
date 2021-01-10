@@ -28,13 +28,15 @@ namespace Xant.Persistence.EfCoreRepositories
 
         public void Insert(Contact contact)
         {
-            contact.CreateDate = DateTime.Now;
+            contact.CreateDate = contact.LastEditDate = DateTime.Now;
 
             _context.Contacts.Add(contact);
         }
 
         public void Update(Contact contact)
         {
+            contact.LastEditDate = DateTime.Now;
+
             _context.Contacts.Update(contact);
         }
 
