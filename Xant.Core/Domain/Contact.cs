@@ -32,5 +32,9 @@ namespace Xant.Core.Domain
         /// Gets or sets contact creation date
         /// </summary>
         public DateTime CreateDate { get; set; }
+        /// <summary>
+        /// Gets or sets contact last edit date
+        /// </summary>
+        public DateTime LastEditDate { get; set; }
     }
 }
