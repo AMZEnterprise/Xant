@@ -181,7 +181,7 @@ namespace Xant.Tests.Controllers.Panel
                 .ReturnsAsync(false);
 
             _unitOfWork
-                .Setup(x => x.PostCategoryRepository.Insert(It.IsAny<PostCategory>()))
+                .Setup(x => x.PostCategoryRepository.Update(It.IsAny<PostCategory>()))
                 .Verifiable();
 
             var result = await _controller.Edit(1, new PostCategoryFormViewModel() { Id = 1 });
