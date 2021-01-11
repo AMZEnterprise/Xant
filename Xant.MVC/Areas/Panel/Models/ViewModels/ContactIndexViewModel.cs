@@ -13,6 +13,8 @@ namespace Xant.MVC.Areas.Panel.Models.ViewModels
         public string Subject { get; set; }
         [Display(Name = "ایمیل")]
         public string Email { get; set; }
+        [Display(Name = "تلفن")]
+        public string PhoneNumber { get; set; }
         [Display(Name = "توضیحات")]
         public string Body { get; set; }
         [Display(Name = "آیپی فرستنده")]
