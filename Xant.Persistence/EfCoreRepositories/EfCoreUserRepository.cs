@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -93,6 +93,12 @@ namespace Xant.Persistence.EfCoreRepositories
 
         public async Task<IdentityResult> Update(User user)
         {
+            if (user.FirstName == null)
+                throw new NullReferenceException(nameof(User.FirstName));
+
+            if (user.LastName == null)
+                throw new NullReferenceException(nameof(User.LastName));
+
             user.LastEditDate = DateTime.Now;
 
             return await _userManager.UpdateAsync(user);
@@ -110,6 +116,12 @@ namespace Xant.Persistence.EfCoreRepositories
 
         public async Task<IdentityResult> Insert(User user, string password)
         {
+            if (user.FirstName == null)
+                throw new NullReferenceException(nameof(User.FirstName));
+
+            if (user.LastName == null)
+                throw new NullReferenceException(nameof(User.LastName));
+
             user.CreateDate = user.LastEditDate = DateTime.Now;
 
             return await _userManager.CreateAsync(user, password);

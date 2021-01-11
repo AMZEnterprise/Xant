@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Xant.Core.Domain;
@@ -35,6 +35,19 @@ namespace Xant.Persistence.EfCoreRepositories
 
         public void Insert(PostComment postComment)
         {
+            if (postComment.UserFullName == null)
+                throw new NullReferenceException(nameof(PostComment.UserFullName));
+
+            if (postComment.Email == null)
+                throw new NullReferenceException(nameof(PostComment.Email));
+
+            if (postComment.Body == null)
+                throw new NullReferenceException(nameof(PostComment.Body));
+
+            if (postComment.Ip == null)
+                throw new NullReferenceException(nameof(PostComment.Ip));
+
+
             postComment.IsEdited = false;
             postComment.CreateDate = postComment.LastEditDate = DateTime.Now;
 
@@ -43,6 +56,18 @@ namespace Xant.Persistence.EfCoreRepositories
 
         public void Update(PostComment postComment)
         {
+            if (postComment.UserFullName == null)
+                throw new NullReferenceException(nameof(PostComment.UserFullName));
+
+            if (postComment.Email == null)
+                throw new NullReferenceException(nameof(PostComment.Email));
+
+            if (postComment.Body == null)
+                throw new NullReferenceException(nameof(PostComment.Body));
+
+            if (postComment.Ip == null)
+                throw new NullReferenceException(nameof(PostComment.Ip));
+
             postComment.IsEdited = true;
             postComment.LastEditDate = DateTime.Now;
 

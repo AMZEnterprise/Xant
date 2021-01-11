@@ -28,6 +28,18 @@ namespace Xant.Persistence.EfCoreRepositories
 
         public void Insert(Contact contact)
         {
+            if (contact.UserFullName == null)
+                throw new NullReferenceException(nameof(Contact.UserFullName));
+
+            if (contact.Subject == null)
+                throw new NullReferenceException(nameof(Contact.Subject));
+
+            if (contact.Body == null)
+                throw new NullReferenceException(nameof(Contact.Body));
+
+            if (contact.Ip == null)
+                throw new NullReferenceException(nameof(Contact.Ip));
+
             contact.CreateDate = contact.LastEditDate = DateTime.Now;
 
             _context.Contacts.Add(contact);
@@ -35,6 +47,18 @@ namespace Xant.Persistence.EfCoreRepositories
 
         public void Update(Contact contact)
         {
+            if (contact.UserFullName == null)
+                throw new NullReferenceException(nameof(Contact.UserFullName));
+
+            if (contact.Subject == null)
+                throw new NullReferenceException(nameof(Contact.Subject));
+
+            if (contact.Body == null)
+                throw new NullReferenceException(nameof(Contact.Body));
+
+            if (contact.Ip == null)
+                throw new NullReferenceException(nameof(Contact.Ip));
+
             contact.LastEditDate = DateTime.Now;
 
             _context.Contacts.Update(contact);

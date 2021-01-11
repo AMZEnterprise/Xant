@@ -42,6 +42,12 @@ namespace Xant.Persistence.EfCoreRepositories
 
         public void Insert(Post post)
         {
+            if (post.Title == null)
+                throw new NullReferenceException(nameof(Post.Title));
+
+            if (post.Body == null)
+                throw new NullReferenceException(nameof(Post.Body));
+
             post.CreateDate = post.LastEditDate = DateTime.Now;
 
             _context.Posts.Add(post);
@@ -49,6 +55,12 @@ namespace Xant.Persistence.EfCoreRepositories
 
         public void Update(Post post)
         {
+            if (post.Title == null)
+                throw new NullReferenceException(nameof(Post.Title));
+
+            if (post.Body == null)
+                throw new NullReferenceException(nameof(Post.Body));
+
             post.LastEditDate = DateTime.Now;
 
             _context.Posts.Update(post);

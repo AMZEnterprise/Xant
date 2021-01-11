@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Xant.Core.Domain;
@@ -28,6 +28,9 @@ namespace Xant.Persistence.EfCoreRepositories
 
         public void Insert(PostCategory postCategory)
         {
+            if (postCategory.Title == null)
+                throw new NullReferenceException(nameof(PostCategory.Title));
+
             postCategory.CreateDate = postCategory.LastEditDate = DateTime.Now;
 
             _context.PostCategories.Add(postCategory);
@@ -35,6 +38,9 @@ namespace Xant.Persistence.EfCoreRepositories
 
         public void Update(PostCategory postCategory)
         {
+            if (postCategory.Title == null)
+                throw new NullReferenceException(nameof(PostCategory.Title));
+
             postCategory.LastEditDate = DateTime.Now;
 
             _context.PostCategories.Update(postCategory);
