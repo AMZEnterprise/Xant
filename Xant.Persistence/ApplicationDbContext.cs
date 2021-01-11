@@ -21,13 +21,11 @@ namespace Xant.Persistence
 
             builder.Entity<Contact>()
                 .Property(x => x.Email)
-                .HasMaxLength(256)
-                .IsRequired();
+                .HasMaxLength(256);
 
             builder.Entity<Contact>()
                 .Property(x => x.PhoneNumber)
-                .HasMaxLength(20)
-                .IsRequired();
+                .HasMaxLength(20);
 
             builder.Entity<Contact>()
                 .Property(x => x.Subject)
@@ -59,8 +57,7 @@ namespace Xant.Persistence
 
             builder.Entity<Post>()
                 .Property(x => x.Tags)
-                .HasMaxLength(1000)
-                .IsRequired();
+                .HasMaxLength(1000);
 
             #endregion
 
