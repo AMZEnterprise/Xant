@@ -25,6 +25,11 @@ namespace Xant.Persistence
                 .IsRequired();
 
             builder.Entity<Contact>()
+                .Property(x => x.PhoneNumber)
+                .HasMaxLength(20)
+                .IsRequired();
+
+            builder.Entity<Contact>()
                 .Property(x => x.Subject)
                 .HasMaxLength(256)
                 .IsRequired();
