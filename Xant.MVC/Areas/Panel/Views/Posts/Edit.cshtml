@@ -1,0 +1,79 @@
+﻿@model Xant.MVC.Areas.Panel.Models.ViewModels.PostFormViewModel
+
+@{
+    Layout = "_FormLayout";
+    ViewData["Title"] = "ویرایش مطلب";
+}
+@section Styles
+{
+    <link href="~/lib/tagger/tagger.css" rel="stylesheet" />
+}
+@section Scripts
+{
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+    <script src="~/lib/ckeditor/config.js"></script>
+    <script src="~/lib/ckeditor/adapters/jquery.js"></script>
+    <script src="~/lib/tagger/tagger.js"></script>
+    <script>
+        AdminPanel.InitialEditor("#txtBody");
+        AdminPanel.InitialTagsInput();
+        AdminPanel.InitialSingleFilePreview();
+
+        $("#btn-add-file").click(function () {
+            $("#input-file-hidden").click();
+        });
+    </script>
+}
+
+<form asp-action="Edit" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Body"></label>
+        <textarea asp-for="Body" id="txtBody"></textarea>
+        <span asp-validation-for="Body"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PostCategoryId"></label>
+        <select asp-for="PostCategoryId" asp-items="@ViewBag.PostCategoryId" class="custom-select">
+            <option value="">بدون دسته بندی</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Tags"></label>
+        <input type="text" id="tags-input" asp-for="Tags" />
+    </div>
+    <div class="form-group">
+        <label asp-for="File"></label>
+        <button type="button" id="btn-add-file" class="btn btn-secondary">
+            <i class="fa fa-plus"></i>
+            افزودن تصویر
+        </button>
+        <input type="file" id="input-file-hidden" class="d-none" accept="image/*" name="files" />
+        <div id="files-preview" class="single-file mt-2">
+            <img src="@(!string.IsNullOrWhiteSpace(Model.FilePath) ? Model.FilePath : "/panel/img/no-image.png")" class="thumbnail" />
+        </div>
+    </div>
+    <div class="form-group form-check">
+        <div class="custom-control custom-checkbox mr-sm-2">
+            <label class="form-check-label">
+                <input type="checkbox" class="custom-control-input" asp-for="IsCommentsOn">
+                <label class="custom-control-label" asp-for="IsCommentsOn"></label>
+            </label>
+        </div>
+    </div>
+
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="UserId" />
+    <input type="hidden" asp-for="FilesPathGuid" />
+    <input type="hidden" asp-for="CreateDate" />
+    <input type="hidden" asp-for="LastEditDate" />
+
+    <div class="form-group">
+        <button class="btn btn-primary float-left" type="submit">ویرایش</button>
+        <a asp-action="Index" class="btn btn-danger float-right">بازگشت</a>
+    </div>
+</form>

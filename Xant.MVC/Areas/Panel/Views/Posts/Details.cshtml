@@ -1,0 +1,73 @@
+﻿@using Xant.MVC.Utility
+@model Xant.MVC.Areas.Panel.Models.ViewModels.PostFormViewModel
+
+@{
+    Layout = "_FormLayout";
+    ViewData["Title"] = "جزئیات مطلب";
+}
+@section Styles
+{
+    <link href="~/lib/tagger/tagger.css" rel="stylesheet" />
+}
+
+@section Scripts{
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+    <script src="~/lib/ckeditor/config.js"></script>
+    <script src="~/lib/ckeditor/adapters/jquery.js"></script>
+    <script src="~/lib/tagger/tagger.js"></script>
+    <script>
+        AdminPanel.InitialEditor("#txtBody");
+        AdminPanel.InitialTagsInputReadOnly();
+    </script>
+}
+
+<div class="form-group">
+    <label asp-for="Title"></label>
+    <input asp-for="Title" class="form-control" disabled="disabled" />
+</div>
+<div class="form-group">
+    <label asp-for="Body"></label>
+    <textarea asp-for="Body" id="txtBody"></textarea>
+    <span asp-validation-for="Body"></span>
+</div>
+<div class="form-group">
+    <label asp-for="PostCategoryId"></label>
+    <select asp-for="PostCategoryId" asp-items="@ViewBag.PostCategoryId" class="custom-select" disabled="disabled">
+        <option value="">بدون دسته بندی</option>
+    </select>
+</div>
+<div class="form-group">
+    <label asp-for="Tags"></label>
+    <input type="text" id="tags-input" asp-for="Tags" />
+</div>
+<div class="form-group">
+    <label asp-for="File"></label>
+    <div id="files-preview" class="single-file mt-2">
+        <img src="@(!string.IsNullOrWhiteSpace(Model.FilePath) ? Model.FilePath : "/panel/img/no-image.png")" class="thumbnail" />
+    </div>
+</div>
+<div class="form-group form-check">
+    <div class="custom-control custom-checkbox mr-sm-2">
+        <label class="form-check-label">
+            <input type="checkbox" class="custom-control-input" asp-for="IsCommentsOn" disabled="disabled">
+            <label class="custom-control-label" asp-for="IsCommentsOn"></label>
+        </label>
+    </div>
+</div>
+<div class="form-group">
+    <label asp-for="UserFullName"></label>
+    <input asp-for="UserFullName" class="form-control" disabled="disabled" />
+</div>
+<div class="form-group">
+    <label asp-for="CreateDate"></label>
+    <input type="text" value="@FriendlyDate.LongDate(Model.CreateDate)" class="form-control" disabled="disabled" />
+</div>
+<div class="form-group">
+    <label asp-for="LastEditDate"></label>
+    <input type="text" value="@FriendlyDate.LongDate(Model.LastEditDate)" class="form-control" disabled="disabled" />
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary float-left">ویرایش</a>
+    <a asp-action="Index" class="btn btn-danger float-right">بازگشت</a>
+</div>
