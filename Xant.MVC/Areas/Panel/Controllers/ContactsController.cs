@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ using Xant.MVC.Models.Constants;
 namespace Xant.MVC.Areas.Panel.Controllers
 {
     [Area(ConstantAreas.Panel)]
+    [Authorize(Roles = ConstantUserRoles.SuperAdmin + "," + ConstantUserRoles.Admin)]
     public class ContactsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -57,10 +59,12 @@ namespace Xant.MVC.Areas.Panel.Controllers
                 result = result.Where(r =>
                     (r.UserFullName != null && r.UserFullName.Contains(searchBy)) ||
                     (r.Email != null && r.Email.Contains(searchBy)) ||
+                    (r.PhoneNumber != null && r.PhoneNumber.Contains(searchBy)) ||
                     (r.Subject != null && r.Subject.Contains(searchBy)) ||
                     (r.Body != null && r.Body.Contains(searchBy)) ||
                     (r.Ip != null && r.Ip.Contains(searchBy)) ||
-                    (r.CreateDate.ToString("F") != null && r.CreateDate.ToString("F").Contains(searchBy))
+                    (r.CreateDate.ToString("F") != null && r.CreateDate.ToString("F").Contains(searchBy)) ||
+                    (r.LastEditDate.ToString("F") != null && r.LastEditDate.ToString("F").Contains(searchBy))
                 );
             }
 
