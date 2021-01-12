@@ -149,7 +149,7 @@
             });
             // ----------------------------------------------------------------------------------
             this._new_input_tag.addEventListener('keydown', function(event) {
-                if (event.keyCode === 13 || event.keyCode === 188 ||
+                if (event.keyCode === 13 || /*event.keyCode === 188 ||*/
                     (event.keyCode === 32 && !self._settings.allow_spaces)) { // enter || comma || space
                     if (self.add_tag(self._new_input_tag.value.trim())) {
                         self._new_input_tag.value = '';
