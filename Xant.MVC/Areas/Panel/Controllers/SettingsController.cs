@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Xant.Core;
@@ -9,6 +10,7 @@ using Xant.MVC.Models.Constants;
 namespace Xant.MVC.Areas.Panel.Controllers
 {
     [Area(ConstantAreas.Panel)]
+    [Authorize(Roles = ConstantUserRoles.SuperAdmin)]
     public class SettingsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
