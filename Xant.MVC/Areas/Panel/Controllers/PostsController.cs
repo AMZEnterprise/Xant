@@ -255,6 +255,11 @@ namespace Xant.MVC.Areas.Panel.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id, string userId, string filesPathGuid)
         {
+            if (userId == null || filesPathGuid == null)
+            {
+                return BadRequest();
+            }
+
             var user = await _unitOfWork.UserRepository.GetByClaimsPrincipal(HttpContext.User);
 
             if (!await _unitOfWork.UserRepository
