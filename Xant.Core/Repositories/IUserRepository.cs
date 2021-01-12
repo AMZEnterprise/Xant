@@ -154,6 +154,14 @@ namespace Xant.Core.Repositories
         /// <returns>returns IdentityResult</returns>
         Task<IdentityResult> ResetPassword(User user, string token, string newPassword);
         /// <summary>
+        /// Check whether user is allowed for the operation
+        /// </summary>
+        /// <param name="currentUser">current user</param>
+        /// <param name="operationUserId">user who does operation</param>
+        /// <param name="alwaysAllowedUserRole">user role which always allowed for the operation</param>
+        /// <returns>true if user allowed to does operation, false if not</returns>
+        Task<bool> IsUserAllowedForOperation(User currentUser, string operationUserId, string alwaysAllowedUserRole);
+        /// <summary>
         /// Count total users
         /// </summary>
         /// <returns>returns users count</returns>
