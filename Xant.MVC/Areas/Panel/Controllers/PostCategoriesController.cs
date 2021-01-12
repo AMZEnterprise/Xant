@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Xant.Core;
 using Xant.Core.Domain;
 using Xant.MVC.Areas.Panel.Extensions;
@@ -13,6 +14,7 @@ using Xant.MVC.Models.Constants;
 namespace Xant.MVC.Areas.Panel.Controllers
 {
     [Area(ConstantAreas.Panel)]
+    [Authorize(Roles = ConstantUserRoles.SuperAdmin + "," + ConstantUserRoles.Admin)]
     public class PostCategoriesController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
