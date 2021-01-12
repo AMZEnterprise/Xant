@@ -81,11 +81,20 @@ namespace Xant.MVC
                 options.Cookie.IsEssential = true;
             });
 
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
+            });
+
             services.AddAutoMapper(typeof(Startup));
 
             services.AddMvc()
                 .AddNewtonsoftJson()
                 .AddRazorRuntimeCompilation();
+
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/Panel/Users/Login");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -105,9 +114,12 @@ namespace Xant.MVC
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
@@ -144,12 +156,13 @@ namespace Xant.MVC
                 {
                     FirstName = "FirstName",
                     LastName = "LastName",
-                    UserName = "Admin",
+                    UserName = "Admin123",
                     PhoneNumber = "0000000000",
                     Email = "example@gmail.com",
                     EmailConfirmed = true,
                     CreateDate = DateTime.Now,
-                    IsActive = true
+                    IsActive = true,
+                    PhoneNumberConfirmed = true
                 };
 
                 ApplicationDbInitializer.SeedData(context, userManager, roleManager, roles,
