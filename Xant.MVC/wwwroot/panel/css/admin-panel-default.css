@@ -858,6 +858,7 @@ body {
     padding: 20px 0 !important;
     border: 1px solid #e8ebf1 !important;
     border-radius: 4px !important;
+    background-color: #ffffff;
 }
 
     .tagger > ul {
@@ -873,22 +874,18 @@ body {
                 padding-left: 10px
             }
 
-            .tagger > ul li > span{
+            .tagger > ul li > span {
                 color: #ffffff;
                 background-color: var(--primary) !important;
                 border: none !important;
                 cursor: default !important
             }
 
-            .tagger > ul li.tagger-new input {
-                color: #ffffff;
-            }
-
-            .form-box {
-                border-radius: 5px;
-                background-color: rgba(0, 0, 0, 0.36);
-                padding: 30px;
-            }
+.form-box {
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.36);
+    padding: 30px;
+}
 
     .form-box .form-box-title,
     .form-box label {
@@ -900,8 +897,19 @@ body {
         padding-bottom: 25px;
     }
 
-#files-preview .thumbnail {
+#files-preview.multiple-files .thumbnail {
     height: 100px;
     margin: 10px;
     display: inline-block;
+}
+
+#files-preview.single-file .thumbnail {
+    height: auto;
+    width: 40%;
+    margin: 0 auto;
+    display: block;
+}
+
+.tagger.disabled {
+    background-color: #e9ecef !important;
 }
