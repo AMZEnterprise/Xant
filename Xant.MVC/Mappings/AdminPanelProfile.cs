@@ -18,14 +18,14 @@ namespace Xant.MVC.Mappings
             //Post mapping
             CreateMap<Post, PostIndexViewModel>()
                 .ForMember(x => x.UserFullName,
-                    y => 
+                    y =>
                         y.MapFrom<PostIndexViewModelUserFullNameResolver>());
             CreateMap<Post, PostFormViewModel>()
-                .ForMember(x=>x.UserFullName,
-                    y=>
+                .ForMember(x => x.UserFullName,
+                    y =>
                         y.MapFrom<PostFormUserFullNameResolver>())
                 .ForMember(x => x.FilePath,
-                    y => 
+                    y =>
                         y.MapFrom<PostFormViewModelFilePathResolver>());
             CreateMap<PostFormViewModel, Post>()
                 .ForMember(x => x.FilesPathGuid,
@@ -38,6 +38,21 @@ namespace Xant.MVC.Mappings
             CreateMap<PostCategoryFormViewModel, PostCategory>();
             CreateMap<PostCategoryType, PostCategoryTypeEnumViewModel>();
             CreateMap<PostCategoryTypeEnumViewModel, PostCategoryType>();
+
+            //PostComment mappings
+            CreateMap<PostComment, PostCommentIndexViewModel>();
+            CreateMap<PostComment, PostCommentFormViewModel>();
+            CreateMap<PostComment, PostCommentReplyFormViewModel>()
+                .ForMember(x => x.ParentId,
+                    y =>
+                        y.MapFrom(u => u.Parent.Id))
+                .ForMember(x => x.PostId,
+                    y =>
+                        y.MapFrom(u => u.PostId))
+                .ForMember(x => x.ParentBody,
+                    y =>
+                        y.MapFrom(u => u.Body));
+            CreateMap<PostCommentReplyFormViewModel, PostComment>();
 
             //Setting mappings
             CreateMap<Setting, SettingFormViewModel>();
