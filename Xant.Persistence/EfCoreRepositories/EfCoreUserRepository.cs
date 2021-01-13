@@ -132,6 +132,11 @@ namespace Xant.Persistence.EfCoreRepositories
             return await _userManager.AddToRoleAsync(user, role);
         }
 
+        public async Task<bool> IsUserAllowedForOperation(User currentUser, string operationUserId, string alwaysAllowedUserRole)
+        {
+            return operationUserId == currentUser.Id || await IsInRole(currentUser, alwaysAllowedUserRole);
+        }
+
         public async Task<int> Count()
         {
             return await _userManager.Users.CountAsync();
