@@ -38,6 +38,24 @@ namespace Xant.Tests.EfCoreRepositories
         }
 
         [Test]
+        public void Insert_PostCategoryTitleIsNull_ThrowNullReferenceExceptionWithTitleMessage()
+        {
+            _repository.Invoking(x => x.Insert(new PostCategory()))
+                .Should()
+                .Throw<NullReferenceException>()
+                .WithMessage(nameof(PostCategory.Title));
+        }
+
+        [Test]
+        public void Update_PostCategoryTitleIsNull_ThrowNullReferenceExceptionWithTitleMessage()
+        {
+            _repository.Invoking(x => x.Update(new PostCategory()))
+                .Should()
+                .Throw<NullReferenceException>()
+                .WithMessage(nameof(PostCategory.Title));
+        }
+
+        [Test]
         public async Task IsPostCategoryExists_PostCategoryExists_ReturnTrue()
         {
             var result = await _repository.IsPostCategoryExists(_data[0]);
