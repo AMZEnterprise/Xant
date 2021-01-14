@@ -57,6 +57,18 @@ namespace Xant.MVC.Mappings
             //Setting mappings
             CreateMap<Setting, SettingFormViewModel>();
             CreateMap<SettingFormViewModel, Setting>();
+
+            //User mappings
+            CreateMap<User, UserIndexViewModel>()
+                .ForMember(x => x.UserFullName,
+                    y =>
+                        y.MapFrom<UserIndexViewModelUserFullNameResolver>());
+            CreateMap<UserCreateFormViewModel, User>();
+            CreateMap<User, UserFormViewModel>()
+                .ForMember(x => x.FilePath,
+                    y =>
+                        y.MapFrom<UserFormViewModelFilePathResolver>()); ;
+            CreateMap<UserFormViewModel, User>();
         }
     }
 }
