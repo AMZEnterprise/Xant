@@ -11,12 +11,20 @@ namespace Xant.MVC.Services.FileHandler
     /// </summary>
     public class FileHandler : IFileHandler
     {
+        //Static path values
+        private static class ConstantPath
+        {
+            public const string Posts = "posts";
+            public const string Profiles = "profiles";
+            public const string Uploads = "uploads";
+        }
+
         private string GetUploadFolderPath(FileHandlerFolder fileHandlerFolder)
         {
             if (fileHandlerFolder == FileHandlerFolder.Posts)
-                return "posts";
+                return ConstantPath.Posts;
 
-            return "profiles";
+            return ConstantPath.Profiles;
         }
         private async Task Upload(IFormFile file, string uploadPath)
         {
@@ -36,9 +44,13 @@ namespace Xant.MVC.Services.FileHandler
                 throw new Exception(ex.Message);
             }
         }
-        public async Task UploadMedia(IFormFileCollection files, string webRootPath, string filePath, FileHandlerFolder fileHandlerFolder)
+        public async Task UploadMedia(
+            IFormFileCollection files,
+            string webRootPath,
+            string filePath, 
+            FileHandlerFolder fileHandlerFolder)
         {
-            string uploadPath = webRootPath + "\\" + "uploads" + "\\"
+            string uploadPath = webRootPath + "\\" + ConstantPath.Uploads + "\\"
                                 + GetUploadFolderPath(fileHandlerFolder) + "\\" + filePath;
             foreach (var file in files)
             {
@@ -46,18 +58,9 @@ namespace Xant.MVC.Services.FileHandler
             }
         }
 
-        public async Task UploadUserProfile(IFormFile file, string webRootPath, string filePath)
-        {
-            string uploadPath = webRootPath + "\\" + "uploads" + "\\"
-                                + "profiles" + "\\" + filePath;
-
-            await Upload(file, uploadPath);
-        }
-
         public void DeleteMedia(string webRootPath, string filePath, FileHandlerFolder fileHandlerFolder)
         {
-
-            string uploadPath = webRootPath + "\\" + "uploads" + "\\"
+            string uploadPath = webRootPath + "\\" + ConstantPath.Uploads + "\\"
                                 + GetUploadFolderPath(fileHandlerFolder) + "\\" + filePath;
             try
             {
@@ -75,7 +78,7 @@ namespace Xant.MVC.Services.FileHandler
         public List<string> GetFilesSourceList(string webRootPath, string filePath, FileHandlerFolder fileHandlerFolder)
         {
             var folderPath = GetUploadFolderPath(fileHandlerFolder);
-            string uploadPath = webRootPath + "\\" + "uploads" + "\\"
+            string uploadPath = webRootPath + "\\" + ConstantPath.Uploads + "\\"
                                 + folderPath + "\\" + filePath;
 
             List<string> fileSources = new List<string>();
@@ -88,7 +91,7 @@ namespace Xant.MVC.Services.FileHandler
 
                 foreach (var file in files)
                 {
-                    string src = "\\" + "uploads" + "\\"
+                    string src = "\\" + ConstantPath.Uploads + "\\"
                                  + folderPath + "\\" + filePath + "\\" + Path.GetFileName(file);
 
                     fileSources.Add(src.Replace(@"\", "/"));
@@ -103,7 +106,7 @@ namespace Xant.MVC.Services.FileHandler
         public string GetFileSource(string webRootPath, string filePath, FileHandlerFolder fileHandlerFolder)
         {
             var folderPath = GetUploadFolderPath(fileHandlerFolder);
-            string uploadPath = webRootPath + "\\" + "uploads" + "\\"
+            string uploadPath = webRootPath + "\\" + ConstantPath.Uploads + "\\"
                                 + folderPath + "\\" + filePath;
 
             try
@@ -115,32 +118,11 @@ namespace Xant.MVC.Services.FileHandler
 
                 if (files.Length > 0 && files[0] != null)
                 {
-                    var path = "\\" + "uploads" + "\\" + folderPath + "\\" + filePath + "\\" + Path.GetFileName(files[0]);
-                    
+                    var path = "\\" + ConstantPath.Uploads + "\\" + 
+                               folderPath + "\\" + filePath + "\\" + Path.GetFileName(files[0]);
+
                     return path.Replace(@"\", "/");
                 }
-            }
-            catch { }
-
-            return null;
-        }
-
-        public string GetUserProfileSource(string webRootPath, string filePath)
-        {
-            string uploadPath = webRootPath + "\\" + "uploads" + "\\"
-                                + "profiles" + "\\" + filePath;
-
-            try
-            {
-                var files = Directory.GetFiles(
-                    uploadPath,
-                    "*.*",
-                    SearchOption.TopDirectoryOnly);
-
-                var path = "\\" + "uploads" + "\\"
-                             + "profiles" + "\\" + filePath + "\\" + Path.GetFileName(files[0]);
-
-                return path.Replace(@"\", "/");
             }
             catch { }
 
