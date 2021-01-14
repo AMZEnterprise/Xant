@@ -1,48 +1,166 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="fa-IR">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Xant.MVC</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- SEO Meta Description -->
+    <meta name="description" content="">
+    <meta name="author" content="Themeland">
+
+    <!-- Title  -->
+    <title>ژانت - @ViewData["Title"]</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="~/img/favicon.png">
+
+    <!-- ***** All CSS Files ***** -->
+    <!-- Style css -->
+    <link rel="stylesheet" href="~/css/style.css">
+
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="~/css/responsive.css">
+
+    <link rel="stylesheet" href="~/lib/jquery-confirm/jquery-confirm.min.css">
+
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Xant.MVC</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+<body class="homepage-5 dark">
+
+
+    @RenderBody()
+
+    <!--====== Preloader Area Start ======-->
+    <div id="preloader">
+        <!-- Digimax Preloader -->
+        <div id="digimax-preloader" class="digimax-preloader">
+            <!-- Preloader Animation -->
+            <div class="preloader-animation">
+                <!-- Spinner -->
+                <div class="spinner"></div>
+                <!-- Loader -->
+                <div class="loader">
+                    <span data-text-preloader="ژانت" class="animated-letters">ژانت</span>
+                </div>
+                <p class="fw-5 text-center text-uppercase">بارگذاری</p>
+            </div>
+            <!-- Loader Animation -->
+            <div class="loader-animation">
+                <div class="row h-100">
+                    <!-- Single Loader -->
+                    <div class="col-3 single-loader p-0">
+                        <div class="loader-bg"></div>
+                    </div>
+                    <!-- Single Loader -->
+                    <div class="col-3 single-loader p-0">
+                        <div class="loader-bg"></div>
+                    </div>
+                    <!-- Single Loader -->
+                    <div class="col-3 single-loader p-0">
+                        <div class="loader-bg"></div>
+                    </div>
+                    <!-- Single Loader -->
+                    <div class="col-3 single-loader p-0">
+                        <div class="loader-bg"></div>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </div>
+    </div>
+    <!--====== Preloader Area End ======-->
+    <!--====== Scroll To Top Area Start ======-->
+    <div id="scrollUp" title="Scroll To Top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    <!--====== Scroll To Top Area End ======-->
+
+    <div class="main overflow-hidden">
+
+        @await Component.InvokeAsync("Header")
+
+        <!--====== Modal Search Area Start ======-->
+        <div id="search" class="modal fade p-0">
+            <div class="modal-dialog dialog-animated">
+                <div class="modal-content h-100">
+                    <div class="modal-header" data-dismiss="modal">
+                        جستجو <i class="far fa-times-circle icon-close"></i>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row">
+                            <div class="col-12 align-self-center">
+                                <div class="row">
+                                    <div class="col-12 pb-3">
+                                        <h2 class="search-title mb-3">دنبال چی میگردی؟</h2>
+                                        <p>جستجو در سایر مطالب وبسایت</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 input-group">
+                                        <input type="text" class="form-control" placeholder="کلمات کلیدی خود را وارد کنید">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 input-group align-self-center">
+                                        <button class="btn btn-bordered mt-3">جستجو</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--====== Modal Search Area End ======-->
+
+        @await Component.InvokeAsync("Footer")
+
+        <!--====== Modal Responsive Menu Area Start ======-->
+        <div id="menu" class="modal fade p-0">
+            <div class="modal-dialog dialog-animated">
+                <div class="modal-content h-100">
+                    <div class="modal-header" data-dismiss="modal">
+                        منو <i class="far fa-times-circle icon-close"></i>
+                    </div>
+                    <div class="menu modal-body">
+                        <div class="row w-100">
+                            <div class="items p-0 col-12 text-center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--====== Modal Responsive Menu Area End ======-->
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - Xant.MVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+
+    <!-- ***** All jQuery Plugins ***** -->
+    <!-- jQuery(necessary for all JavaScript plugins) -->
+    <script src="~/js/jquery/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap js -->
+    <script src="~/js/bootstrap/popper.min.js"></script>
+    <script src="~/js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Plugins js -->
+    <script src="~/js/plugins/plugins.min.js"></script>
+
+    <!-- Active js -->
+    <script src="~/js/active.js"></script>
+
+    <script src="~/lib/shave/jquery.shave.min.js"></script>
+    <script src="~/lib/jquery-confirm/jquery-confirm.min.js"></script>
+
+    <script src="~/js/website.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        function contactFormSent(xhr) {
+            Website.JsonResultHandler(xhr.responseJSON);
+            $("#CommentFormVm_Body").val("");
+        }
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
