@@ -32,9 +32,11 @@ body {
     font-family: Vazir !important;
     font-size: 1rem;
     font-weight: 400;
-    /*background-color: var(--light)*/
-    background: url("../../img/panel-background.jpg") no-repeat;
-    background-size: cover;
+    background: rgb(2,0,36);
+    background: linear-gradient(360deg, rgba(2,0,36,1) 0%, rgba(4,2,40,1) 18%, rgba(6,5,47,1) 30%, rgba(56,31,102,1) 100%);
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-height: 100vh;
 }
 
 .title-bar, .dataTables_filter, .dataTables_length, .dataTables_info {
