@@ -10,11 +10,9 @@ namespace Xant.MVC.Services.FileHandler
     public interface IFileHandler
     {
         Task UploadMedia(IFormFileCollection files, string webRootPath, string filePath, FileHandlerFolder fileHandlerFolder);
-        Task UploadUserProfile(IFormFile file, string webRootPath, string filePath);
         void DeleteMedia(string webRootPath, string filePath, FileHandlerFolder folder);
         List<string> GetFilesSourceList(string webRootPath, string filePath, FileHandlerFolder fileHandlerFolder);
         string GetFileSource(string webRootPath, string filePath, FileHandlerFolder fileHandlerFolder);
-        string GetUserProfileSource(string webRootPath, string filePath);
     }
 
     /// <summary>
