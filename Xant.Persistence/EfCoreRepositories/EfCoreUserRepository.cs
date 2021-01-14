@@ -132,6 +132,18 @@ namespace Xant.Persistence.EfCoreRepositories
             return await _userManager.AddToRoleAsync(user, role);
         }
 
+        public async Task<IdentityResult> UpdateRole(User user, string newRole)
+        {
+            var roles = await _userManager.GetRolesAsync(user);
+            var result = await _userManager.RemoveFromRolesAsync(user, roles);
+            if (result.Succeeded)
+            {
+                return await AddToRole(user, newRole);
+            }
+
+            return IdentityResult.Failed();
+        }
+
         public async Task<bool> IsUserAllowedForOperation(User currentUser, string operationUserId, string alwaysAllowedUserRole)
         {
             return operationUserId == currentUser.Id || await IsInRole(currentUser, alwaysAllowedUserRole);
