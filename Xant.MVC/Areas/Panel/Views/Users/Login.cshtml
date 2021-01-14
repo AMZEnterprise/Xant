@@ -1,0 +1,52 @@
+﻿@model Xant.MVC.Areas.Panel.Models.ViewModels.UserLoginFormViewModel
+@{
+    Layout = "_LayoutUsers";
+
+    ViewData["Title"] = "ورود";
+}
+<div class="login-card">
+    <div class="login-card-header">
+        <span class="h3">صفحه ورود</span>
+    </div>
+    <div class="login-card-body">
+        <form asp-action="Login">
+            <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+            @if (ViewData["Error"] != null)
+            {
+                <div class="form-group">
+                    @await Html.PartialAsync("PartialViews/_ErrorPV", ViewData["Error"].ToString())
+                </div>
+            }
+            <div class="input-group">
+                <span class="input-group-text text-primary">
+                    <span class="fa fa-user"></span>
+                </span>
+                <input asp-for="Username" placeholder="@Html.DisplayNameFor(u=>u.Username)" class="form-control" />
+            </div>
+            <span asp-validation-for="Username"></span>
+
+            <div class="input-group mt-1">
+                <span class="input-group-text text-primary">
+                    <span class="fa fa-key"></span>
+                </span>
+                <input asp-for="Password" placeholder="@Html.DisplayNameFor(u=>u.Password)" class="form-control" />
+                <br />
+            </div>
+            <span asp-validation-for="Password"></span>
+
+            <div class="form-group mt-2">
+                <input type="submit" value="ورود" class="btn btn-primary btn-block py-4" />
+            </div>
+
+            <label class="container">
+                <input type="checkbox" asp-for="RememberMe">
+                @Html.DisplayNameFor(m => m.RememberMe)
+            </label>
+
+            <div class="form-group text-center">
+                <a asp-controller="Users" asp-action="ForgotPassword" class="text-danger">فراموشی کلمه عبور</a>
+            </div>
+        </form>
+    </div>
+    <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-secondary btn-block mt-1">بازگشت به وبسایت</a>
+</div>
