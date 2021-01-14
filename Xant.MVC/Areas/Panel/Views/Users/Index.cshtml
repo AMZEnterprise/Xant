@@ -1,0 +1,63 @@
+﻿@model Xant.MVC.Areas.Panel.Models.ViewModels.UserIndexViewModel
+@{
+    ViewData["Title"] = "کاربران";
+}
+@section Scripts
+{
+    <script>
+        let table = AdminPanel.LoadUsers(
+            "@Url.Action("LoadUsersTable")",
+            "@Url.Action("Edit")",
+            "@Url.Action("Details")"
+        );
+
+        $("body").on("click", ".chk-user-active input[type=checkbox]", function (e) {
+            let userId = ($(this).attr("id")).replace("user-", "");
+            console.log(userId);
+            $.ajax({
+                url: "@Url.Action("ToggleActive")",
+                dataType: "json",
+                data: {
+                    id : userId
+                },
+                success: function (data) {
+                    table.draw();
+                }
+            });
+        });
+    </script>
+}
+
+<div class="my-5 title-bar">
+    <h1>@ViewData["Title"]</h1>
+    <a asp-action="Create" class="btn btn-success py-3 px-5 mt-3 ml-2 my-2">
+        <span class="fa fa-plus"></span>
+        ایجاد
+    </a>
+</div>
+
+<table id="jq-table" class="table table-striped table-bordered dt-responsive nowrap table-light" width="100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastEditDate)
+            </th>
+            <th class="no-sort"></th>
+        </tr>
+    </thead>
+</table>
