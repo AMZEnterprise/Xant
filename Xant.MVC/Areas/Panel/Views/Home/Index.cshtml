@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using Xant.Core.Domain
+@using Xant.MVC.Models.Constants
 @inject UserManager<User> UserManager
 @{
     ViewData["Title"] = "داشبورد";
@@ -12,7 +13,14 @@
             <div class="col-12 text-center">
                 <h2>
                     <span class="fa fa-user"></span>
-                    پنل مدیریت ژانت
+                    @if (User.IsInRole(ConstantUserRoles.SuperAdmin) || User.IsInRole(ConstantUserRoles.Admin))
+                    {
+                        <span>پنل مدیریت ژانت</span>
+                    }
+                    @if (User.IsInRole(ConstantUserRoles.Writer))
+                    {
+                        <span>پنل نویسندگی ژانت</span>
+                    }
                 </h2>
             </div>
             <div class="col-12 text-center">
@@ -31,27 +39,42 @@
             <div class="col-lg-3 col-md-3 col-sm-6 col-12">
                 <a asp-controller="Posts" asp-action="Index" class="btn btn-warning text-white p-5 btn-block rounded-0 mt-lg-0 mt-md-0 mt-sm-3 mt-3">
                     <span class="fa fa-table h4"></span>
-                    <span class="h4">مطلب ها</span>
+                    <span class="h4">مطالب</span>
                 </a>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-12">
-                <a asp-controller="Portfolios" asp-action="Index" class="btn btn-danger text-white p-5 btn-block rounded-0 mt-lg-0 mt-md-0 mt-sm-3 mt-3">
-                    <span class="fa fa-table h4"></span>
-                    <span class="h4">نمونه کارها</span>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-12">
-                <a asp-controller="Forms" asp-action="Index" class="btn btn-secondary text-white p-5 btn-block rounded-0 mt-lg-0 mt-md-0 mt-sm-3 mt-3">
-                    <span class="fa fa-table h4"></span>
-                    <span class="h4">فرم ها</span>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-12">
-                <a asp-controller="Settings" asp-action="Index" class="btn btn-success p-5 btn-block rounded-0 mt-lg-0 mt-md-0 mt-sm-3 mt-3">
-                    <span class="fa fa-cogs h4"></span>
-                    <span class="h4">تنظیمات</span>
-                </a>
-            </div>
+            @if (User.IsInRole(ConstantUserRoles.Writer))
+            {
+                <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                    <a asp-controller="PostComments" asp-action="Index" class="btn btn-secondary text-white p-5 btn-block rounded-0 mt-lg-0 mt-md-0 mt-sm-3 mt-3">
+                        <span class="fa fa-comments h4"></span>
+                        <span class="h4">نظرات</span>
+                    </a>
+                </div>
+            }
+            @if (User.IsInRole(ConstantUserRoles.SuperAdmin) || User.IsInRole(ConstantUserRoles.Admin))
+            {
+                <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                    <a asp-controller="Contacts" asp-action="Index" class="btn btn-danger text-white p-5 btn-block rounded-0 mt-lg-0 mt-md-0 mt-sm-3 mt-3">
+                        <span class="fa fa-phone h4"></span>
+                        <span class="h4">تماس ها</span>
+                    </a>
+                </div>
+            }
+            @if (User.IsInRole(ConstantUserRoles.SuperAdmin))
+            {
+                <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                    <a asp-controller="Users" asp-action="Index" class="btn btn-secondary text-white p-5 btn-block rounded-0 mt-lg-0 mt-md-0 mt-sm-3 mt-3">
+                        <span class="fa fa-users h4"></span>
+                        <span class="h4">کاربران</span>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                    <a asp-controller="Settings" asp-action="Index" class="btn btn-success p-5 btn-block rounded-0 mt-lg-0 mt-md-0 mt-sm-3 mt-3">
+                        <span class="fa fa-cogs h4"></span>
+                        <span class="h4">تنظیمات</span>
+                    </a>
+                </div>
+            }
         </div>
     </div>
 </section>
