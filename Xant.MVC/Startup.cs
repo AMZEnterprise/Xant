@@ -152,17 +152,17 @@ namespace Xant.MVC
                     ConstantUserRoles.Writer
                 };
 
-                User user = new User()
+                var user = new User()
                 {
                     FirstName = "FirstName",
                     LastName = "LastName",
                     UserName = "Admin123",
-                    PhoneNumber = "0000000000",
                     Email = "example@gmail.com",
                     EmailConfirmed = true,
-                    CreateDate = DateTime.Now,
                     IsActive = true,
-                    PhoneNumberConfirmed = true
+                    FilesPathGuid = Guid.NewGuid(),
+                    CreateDate = DateTime.Now,
+                    LastEditDate = DateTime.Now
                 };
 
                 ApplicationDbInitializer.SeedData(context, userManager, roleManager, roles,
