@@ -134,6 +134,13 @@ namespace Xant.Core.Repositories
         /// <returns>returns IdentityResult</returns>
         Task<IdentityResult> AddToRole(User user, string role);
         /// <summary>
+        /// Update user role
+        /// </summary>
+        /// <param name="user">user</param>
+        /// <param name="newRole">new role</param>
+        /// <returns>returns IdentityResult</returns>
+        Task<IdentityResult> UpdateRole(User user, string newRole);
+        /// <summary>
         /// Find user by email
         /// </summary>
         /// <param name="email">user email</param>
