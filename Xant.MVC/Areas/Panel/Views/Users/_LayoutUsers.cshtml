@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html dir="rtl" lang="fa-IR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>پنل مدیریت - @ViewData["Title"]</title>
+
+
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="~/panel/css/admin-panel-default.css" />
+
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row mt-5">
+        <div class="col-lg-4 col-md-8 col-sm-10 col-12 m-auto">
+
+            @RenderBody()
+
+        </div>
+    </div>
+</div>
+
+
+<footer class="pt-5">
+    <div class="container-fluid">
+        <div class="row pt-2 text-dark text-center">
+            <div class="col-12">
+                <p>
+                    <a href="http://www.xant.ir" class="text-white" title="تیم طراحی وب ژانت">
+                        ژانت
+                        &copy;
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+
+
+@await Html.PartialAsync("_ValidationScriptsPartial")
+
+
+</body>
+</html>
