@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using Xant.Core.Domain
+@using Xant.MVC.Models.Constants
 @inject UserManager<User> UserManager
 
 <!DOCTYPE html>
@@ -46,34 +47,43 @@
                                 <span class="fa fa-pencil-alt"></span>
                                 مطالب
                             </a>
-                            <a asp-controller="PostCategories" asp-action="Index" class="dropdown-item">
-                                <span class="fa fa-list"></span>
-                                دسته بندی ها
-                            </a>
+                            @if (User.IsInRole(ConstantUserRoles.SuperAdmin) || User.IsInRole(ConstantUserRoles.Admin))
+                            {
+                                <a asp-controller="PostCategories" asp-action="Index" class="dropdown-item">
+                                    <span class="fa fa-list"></span>
+                                    دسته بندی ها
+                                </a>
+                            }
                             <a asp-controller="PostComments" asp-action="Index" class="dropdown-item">
-                                <span class="fa fa-comment"></span>
+                                <span class="fa fa-comments"></span>
                                 نظرات
                             </a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Contacts" asp-action="Index">
-                            <span class="fa fa-phone mr-2"></span>
-                            تماس ها
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Users" asp-action="Index">
-                            <span class="fa fa-users mr-2"></span>
-                            مدیریت کاربران
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="Settings" asp-action="Index" class="nav-link">
-                            <span class="fa fa-cogs"></span>
-                            تنظیمات
-                        </a>
-                    </li>
+                    @if (User.IsInRole(ConstantUserRoles.SuperAdmin) || User.IsInRole(ConstantUserRoles.Admin))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Contacts" asp-action="Index">
+                                <span class="fa fa-phone mr-2"></span>
+                                تماس ها
+                            </a>
+                        </li>
+                    }
+                    @if (User.IsInRole(ConstantUserRoles.SuperAdmin))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Users" asp-action="Index">
+                                <span class="fa fa-users mr-2"></span>
+                                کاربران
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Settings" asp-action="Index" class="nav-link">
+                                <span class="fa fa-cogs"></span>
+                                تنظیمات
+                            </a>
+                        </li>
+                    }
                 </ul>
                 <ul class="nav navbar-nav ml-auto">
 
@@ -88,9 +98,9 @@
                             @{
                                 var currentUser = await UserManager.GetUserAsync(Context.User);
                             }
-                            @*<a asp-controller="Users" asp-action="Details" asp-route-id="@currentUser.Id" class="dropdown-item">
-                                    <i class="fa fa-edit mr-3"></i>پروفایل
-                                </a>*@
+                            <a asp-controller="Users" asp-action="Details" asp-route-id="@currentUser.Id" class="dropdown-item">
+                                <i class="fa fa-edit mr-3"></i>پروفایل
+                            </a>
                         </div>
                     </li>
                     <li class="nav-item">
