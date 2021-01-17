@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -65,6 +66,12 @@ namespace Xant.MVC.Areas.Panel.Controllers
 
             var result = _unitOfWork.PostRepository.GetAll();
 
+            var user = await _unitOfWork.UserRepository.GetByClaimsPrincipal(HttpContext.User);
+            if (!await _unitOfWork.UserRepository.IsInRole(user, ConstantUserRoles.SuperAdmin))
+            {
+                result = result.Where(x => x.UserId == user.Id);
+            }
+
             if (!string.IsNullOrWhiteSpace(searchBy))
             {
                 result = result.Where(r =>
@@ -78,9 +85,26 @@ namespace Xant.MVC.Areas.Panel.Controllers
                 );
             }
 
-            result = orderAscendingDirection ?
-                result.OrderByDynamic(orderCriteria, LinqExtensions.Order.Asc) :
-                result.AsQueryable().OrderByDynamic(orderCriteria, LinqExtensions.Order.Desc);
+            if (string.Equals(orderCriteria,
+                nameof(PostIndexViewModel.PostCategoryTitle), StringComparison.InvariantCultureIgnoreCase))
+            {
+                result = orderAscendingDirection
+                    ? result.OrderBy(x => x.PostCategory.Title)
+                    : result.OrderByDescending(x => x.PostCategory.Title);
+            }
+            else if (string.Equals(orderCriteria,
+                nameof(PostIndexViewModel.UserFullName), StringComparison.InvariantCultureIgnoreCase))
+            {
+                result = orderAscendingDirection
+                    ? result.OrderBy(x => x.User.FirstName + " " + x.User.LastName)
+                    : result.OrderByDescending(x => x.User.FirstName + " " + x.User.LastName);
+            }
+            else
+            {
+                result = orderAscendingDirection ?
+                    result.OrderByDynamic(orderCriteria, LinqExtensions.Order.Asc) :
+                    result.AsQueryable().OrderByDynamic(orderCriteria, LinqExtensions.Order.Desc);
+            }
 
             // now just get the count of items (without the skip and take) - eg how many could be returned with filtering
             var filteredResultsCount = result.Count();
