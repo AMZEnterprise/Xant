@@ -40,18 +40,25 @@ namespace Xant.MVC.Mappings
             CreateMap<PostCategoryTypeEnumViewModel, PostCategoryType>();
 
             //PostComment mappings
-            CreateMap<PostComment, PostCommentIndexViewModel>();
+            CreateMap<PostComment, PostCommentIndexViewModel>()
+                .ForMember(x=>x.UserFullName,
+                    y=>
+                        y.MapFrom<PostCommentIndexViewModelUserFullNameResolver>());
             CreateMap<PostComment, PostCommentFormViewModel>();
+            CreateMap<PostCommentFormViewModel, PostComment>();
             CreateMap<PostComment, PostCommentReplyFormViewModel>()
                 .ForMember(x => x.ParentId,
                     y =>
-                        y.MapFrom(u => u.Parent.Id))
+                        y.MapFrom(u => u.Id))
                 .ForMember(x => x.PostId,
                     y =>
                         y.MapFrom(u => u.PostId))
                 .ForMember(x => x.ParentBody,
                     y =>
-                        y.MapFrom(u => u.Body));
+                        y.MapFrom(u => u.Body))
+                .ForMember(x => x.Body,
+                    y =>
+                        y.MapFrom(u => string.Empty));
             CreateMap<PostCommentReplyFormViewModel, PostComment>();
 
             //Setting mappings
