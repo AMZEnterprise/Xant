@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -82,9 +83,20 @@ namespace Xant.MVC.Areas.Panel.Controllers
                 );
             }
 
-            result = orderAscendingDirection ?
-                result.OrderByDynamic(orderCriteria, LinqExtensions.Order.Asc) :
-                result.AsQueryable().OrderByDynamic(orderCriteria, LinqExtensions.Order.Desc);
+            if (string.Equals(orderCriteria,
+                nameof(UserIndexViewModel.UserFullName), StringComparison.InvariantCultureIgnoreCase))
+            {
+                result = orderAscendingDirection
+                    ? result.OrderBy(x => x.FirstName + " " + x.LastName)
+                    : result.OrderByDescending(x => x.FirstName + " " + x.LastName);
+            }
+            else
+            {
+
+                result = orderAscendingDirection ?
+                    result.OrderByDynamic(orderCriteria, LinqExtensions.Order.Asc) :
+                    result.AsQueryable().OrderByDynamic(orderCriteria, LinqExtensions.Order.Desc);
+            }
 
             // now just get the count of items (without the skip and take) - eg how many could be returned with filtering
             var filteredResultsCount = result.Count();
@@ -379,7 +391,7 @@ namespace Xant.MVC.Areas.Panel.Controllers
                 else
                 {
                     ModelState.AddModelError(nameof(userLoginFormViewModel.Username),
-                        ConstantMessages.IdentityAccountDisabled);
+                        ConstantMessages.IdentityNotRegisteredYet);
                 }
             }
 
