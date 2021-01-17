@@ -1,0 +1,52 @@
+﻿@using Xant.MVC.Areas.Panel.Models.ViewModels
+@model Xant.MVC.Areas.Panel.Models.ViewModels.PostCommentFormViewModel
+@{
+    Layout = "_FormLayout";
+    ViewData["Title"] = "ویرایش نظر";
+}
+@section Scripts {
+    <script>
+        AdminPanel.InitialEditor("#txtBody");
+    </script>
+}
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="UserFullName"></label>
+        <input asp-for="UserFullName" class="form-control" />
+        <span asp-validation-for="UserFullName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PostTitle"></label>
+        <input asp-for="PostTitle" class="form-control" disabled="disabled"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="Body"></label>
+        <textarea asp-for="Body" id="txtBody"></textarea>
+        <span asp-validation-for="Body"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Status"></label>
+        <select asp-for="Status" asp-items="Html.GetEnumSelectList<PostCommentStatusEnumViewModel>()" class="custom-select"></select>
+        <span asp-validation-for="Status"></span>
+    </div>
+  
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="Ip" />
+    <input type="hidden" asp-for="IsEdited" />
+    <input type="hidden" asp-for="CreateDate" />
+    <input type="hidden" asp-for="LastEditDate" />
+    <input type="hidden" asp-for="ParentId" />
+    <input type="hidden" asp-for="PostId" />
+    <input type="hidden" asp-for="PostUserId" />
+
+    <div class="form-group">
+        <button class="btn btn-primary float-left" type="submit">ویرایش</button>
+        <a asp-action="Index" class="btn btn-danger float-right">بازگشت</a>
+    </div>
+</form>

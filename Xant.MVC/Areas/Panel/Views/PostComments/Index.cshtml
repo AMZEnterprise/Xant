@@ -1,0 +1,55 @@
+﻿@model Xant.MVC.Areas.Panel.Models.ViewModels.PostCommentIndexViewModel
+@{
+    ViewData["Title"] = "نظرات";
+}
+@section Scripts
+{
+    <script>
+        AdminPanel.LoadPostComments(
+            "@Url.Action("LoadPostCommentsTable")",
+            "@Url.Action("Edit")",
+            "@Url.Action("Details")",
+            "@Url.Action("Delete")",
+            "@Url.Action("Reply")"
+        );
+    </script>
+}
+
+<div class="my-5 title-bar">
+    <h1>@ViewData["Title"]</h1>
+</div>
+
+<table id="jq-table" class="table table-striped table-bordered dt-responsive nowrap table-light" width="100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Body)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsEdited)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastEditDate)
+            </th>
+            <th class="no-sort"></th>
+        </tr>
+    </thead>
+</table>

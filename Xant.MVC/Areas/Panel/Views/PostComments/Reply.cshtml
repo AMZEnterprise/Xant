@@ -1,0 +1,39 @@
+﻿@using Xant.MVC.Areas.Panel.Models.ViewModels
+@model Xant.MVC.Areas.Panel.Models.ViewModels.PostCommentReplyFormViewModel
+@{
+    Layout = "_FormLayout";
+    ViewData["Title"] = "پاسخ دادن نظر";
+}
+@section Scripts
+{
+    <script>
+        AdminPanel.InitialEditorReadOnly("#txtParentBody");
+        AdminPanel.InitialEditor("#txtBody");
+    </script>
+}
+
+<form asp-action="Reply">
+    <div class="form-group">
+        <label asp-for="ParentBody"></label>
+        <textarea asp-for="ParentBody" id="txtParentBody"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="Body"></label>
+        <textarea asp-for="Body" id="txtBody"></textarea>
+        <span asp-validation-for="Body"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Status"></label>
+        <select asp-for="Status" 
+                asp-items="Html.GetEnumSelectList<PostCommentStatusEnumViewModel>()" class="custom-select"></select>
+        <span asp-validation-for="Status"></span>
+    </div>
+
+    <input type="hidden" asp-for="ParentId" />
+    <input type="hidden" asp-for="PostId" />
+
+    <div class="form-group">
+        <button class="btn btn-success float-left" type="submit">پاسخ دادن</button>
+        <a asp-action="Index" class="btn btn-danger float-right">بازگشت</a>
+    </div>
+</form>

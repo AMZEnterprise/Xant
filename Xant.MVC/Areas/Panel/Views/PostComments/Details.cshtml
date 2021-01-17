@@ -1,0 +1,56 @@
+﻿@using Xant.MVC.Areas.Panel.Models.ViewModels
+@using Xant.MVC.Utility
+@model Xant.MVC.Areas.Panel.Models.ViewModels.PostCommentFormViewModel
+@{
+    Layout = "_FormLayout";
+    ViewData["Title"] = "جزئیات نظر";
+}
+@section Scripts {
+    <script>
+        AdminPanel.InitialEditorReadOnly("#txtBody");
+    </script>
+}
+
+<div class="form-group">
+    <label asp-for="PostTitle"></label>
+    <input asp-for="PostTitle" class="form-control" disabled="disabled" />
+</div>
+<div class="form-group">
+    <label asp-for="UserFullName"></label>
+    <input asp-for="UserFullName" class="form-control" disabled="disabled" />
+</div>
+<div class="form-group">
+    <label asp-for="Body"></label>
+    <textarea asp-for="Body" id="txtBody"></textarea>
+</div>
+<div class="form-group">
+    <label asp-for="Email"></label>
+    <input asp-for="Email" class="form-control" disabled="disabled" />
+</div>
+<div class="form-group">
+    <label asp-for="Status"></label>
+    <select asp-for="Status"
+            asp-items="Html.GetEnumSelectList<PostCommentStatusEnumViewModel>()"
+            class="custom-select" disabled="disabled"></select>
+</div>
+<div class="form-group">
+    <label asp-for="Ip"></label>
+    <input asp-for="Ip" class="form-control" disabled="disabled" />
+</div>
+<div class="form-group">
+    <input asp-for="IsEdited" disabled="disabled"/>
+    <label asp-for="IsEdited"></label>
+</div>
+<div class="form-group">
+    <label asp-for="CreateDate"></label>
+    <input type="text" value="@FriendlyDate.LongDate(Model.CreateDate)" class="form-control" disabled="disabled" />
+</div>
+<div class="form-group">
+    <label asp-for="LastEditDate"></label>
+    <input type="text" value="@FriendlyDate.LongDate(Model.LastEditDate)" class="form-control" disabled="disabled" />
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary float-left">ویرایش</a>
+    <a asp-action="Index" class="btn btn-danger float-right">بازگشت</a>
+</div>
