@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "درباره ما";
+}
+
+@await Html.PartialAsync("PartialViews/_BreadcrumbPartialView")
+
+<!-- ***** About Area Start ***** -->
+<section class="section about-area ptb_100">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-12 col-lg-6">
+                <!-- About Thumb -->
+                <div class="about-thumb text-center">
+                    <img src="~/img/about/undraw_referral_4ki4.svg" alt="آژانس دیجیتال مارکتینگ ژانت">
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <!-- About Content -->
+                <div class="about-content section-heading text-center text-lg-right pr-md-4 mt-5 mt-lg-0 mb-0">
+                    <h2 class="mb-3 text-white">ژانت  ، تحقق یک رویا</h2>
+                    <p class="text-white-50 text-justify">
+                        تیم دیجیتال مارکتینگ و مهندسی نرم افزار ژانت با شناسایی دقیق نیازهای کاربران
+                        و کافرمایان در جهت ارائه بهترین خدمات و کیفیت در طراحی انواع وبسایت واپلیکیشن
+                        گام برداشته است. در ژانت یکی از اصول اساسی احترام به نیازهای کاربران است.
+                        <br />
+                        ژانت تنها یک وبسایت نیست ! ما در ژانت اهداف مختلفی را دنبال می کنیم و هموارد در پی کسب رضایت شما عزیزان هستیم.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** About Area End ***** -->
+<!-- ***** Our Goal Area Start ***** -->
+<section class="section our-goal ptb_100">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-12 col-lg-6">
+                <!-- Goal Content -->
+                <div class="goal-content section-heading text-center text-lg-right pl-md-4 mb-0">
+                    <h2 class="mb-3 text-white">استارتاپ مونو ، یکی از اهداف تیم ژانت</h2>
+                    <p class="text-white-50 text-justify">
+                        همواره در ژانت بر کارهای تیمی و نوین تاکید داریم. استارتاپ مونو ، پروژه ای بسیار عظیم درباره گسترش دانش برنامه نویسی و آموزش های نوین این حرفه است. این پروژه در شرایط حاضر در مراحل توسعه و آماده سازی می باشد.
+                        مونو آموزش برنامه نویسی و یادگیری این حرفه را برای سایر دانشجویان آسان تر خواهد کرد. همچنین با ایجاد بستر مناسب ، به کسب و کار بسیاری از توسعه دهندگان نرم افزار و استادان برنامه نویسی کمک خواهد کرد. بخش بزرگی از اطلاعات و کارهای انجام شده در مونو، به صورت رایگان و در خدمت به دانشجویان ارائه خواهد شد.
+                        ایده شکل گیری این استارتاپ توسط علی مومن زاده (مدیریت تیم ژانت) و محمد یاسین فخار (هم بنیانگذار مونو) شکل گرفته است.
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <!-- Goal Thumb -->
+                <div class="goal-thumb mt-5 mt-lg-0 text-center">
+                    <img src="~/img/about/mono.png" alt="استارتاپ مونو">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Our Goal Area End ***** -->
+
+@await Component.InvokeAsync("Contact")
+
+@await Component.InvokeAsync("CallToAction")
