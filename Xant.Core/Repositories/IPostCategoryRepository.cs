@@ -10,6 +10,11 @@ namespace Xant.Core.Repositories
     public interface IPostCategoryRepository
     {
         /// <summary>
+        /// Get all post categories of specific type
+        /// </summary>
+        /// <returns>returns all post categories with the specified type</returns>
+        IQueryable<PostCategory> GetAll(PostCategoryType postCategoryType);
+        /// <summary>
         /// Get all post categories
         /// </summary>
         /// <returns>returns all post categories</returns>
