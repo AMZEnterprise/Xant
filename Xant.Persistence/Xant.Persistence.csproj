@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20210110154410_addLastEditDateToContact.Designer.cs" />
     <Compile Remove="Migrations\20210111152726_RemoveRequiredEmailAndPhoneNumberForContact.cs" />
     <Compile Remove="Migrations\20210111152726_RemoveRequiredEmailAndPhoneNumberForContact.Designer.cs" />
+    <Compile Remove="Migrations\20210117065807_AddEmailOrPhoneToContact.cs" />
+    <Compile Remove="Migrations\20210117065807_AddEmailOrPhoneToContact.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
