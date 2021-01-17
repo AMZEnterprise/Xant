@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using ElmahCore;
 using ElmahCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Xant.Core;
 using Xant.Core.Domain;
 using Xant.MVC.Models.Constants;
@@ -104,6 +105,8 @@ namespace Xant.MVC
             });
 
             services.AddAutoMapper(typeof(Startup));
+
+            services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
 
             services.AddMvc()
                 .AddNewtonsoftJson()
