@@ -1,0 +1,74 @@
+﻿@model int
+@{
+    ViewData["Title"] = "خطا";
+    var errorCode = Model;
+
+    string message = "";
+
+    switch (errorCode)
+
+    {
+
+        case 400:
+
+            message = "درخواست به دلیل نحو بد قابل انجام نیست";
+
+            break;
+
+        case 403:
+
+            message = "شما اجازه دسترسی به این صفحه را ندارید";
+
+            break;
+
+        case 404:
+
+            message = "صفحه یا مطلب مورد نظر یافت نشد";
+
+            break;
+
+        case 408:
+
+            message = "پایان حداکثر زمان درخواست شما فرا رسیده است";
+
+            break;
+
+        case 500:
+
+            message = "خطایی در سرور وبسایت پیش آمده است. لطفا بعدا تلاش کنید";
+
+            break;
+
+        default:
+
+            message = "خطایی در وبسایت پیش آمده است. لطفا بعدا تلاش کنید";
+
+            break;
+
+    }
+}
+
+@await Html.PartialAsync("PartialViews/_BreadcrumbPartialView")
+
+<!-- ***** Error Area Start ***** -->
+<section class="section error-area ptb_100">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-12">
+                <div class="error-content section-heading text-center pr-md-4 mt-5 mt-lg-0 mb-0">
+                    <h2 class="mb-3 text-white">@message</h2>
+                    <p class="text-white-50 text-justify text-center">
+                        لطفاً یکی از صفحات زیر را امتحان کنید
+                    </p>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-bordered-white mt-4">صفحه اصلی</a>
+                    <a asp-controller="ContactUs" asp-action="Index" class="btn btn-bordered-white mt-4">تماس با ما</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Error Area End ***** -->
+
+@await Component.InvokeAsync("Contact")
+
+@await Component.InvokeAsync("CallToAction")
