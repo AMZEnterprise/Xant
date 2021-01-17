@@ -1,0 +1,19 @@
+﻿@model Xant.MVC.Models.ViewModels.PortfolioMenuViewModel
+<!-- Portfolio Menu -->
+<div class="portfolio-menu btn-group btn-group-toggle flex-wrap justify-content-center text-center mb-4 mb-md-5">
+    <label class="btn active d-table text-uppercase p-2">
+        <a asp-controller="Portfolios" asp-action="Index"
+           class="@(Model.PostCategoryId == null ? "text-primary" : "text-white")">
+            همه
+        </a>
+    </label>
+    @foreach (var category in Model.PostCategoryViewModels)
+    {
+        <label class="btn d-table p-2 active">
+            <a asp-controller="Portfolios" asp-action="Index" asp-route-postCategoryId="@category.Id" 
+               class="@(category.Id == Model.PostCategoryId ? "text-primary" : "text-white")">
+                @category.Title
+            </a>
+        </label>
+    }
+</div>
