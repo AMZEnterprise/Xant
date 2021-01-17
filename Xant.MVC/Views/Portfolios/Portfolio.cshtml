@@ -1,0 +1,79 @@
+﻿@using Xant.MVC.Utility
+@using Xant.MVC.Models.Constants
+@model Xant.MVC.Models.ViewModels.PostViewModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+@await Html.PartialAsync("PartialViews/_BreadcrumbPartialView")
+
+<!-- ***** Blog Area Start ***** -->
+<section id="blog" class="section blog-area ptb_100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+                <!-- Single Blog Details -->
+                <article class="single-blog-details">
+                    <!-- Blog Thumb -->
+                    <div class="blog-thumb">
+                        <img src="@(Model.FilePath ?? ConstantFilePaths.NoImage)" alt="@Model.Title">
+                    </div>
+                    <!-- Blog Content -->
+                    <div class="blog-content digimax-blog p-3">
+                        <!-- Meta Info -->
+                        <div class="meta-info d-flex flex-wrap align-items-center py-2">
+                            <ul>
+                                <li class="d-inline-block p-2">توسط <span>@Model.UserFullName</span></li>
+                            </ul>
+                            <!-- Blog Share -->
+                            <div class="blog-share mr-auto d-none d-sm-block">
+                                <!-- Social Icons -->
+                                <div class="social-icons d-flex justify-content-center">
+                                    @{
+                                        string currentUrl = Context.Request.Scheme + "://" + Context.Request.Host + Context.Request.Path;
+                                        string encUrl = System.Net.WebUtility.UrlEncode(currentUrl);
+                                        string text = System.Net.WebUtility.UrlEncode(Model.Title);
+                                    }
+
+                                    <a class="bg-white facebook" href="@SocialMediaLinkGenerator.GenerateTelegramLink(encUrl,text)">
+                                        <i class="fab fa-telegram-plane"></i>
+                                        <i class="fab fa-telegram-plane"></i>
+                                    </a>
+                                    <a class="bg-white facebook" href="@SocialMediaLinkGenerator.GenerateWhatsAppLink(encUrl)">
+                                        <i class="fab fa-whatsapp"></i>
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                    <a class="bg-white facebook" href="@SocialMediaLinkGenerator.GenerateTwitterLink(encUrl,text)">
+                                        <i class="fab fa-twitter"></i>
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a class="bg-white facebook" href="@SocialMediaLinkGenerator.GenerateFacebookLink(encUrl)">
+                                        <i class="fab fa-facebook-f"></i>
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a class="bg-white facebook" href="@SocialMediaLinkGenerator.GenerateGooglePlusLink(encUrl)">
+                                        <i class="fab fa-google-plus"></i>
+                                        <i class="fab fa-google-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog Details -->
+                        <div class="blog-details">
+                            <h3 class="blog-title py-3">
+                                @Model.Title
+                            </h3>
+
+                            @Html.Raw(Model.Body)
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Blog Area End ***** -->
+
+@await Component.InvokeAsync("Contact")
+
+@await Component.InvokeAsync("CallToAction")

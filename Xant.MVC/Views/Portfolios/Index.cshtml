@@ -1,0 +1,38 @@
+﻿@using Xant.MVC.Models.ViewModels
+@model Xant.MVC.Models.ViewModels.PostsViewModel
+
+@{
+    ViewData["Title"] = "نمونه کارها";
+}
+
+@await Html.PartialAsync("PartialViews/_BreadcrumbPartialView")
+
+<!-- ***** Portfolio Area Start ***** -->
+<section id="portfolio" class="portfolio-area overflow-hidden ptb_100">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-12">
+                @await Component.InvokeAsync("PortfolioMenu", new PortfolioMenuViewModel()
+                {
+                    PostCategoryId = Model.PostCategoryId
+                })
+            </div>
+        </div>
+        <!-- Portfolio Items -->
+        <div class="row items portfolio-items">
+
+            @foreach (var portfolio in Model.PostViewModels)
+            {
+                <div class="col-12 col-sm-6 col-lg-4 portfolio-item">
+                    @await Html.PartialAsync("PartialViews/_PortfolioCardPartialView", portfolio)
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+<!-- ***** Portfolio Area End ***** -->
+
+@await Component.InvokeAsync("Contact")
+
+@await Component.InvokeAsync("CallToAction")
