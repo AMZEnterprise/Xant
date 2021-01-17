@@ -1,0 +1,227 @@
+﻿@using Xant.MVC.Utility
+@using Xant.MVC.Models.ViewModels
+@using Xant.MVC.Models.Constants
+@model Xant.MVC.Models.ViewModels.PostViewModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+@section Scripts
+{
+    <script>
+        function postCommentFormSent(xhr) {
+            Website.JsonResultHandler(xhr.responseJSON);
+
+            $("#PostCommentFormViewModel_UserFullName").val("");
+            $("#PostCommentFormViewModel_Email").val("");
+            $("#PostCommentFormViewModel_Body").val("");
+
+            clearCommentReply();
+        }
+
+        $(".comments .btn-reply").click(function (e) {
+            $("#input-hidden-parentId").val(e.target.dataset.commentid);
+            $(".comment-reply-username").text(e.target.parentElement.querySelector(".username").innerText);
+            $(".comment-reply-box").addClass("show");
+        });
+
+        function clearCommentReply() {
+            $("#input-hidden-parentId").val("");
+            $(".comment-reply-box-username").text("");
+            $(".comment-reply-box").removeClass("show");
+        }
+
+        $(document).on('click',
+            '.comment-reply-box.show',
+            function () {
+                clearCommentReply();
+            });
+    </script>
+}
+
+@await Html.PartialAsync("PartialViews/_BreadcrumbPartialView")
+
+<!-- ***** Blog Area Start ***** -->
+<section id="blog" class="section blog-area ptb_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-3">
+                @await Component.InvokeAsync("BlogSidebar")
+            </div>
+            <div class="col-12 col-lg-9">
+                <!-- Single Blog Details -->
+                <article class="single-blog-details">
+                    <!-- Blog Thumb -->
+                    <div class="blog-thumb">
+                        <a href="#">
+                            <img src="@Model.FilePath" alt="@Model.Title">
+                        </a>
+                    </div>
+                    <!-- Blog Content -->
+                    <div class="blog-content digimax-blog p-3">
+                        <!-- Meta Info -->
+                        <div class="meta-info d-flex flex-wrap align-items-center py-2">
+                            <ul>
+                                <li class="d-inline-block p-2">توسط <span>@Model.UserFullName</span></li>
+                                <li class="d-inline-block p-2"><span>@FriendlyDate.ShortDate(Model.CreateDate)</span></li>
+                                <li class="d-inline-block p-2">@Model.PostCommentViewModels.Count() <span>نظر</span></li>
+                                <li class="d-inline-block p-2">
+                                    دسته
+                                    <a asp-controller="Blog" asp-action="Index" asp-route-postCategoryId="@Model.PostCategoryViewModel.Id">
+                                        @Model.PostCategoryViewModel.Title
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Blog Share -->
+                            <div class="blog-share mr-auto d-sm-block">
+                                <!-- Social Icons -->
+                                <div class="social-icons d-flex justify-content-center">
+                                    @{
+                                        string currentUrl = Context.Request.Scheme + "://" + Context.Request.Host + Context.Request.Path;
+                                        string encUrl = System.Net.WebUtility.UrlEncode(currentUrl);
+                                        string text = System.Net.WebUtility.UrlEncode(Model.Title);
+                                    }
+
+                                    <a class="bg-white facebook" href="@SocialMediaLinkGenerator.GenerateTelegramLink(encUrl,text)">
+                                        <i class="fab fa-telegram-plane"></i>
+                                        <i class="fab fa-telegram-plane"></i>
+                                    </a>
+                                    <a class="bg-white facebook" href="@SocialMediaLinkGenerator.GenerateWhatsAppLink(encUrl)">
+                                        <i class="fab fa-whatsapp"></i>
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                    <a class="bg-white facebook" href="@SocialMediaLinkGenerator.GenerateTwitterLink(encUrl,text)">
+                                        <i class="fab fa-twitter"></i>
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a class="bg-white facebook" href="@SocialMediaLinkGenerator.GenerateFacebookLink(encUrl)">
+                                        <i class="fab fa-facebook-f"></i>
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a class="bg-white facebook" href="@SocialMediaLinkGenerator.GenerateGooglePlusLink(encUrl)">
+                                        <i class="fab fa-google-plus"></i>
+                                        <i class="fab fa-google-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog Details -->
+                        <div class="blog-details">
+                            <h3 class="blog-title py-3">
+                                <a href="#">@Model.Title</a>
+                            </h3>
+
+                            @Html.Raw(Model.Body)
+
+                            <div class="border-top mt-5">
+                                <span>
+                                    برچسب ها
+                                </span>
+                                <ul class="d-inline-block">
+                                    @foreach (var postTag in Model.Tags.Split(","))
+                                    {
+                                        <li class="d-inline-block p-2">
+                                            <a asp-controller="Blog" asp-action="Index" asp-route-postTag="@postTag">#@postTag</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Blog Comments -->
+                    <div class="blog-comments p-3">
+                        <!-- Admin -->
+                        <div class="admin media py-4">
+                            <!-- Admin Thumb -->
+                            <div class="admin-thumb avatar-lg">
+                                <img class="rounded-circle" src="@(Model.UserFilePath ?? ConstantFilePaths.NoImage)" alt="@Model.UserFullName">
+                            </div>
+                            <!-- Admin Content -->
+                            <div class="admin-content media-body pr-3 pr-sm-4">
+                                <h4 class="admin-name mb-2">@Model.UserFullName</h4>
+
+                                @Html.Raw(Model.UserBiography)
+                            </div>
+                        </div>
+                        <!-- Comments -->
+                        <div class="comments mt-4 mb-3">
+                            <!-- Comments Title -->
+                            <h3 class="comments-title text-uppercase text-right mb-3 text-white-50">نظرات</h3>
+
+                            @await Component.InvokeAsync("PostComment", new PostCommentTreeViewModel()
+                            {
+                                PostCommentViewModels = Model.PostCommentViewModels,
+                                CommentSeed = null
+                            })
+                        </div>
+                    </div>
+
+                    <!-- Blog Contact -->
+                    <div class="blog-contact p-3">
+                        @if (Model.IsCommentsOn)
+                        {
+                            <!-- Contact Title -->
+                            <h3 class="comments-title text-uppercase text-right mb-3 text-white-50">نظرات خود را ارسال کنید</h3>
+                            <!-- Comment Box -->
+                            <div class="contact-box comment-box">
+                                <form method="post" asp-action="CommentPost"
+                                      data-ajax="true" data-ajax-method="post" data-ajax-update="#alert-box" data-ajax-loading="#spinner" data-ajax-complete="postCommentFormSent">
+                                    <input type="hidden" asp-for="PostCommentFormViewModel.PostId" value="@Model.Id" />
+                                    <input type="hidden" asp-for="PostCommentFormViewModel.ParentId" id="input-hidden-parentId" />
+                                    <div class="row">
+                                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                            <div class="comment-reply-box btn btn-bordered">
+                                                <span class="fa fa-times"></span>
+                                                <span>در پاسخ</span>
+                                                <span class="comment-reply-username"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <input asp-for="PostCommentFormViewModel.UserFullName"
+                                                       placeholder="@Html.DisplayNameFor(x => x.PostCommentFormViewModel.UserFullName)"
+                                                       class="form-control">
+                                                <span asp-validation-for="PostCommentFormViewModel.UserFullName"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <input asp-for="PostCommentFormViewModel.Email"
+                                                       placeholder="@Html.DisplayNameFor(x => x.PostCommentFormViewModel.Email)"
+                                                       class="form-control">
+                                                <span asp-validation-for="PostCommentFormViewModel.Email"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <textarea asp-for="PostCommentFormViewModel.Body"
+                                                          placeholder="@Html.DisplayNameFor(x => x.PostCommentFormViewModel.Body)"
+                                                          class="form-control"></textarea>
+                                                <span asp-validation-for="PostCommentFormViewModel.Body"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-bordered mt-3" type="submit">
+                                                <span id="spinner" style="display: none;">
+                                                    <i class="fas fa-spinner fa-spin"></i>
+                                                </span>
+                                                <span class="text-white pl-3"><i class="fas fa-paper-plane"></i></span>ارسال
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        }
+                        else
+                        {
+                            <p>
+                                امکان نظردهی برای این مطلب بسته شده است.
+                            </p>
+                        }
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Blog Area End ***** -->

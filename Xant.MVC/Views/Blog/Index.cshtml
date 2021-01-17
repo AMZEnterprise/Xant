@@ -1,0 +1,64 @@
+﻿@using Xant.MVC.Models
+@using Xant.MVC.Models.ViewModels
+@model Xant.MVC.Models.ViewModels.PostsViewModel
+
+@{
+    ViewData["Title"] = "وبلاگ";
+}
+@section Scripts
+{
+    <script>
+        Website.TextReduce(".blog-body", 50);
+    </script>
+}
+
+
+@await Html.PartialAsync("PartialViews/_BreadcrumbPartialView")
+
+<!-- ***** Blog Area Start ***** -->
+<section id="blog" class="section blog-area ptb_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-3">
+                @await Component.InvokeAsync("BlogSidebar")
+            </div>
+            <div class="col-12 col-lg-9">
+                @if (Model.SearchString != null)
+                {
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="text-white-50">
+                                نتایج برای : "@Model.SearchString"
+                            </p>
+                        </div>
+                    </div>
+                }
+
+                <div class="row">
+                    @foreach (var post in Model.PostViewModels)
+                    {
+                        <div class="col-12 col-md-6">
+                            @await Html.PartialAsync("PartialViews/_BlogPostCardPartialView", post)
+                        </div>
+                    }
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        @await Html.PartialAsync("PartialViews/_PaginationPartialView", new Pagination()
+                        {
+                            Pager = Model.Pager,
+                            Params = new Dictionary<string, string>()
+                            {
+                                {nameof(PostsViewModel.SearchString), Model.SearchString},
+                                {nameof(PostsViewModel.PostCategoryId), Model.PostCategoryId.ToString()},
+                                {nameof(PostsViewModel.PostTag), Model.PostTag},
+                                {nameof(PostsViewModel.PostSortFilterType), Model.PostSortFilterType.ToString()},
+                            }
+                        })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Blog Area End ***** -->
