@@ -1,8 +1,208 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "صفحه اصلی";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- ***** Welcome Area Start ***** -->
+<section id="home" class="section welcome-area bg-overlay overflow-hidden d-flex align-items-center">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Welcome Intro Start -->
+            <div class="col-12 col-md-7">
+                <div class="welcome-intro">
+                    <h1 class="text-white"><span class="fw-4">طراحی وبسایت و اپلیکیشن های خود را به</span> ژانت <span class="fw-4">بسپر. </span></h1>
+                    <p class="text-white-50 my-4">
+                        سلام دوست من ! به وبسایت طراحی وب ما خوش اومدی ، اینجا میتونی انواع پروژه های مخلتف طراحی وبسایت و اپلیکیشن اختصاصی و شیک را با بهترین قیمت و طراحی ظاهری سفارش بدی !
+                    </p>
+                    <!-- Buttons -->
+                    <div class="button-group">
+                        <a asp-fragment="contact" class="btn btn-bordered-white active">سفارش پروژه</a>
+                        <a asp-controller="ContactUs" asp-action="Index" class="btn btn-bordered-white d-none d-sm-inline-block">تماس با ما</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-5">
+                <!-- Welcome Thumb -->
+                <div class="welcome-thumb-wrapper mt-5 mt-md-0">
+                    <span class="welcome-thumb-1">
+                        <img class="d-block mr-auto" src="~/img/welcome/thumb_11.png" alt="">
+                    </span>
+                    <span class="welcome-thumb-2">
+                        <img class="welcome-animation d-block" src="~/img/welcome/thumb_12.png" alt="">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Welcome Area End ***** -->
+
+@await Component.InvokeAsync("Services")
+
+<!-- ***** Content Area Start ***** -->
+<section class="section content-area dark-bg ptb_150">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-12 col-lg-6">
+                <!-- Content Inner -->
+                <div class="content-inner text-center">
+                    <!-- Section Heading -->
+                    <div class="section-heading text-center mb-3">
+                        <h2 class="text-white">ما به پیشرفت کار شما کمک می کنیم.</h2>
+                        <p class="text-white-50 d-none d-sm-block mt-4">ژانت به شتابدهی کسب و کار شما کمک میکنه و با ارائه بهترین خدمات با مناسب ترین هزینه همون چیزیه که دنبالش هستی !</p>
+                        <p class="text-white-50 d-block d-sm-none mt-4">شتابدهی به کسب کار شما تخصص ژانته !</p>
+                    </div>
+                    <!-- Content List -->
+                    <ul class="content-list text-right">
+                        <!-- Single Content List -->
+                        <li class="single-content-list media py-2">
+                            <div class="content-icon pl-4">
+                                <span class="color-1"><i class="fas fa-angle-double-left"></i></span>
+                            </div>
+                            <div class="content-text media-body">
+                                <span class="text-white">
+                                    <b>طراحی وبسایت</b><br>
+                                    تیم مهندسی ژانت با سابقه درخشان در طراحی وب طی سالیان ، میتونه  نیازهای تجاری ، حرفه و حتی شخصی شما را در قالب وبسایتی شکیل و مناسب به نمایش بذاره.
+                                </span>
+                            </div>
+                        </li>
+                        <!-- Single Content List -->
+                        <li class="single-content-list media py-2">
+                            <div class="content-icon pl-4">
+                                <span class="color-1"><i class="fas fa-angle-double-left"></i></span>
+                            </div>
+                            <div class="content-text media-body">
+                                <span class="text-white">
+                                    <b>طراحی اپلیکیشن</b><br>
+                                    اپلیکیشن ها موبایل دسترسی راحت تر و سریع تری را برای مشتریان شما به ارمغان میاره و کیفیت خدمت رسانی شما را افزایش میده.
+                                </span>
+                            </div>
+                        </li>
+                        <!-- Single Content List -->
+                        <li class="single-content-list media py-2">
+                            <div class="content-icon pl-4">
+                                <span class="color-1"><i class="fas fa-angle-double-left"></i></span>
+                            </div>
+                            <div class="content-text media-body">
+                                <span class="text-white">
+                                    <b>سئو و بهینه سازی</b><br>
+                                    کسب رتبه های برتر گوگل و افزایش بازدید وبسایت یکی دیگه از تخصص ها تیم ژانت هست که میتونه به رشد کسب و کارت
+                                    کمک زیادی بکنه.
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <!-- Service Thumb -->
+                <div class="service-thumb mx-auto pt-4 pt-lg-0">
+                    <img src="~/img/content/content_thumb.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Content Area End ***** -->
+<!-- ***** Content Area Start ***** -->
+<section class="section content-area dark-bg ptb_150">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-12 col-lg-6">
+                <!-- Profile Circle Wrapper -->
+                <div class="profile-circle-wrapper circle-animation d-none d-sm-block">
+                    <!-- Profile Inner -->
+                    <div class="profile-inner">
+                        <!-- Profile Circle -->
+                        <div class="profile-circle circle-lg">
+                            <span class="profile-icon icon-1">
+                                <img class="icon-1-img" src="~/img/content/profile-icons/profile_icon_1.svg" alt="" />
+                            </span>
+                            <span class="profile-icon icon-2">
+                                <img class="icon-2-img" src="~/img/content/profile-icons/profile_icon_2.svg" alt="" />
+                            </span>
+                            <span class="profile-icon icon-3">
+                                <img class="icon-3-img" src="~/img/content/profile-icons/profile_icon_1.svg" alt="" />
+                            </span>
+                            <span class="profile-icon icon-4">
+                                <img class="icon-4-img" src="~/img/content/profile-icons/profile_icon_2.svg" alt="" />
+                            </span>
+                        </div>
+
+                        <!-- Profile Circle -->
+                        <div class="profile-circle circle-md">
+                            <span class="profile-icon icon-5">
+                                <img class="icon-5-img" src="~/img/content/profile-icons/profile_icon_3.svg" alt="" />
+                            </span>
+                            <span class="profile-icon icon-6">
+                                <img class="icon-6-img" src="~/img/content/profile-icons/profile_icon_3.svg" alt="" />
+                            </span>
+                            <span class="profile-icon icon-7">
+                                <img class="icon-7-img" src="~/img/content/profile-icons/profile_icon_3.svg" alt="" />
+                            </span>
+                        </div>
+
+                        <!-- Profile Circle -->
+                        <div class="profile-circle circle-sm">
+                            <span class="profile-icon icon-8">
+                                <img class="icon-8-img" src="~/img/content/profile-icons/profile_icon_4.svg" alt="" />
+                            </span>
+                            <span class="profile-icon icon-9">
+                                <img class="icon-9-img" src="~/img/content/profile-icons/profile_icon_4.svg" alt="" />
+                            </span>
+                        </div>
+                    </div>
+                    <img class="folder-img" src="~/img/content/folders_2.png" alt="" />
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <!-- Content Inner -->
+                <div class="content-inner text-center pt-sm-4 pt-lg-0 mt-sm-5 mt-lg-0">
+                    <!-- Section Heading -->
+                    <div class="section-heading text-center mb-3">
+                        <h2 class="text-white">کار هوشمندانه تر،<br> نه پیچیده تر.</h2>
+                        <p class="text-white-50 d-none d-sm-block mt-4">ژانت به شما کمک می کنه تا کسب و کار خودتون را به آسون ترین روش مدیریت کنید و بهتر از پیش دیده بشین.</p>
+                        <p class="text-white-50 d-block d-sm-none mt-4">مدیریت کسب و کار به آسون ترین روش تخصص ژانته !</p>
+                    </div>
+                    <!-- Content List -->
+                    <ul class="content-list text-right">
+                        <!-- Single Content List -->
+                        <li class="single-content-list media py-2">
+                            <div class="content-icon pl-4">
+                                <span class="color-2"><i class="fas fa-angle-double-left"></i></span>
+                            </div>
+                            <div class="content-text media-body">
+                                <span class="text-white"><b>آژانس دیجیتال ، بازاریابی</b><br>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.</span>
+                            </div>
+                        </li>
+                        <!-- Single Content List -->
+                        <li class="single-content-list media py-2">
+                            <div class="content-icon pl-4">
+                                <span class="color-2"><i class="fas fa-angle-double-left"></i></span>
+                            </div>
+                            <div class="content-text media-body">
+                                <span class="text-white"><b>برنامه ریزی برای راه اندازی</b><br>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.</span>
+                            </div>
+                        </li>
+                        <!-- Single Content List -->
+                        <li class="single-content-list media py-2">
+                            <div class="content-icon pl-4">
+                                <span class="color-2"><i class="fas fa-angle-double-left"></i></span>
+                            </div>
+                            <div class="content-text media-body">
+                                <span class="text-white"><b>مدیریت محتوا</b><br>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Content Area End ***** -->
+
+
+@await Component.InvokeAsync("PricePlans")
+
+@await Component.InvokeAsync("Contact")
+
+@await Component.InvokeAsync("CallToAction")
