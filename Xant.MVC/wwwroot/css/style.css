@@ -1618,8 +1618,7 @@ body.dark,
     width: 517px;
     margin: auto;
     pointer-events: fill;
-    cursor: pointer;
-    -webkit-transform: perspective(100px), translate3d(0, 0, 0);
+    /*-webkit-transform: perspective(100px), translate3d(0, 0, 0);*/
     transform: perspective(1000px);
 }
 
@@ -2203,6 +2202,11 @@ body.dark,
     box-shadow: 0px 0px 30px 0px rgba(217, 0, 255, 0.47) !important;
 }
 
+    .dark-shadow:hover {
+        -webkit-box-shadow: 0px 0px 50px 0px rgba(217, 0, 255, 0.47) !important;
+        box-shadow: 0px 0px 50px 0px rgba(217, 0, 255, 0.47) !important;
+    }
+
 /* ******************************
 :: 15.0 FAQ AREA CSS
 ****************************** */
@@ -2340,6 +2344,7 @@ body.dark,
 }
 
 .blog-content {
+    background-color: #ffffff;
     padding: 2rem;
 }
 
@@ -2407,6 +2412,10 @@ body.dark,
     background-color: transparent;
     margin: 0;
 }
+
+    .breadcrumb .breadcrumb-item a {
+        color: #ffffff;
+    }
 
 .breadcrumb-item + .breadcrumb-item::before {
     content: ">";
@@ -2623,6 +2632,7 @@ body.dark,
     }
 
 .admin {
+    background-color: #ffffff;
     border-top: 1px solid #eee;
 }
 
@@ -2637,6 +2647,7 @@ body.dark,
 }
 
 .single-comments {
+    background-color: #ffffff;
     border: 1px solid #eee;
     margin-bottom: 1rem;
 }
@@ -2666,6 +2677,14 @@ body.dark,
         height: 150px;
     }
 
+
+    .contact-box.comment-box .comment-reply-box {
+        display: none;
+    }
+
+        .contact-box.comment-box .comment-reply-box.show {
+            display: inline-block;
+        }
 /* ******************************
 :: 22.0 CONTACT AREA CSS
 ****************************** */
