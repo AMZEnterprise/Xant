@@ -18,6 +18,7 @@
         public const string DuplicateError = "مقدار " + "{0} " + "از قبل موجود است. مقدار دیگری را امتحان کنید.";
         public const string CommentSentAndWillShowAfterAcceptance = "نظر شما ثبت گردید و پس از تایید نمایش داده خواهد شد.";
         public const string CommentFailedToSend = "مشکلی در ثبت نظر شما پیش آمده است. لطفا بعدا تلاش کنید.";
-
+        public const string ContactSentSuccessfully = "تماس شما ثبت شد. با تشکر";
+        public const string ContactFailedToSend = "مشکلی در مقادیر وارد شده وجود دارد. لطفا دوباره تلاش کنید.";
     }
 }
