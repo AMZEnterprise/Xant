@@ -1,0 +1,34 @@
+﻿@using Xant.MVC.Utility
+@using Xant.MVC.Models.Constants
+@model Xant.MVC.Models.ViewModels.PostViewModel
+<!-- Single Blog -->
+<div class="single-blog res-margin">
+    <!-- Blog Thumb -->
+    <div class="blog-thumb">
+        <a asp-controller="Blog" asp-action="Post" asp-route-id="@Model.Id">
+            <img src="@(Model.FilePath ?? ConstantFilePaths.NoImage)" alt="@Model.Title">
+        </a>
+    </div>
+    <!-- Blog Content -->
+    <div class="blog-content">
+        <!-- Meta Info -->
+        <ul class="meta-info d-flex justify-content-between">
+            <li>توسط <span>@Model.UserFullName</span></li>
+            <li>@FriendlyDate.ShortDate(Model.CreateDate)</li>
+            <li>
+                دسته
+                <a asp-controller="Blog" asp-action="Index" asp-route-postCategoryId="@Model.PostCategoryViewModel.Id">
+                    @Model.PostCategoryViewModel.Title
+                </a>
+            </li>
+        </ul>
+        <!-- Blog Title -->
+        <h3 class="blog-title my-3">
+            <a asp-controller="Blog" asp-action="Post" asp-route-id="@Model.Id">@Model.Title</a>
+        </h3>
+        <div class="blog-body">
+            @Html.Raw(Model.Body)
+        </div>
+        <a asp-controller="Blog" asp-action="Post" asp-route-id="@Model.Id" class="blog-btn mt-3">ادامه مطلب</a>
+    </div>
+</div>
