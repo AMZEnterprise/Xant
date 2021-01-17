@@ -58,8 +58,7 @@ namespace Xant.MVC.Areas.Panel.Controllers
             {
                 result = result.Where(r =>
                     (r.UserFullName != null && r.UserFullName.Contains(searchBy)) ||
-                    (r.Email != null && r.Email.Contains(searchBy)) ||
-                    (r.PhoneNumber != null && r.PhoneNumber.Contains(searchBy)) ||
+                    (r.EmailOrPhoneNumber != null && r.EmailOrPhoneNumber.Contains(searchBy)) ||
                     (r.Subject != null && r.Subject.Contains(searchBy)) ||
                     (r.Body != null && r.Body.Contains(searchBy)) ||
                     (r.Ip != null && r.Ip.Contains(searchBy)) ||
