@@ -60,7 +60,7 @@ namespace Xant.Persistence
                 if (userManager.FindByNameAsync
                     (_user.UserName).Result == null)
                 {
-                    IdentityResult result = userManager.CreateAsync
+                    var result = userManager.CreateAsync
                         (_user, _userPassword).Result;
 
                     if (result.Succeeded)
