@@ -29,7 +29,7 @@ namespace Xant.MVC.Controllers
         }
 
         [Breadcrumb("وبلاگ")]
-        public async Task<IActionResult> Index(
+        public IActionResult Index(
             int? page, string searchString, int? postCategoryId, string postTag, PostSortFilterType postSortFilterType = PostSortFilterType.SortByDateDesc)
         {
             var postSearch = new PostSearch()
