@@ -1,0 +1,39 @@
+﻿@using Xant.MVC.Models.ViewModels
+@using Xant.MVC.Utility
+@model PostCommentTreeViewModel
+@if (Model.PostCommentViewModels.Any(s => (s.ParentId == Model.CommentSeed)))
+{
+    foreach (var node in Model.PostCommentViewModels)
+    {
+        if (node.ParentId == Model.CommentSeed)
+        {
+            var inner = new PostCommentTreeViewModel() { CommentSeed = node.Id, PostCommentViewModels = Model.PostCommentViewModels };
+
+            <!-- Single Comments -->
+            <div class="single-comments p-4">
+                <div class="media">
+                    <!-- Comments Thumb -->
+                    <div class="comments-thumb avatar-lg">
+                        <img class="rounded-circle" src="~/img/avatar/user-avatar.png" alt="@node.UserFullName">
+                    </div>
+                    <!-- Comments Content -->
+                    <div class="comments-content media-body pr-3">
+                        <h5 class="d-flex mb-2">
+                            <span class="username">@node.UserFullName</span>
+                            <span class="mr-5">@FriendlyDate.ShortDate(node.CreateDate)</span>
+                            @if (node.IsEdited)
+                            {
+                                <span>ویرایش شده</span>
+                            }
+                            <a href="javascript:void(0)" class="mr-auto btn-reply" data-target="#comment-box" data-commentid="@node.Id">پاسخ</a>
+                        </h5>
+                        <p>
+                            @node.Body
+                        </p>
+                    </div>
+                </div>
+                @await Component.InvokeAsync("PostComment", inner)
+            </div>
+        }
+    }
+}
