@@ -28,7 +28,7 @@ namespace Xant.Persistence.EfCoreRepositories
 
         public IQueryable<User> GetAll()
         {
-            return _userManager.Users;
+            return _userManager.Users.AsQueryable();
         }
 
         public async Task<User> GetByClaimsPrincipal(ClaimsPrincipal principal)
@@ -100,6 +100,7 @@ namespace Xant.Persistence.EfCoreRepositories
                 throw new NullReferenceException(nameof(User.LastName));
 
             user.LastEditDate = DateTime.Now;
+            user.EmailConfirmed = user.PhoneNumberConfirmed = true;
 
             return await _userManager.UpdateAsync(user);
         }
@@ -123,7 +124,8 @@ namespace Xant.Persistence.EfCoreRepositories
                 throw new NullReferenceException(nameof(User.LastName));
 
             user.CreateDate = user.LastEditDate = DateTime.Now;
-
+            user.EmailConfirmed = user.PhoneNumberConfirmed = true;
+                
             return await _userManager.CreateAsync(user, password);
         }
 
