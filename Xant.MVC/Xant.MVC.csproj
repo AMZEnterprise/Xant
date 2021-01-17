@@ -51,6 +51,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.10">
@@ -61,11 +62,10 @@
     <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="16.5.0" />
     <PackageReference Include="PersianDateTime.Core" Version="1.0.8" />
     <PackageReference Include="SmartBreadcrumbs" Version="3.6.1" />
+    <PackageReference Include="System.Collections.Immutable" Version="1.7.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\panel\img\panel\" />
-    <Folder Include="wwwroot\panel\logs\" />
     <Folder Include="wwwroot\uploads\portfolios\" />
     <Folder Include="wwwroot\uploads\posts\" />
     <Folder Include="wwwroot\uploads\profiles\" />
@@ -73,6 +73,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Xant.Persistence\Xant.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Design">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Design.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
