@@ -1,22 +1,14 @@
-﻿@using Xant.MVC.Utility
+﻿@using Xant.MVC.Models.Constants
+@using Xant.MVC.Utility
 @model Xant.MVC.Areas.Panel.Models.ViewModels.PostFormViewModel
 
 @{
     Layout = "_FormLayout";
     ViewData["Title"] = "جزئیات مطلب";
 }
-@section Styles
-{
-    <link href="~/lib/tagger/tagger.css" rel="stylesheet" />
-}
-
 @section Scripts{
-    <script src="~/lib/ckeditor/ckeditor.js"></script>
-    <script src="~/lib/ckeditor/config.js"></script>
-    <script src="~/lib/ckeditor/adapters/jquery.js"></script>
-    <script src="~/lib/tagger/tagger.js"></script>
     <script>
-        AdminPanel.InitialEditor("#txtBody");
+        AdminPanel.InitialEditorReadOnly("#txtBody");
         AdminPanel.InitialTagsInputReadOnly();
     </script>
 }
@@ -43,7 +35,7 @@
 <div class="form-group">
     <label asp-for="File"></label>
     <div id="files-preview" class="single-file mt-2">
-        <img src="@(!string.IsNullOrWhiteSpace(Model.FilePath) ? Model.FilePath : "/panel/img/no-image.png")" class="thumbnail" />
+        <img src="@(Model.FilePath ?? ConstantFilePaths.NoImage)" class="thumbnail" />
     </div>
 </div>
 <div class="form-group form-check">

@@ -4,16 +4,7 @@
     Layout = "_FormLayout";
     ViewData["Title"] = "ایجاد مطلب";
 }
-@section Styles
-{
-    <link href="~/lib/tagger/tagger.css" rel="stylesheet" />
-}
-
 @section Scripts{
-    <script src="~/lib/ckeditor/ckeditor.js"></script>
-    <script src="~/lib/ckeditor/config.js"></script>
-    <script src="~/lib/ckeditor/adapters/jquery.js"></script>
-    <script src="~/lib/tagger/tagger.js"></script>
     <script>
         AdminPanel.InitialEditor("#txtBody");
         AdminPanel.InitialTagsInput();

@@ -1,19 +1,12 @@
-﻿@model Xant.MVC.Areas.Panel.Models.ViewModels.PostFormViewModel
+﻿@using Xant.MVC.Models.Constants
+@model Xant.MVC.Areas.Panel.Models.ViewModels.PostFormViewModel
 
 @{
     Layout = "_FormLayout";
     ViewData["Title"] = "ویرایش مطلب";
 }
-@section Styles
-{
-    <link href="~/lib/tagger/tagger.css" rel="stylesheet" />
-}
 @section Scripts
 {
-    <script src="~/lib/ckeditor/ckeditor.js"></script>
-    <script src="~/lib/ckeditor/config.js"></script>
-    <script src="~/lib/ckeditor/adapters/jquery.js"></script>
-    <script src="~/lib/tagger/tagger.js"></script>
     <script>
         AdminPanel.InitialEditor("#txtBody");
         AdminPanel.InitialTagsInput();
@@ -54,7 +47,7 @@
         </button>
         <input type="file" id="input-file-hidden" class="d-none" accept="image/*" name="files" />
         <div id="files-preview" class="single-file mt-2">
-            <img src="@(!string.IsNullOrWhiteSpace(Model.FilePath) ? Model.FilePath : "/panel/img/no-image.png")" class="thumbnail" />
+            <img src="@(Model.FilePath ?? ConstantFilePaths.NoImage)" class="thumbnail" />
         </div>
     </div>
     <div class="form-group form-check">
