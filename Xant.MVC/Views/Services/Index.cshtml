@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "خدمات";
+}
+
+@await Html.PartialAsync("PartialViews/_BreadcrumbPartialView")
+
+@await Component.InvokeAsync("Services")
+
+@await Component.InvokeAsync("PricePlans")
+
+@await Component.InvokeAsync("Contact")
+
+@await Component.InvokeAsync("CallToAction")
