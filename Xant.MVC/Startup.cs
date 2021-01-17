@@ -38,6 +38,9 @@ namespace Xant.MVC
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IFileHandler, FileHandler>();
 
+            services.Configure<EmailSenderOptions>(options =>
+                Configuration.GetSection("EmailService").Bind(options));
+
             //Breadcrumbs NavigationDefault (Bootstrap 4.1) CSS
             services.AddBreadcrumbs(GetType().Assembly, options =>
             {
