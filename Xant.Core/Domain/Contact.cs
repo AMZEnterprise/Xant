@@ -13,13 +13,9 @@ namespace Xant.Core.Domain
         /// </summary>
         public string UserFullName { get; set; }
         /// <summary>
-        /// Gets or sets user email address
+        /// Gets or sets user email address/ phone number
         /// </summary>
-        public string Email { get; set; }
-        /// <summary>
-        /// Gets or sets user phone number
-        /// </summary>
-        public string PhoneNumber { get; set; }
+        public string EmailOrPhoneNumber { get; set; }
         /// <summary>
         /// Gets or sets contact subject
         /// </summary>
