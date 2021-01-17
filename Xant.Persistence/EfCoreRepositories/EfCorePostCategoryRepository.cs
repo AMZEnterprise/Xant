@@ -16,6 +16,13 @@ namespace Xant.Persistence.EfCoreRepositories
             _context = context;
         }
 
+        public IQueryable<PostCategory> GetAll(PostCategoryType postCategoryType)
+        {
+            return _context.PostCategories
+                .Where(x => x.Type == postCategoryType)
+                .AsQueryable();
+        }
+
         public IQueryable<PostCategory> GetAll()
         {
             return _context.PostCategories.AsQueryable();
@@ -55,8 +62,11 @@ namespace Xant.Persistence.EfCoreRepositories
 
         public async Task<bool> IsPostCategoryExists(PostCategory postCategory)
         {
-            return await _context.PostCategories
-                .AnyAsync(x => x.Title == postCategory.Title);
+            return postCategory.Id == 0
+                ? await _context.PostCategories
+                    .AnyAsync(x => x.Title == postCategory.Title)
+                : await _context.PostCategories
+                    .AnyAsync(x => x.Title == postCategory.Title && x.Id != postCategory.Id);
         }
 
         public async Task<int> Count()
