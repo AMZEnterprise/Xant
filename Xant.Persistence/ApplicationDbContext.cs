@@ -20,12 +20,9 @@ namespace Xant.Persistence
                 .IsRequired();
 
             builder.Entity<Contact>()
-                .Property(x => x.Email)
-                .HasMaxLength(256);
-
-            builder.Entity<Contact>()
-                .Property(x => x.PhoneNumber)
-                .HasMaxLength(20);
+                .Property(x => x.EmailOrPhoneNumber)
+                .HasMaxLength(256)
+                .IsRequired();
 
             builder.Entity<Contact>()
                 .Property(x => x.Subject)
@@ -74,13 +71,11 @@ namespace Xant.Persistence
 
             builder.Entity<PostComment>()
                 .Property(x => x.UserFullName)
-                .HasMaxLength(256)
-                .IsRequired();
+                .HasMaxLength(256);
 
             builder.Entity<PostComment>()
                 .Property(x => x.Email)
-                .HasMaxLength(256)
-                .IsRequired();
+                .HasMaxLength(256);
 
             builder.Entity<PostComment>()
                 .Property(x => x.Body)
