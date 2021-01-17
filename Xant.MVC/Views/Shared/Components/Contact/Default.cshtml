@@ -1,0 +1,86 @@
+﻿@model Xant.MVC.Models.ViewModels.ContactViewModel
+<!--====== Contact Area Start ======-->
+<section id="contact" class="contact-area dark-bg ptb_100">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-12 col-lg-5">
+                <!-- Section Heading -->
+                <div class="section-heading text-center mb-3">
+                    <h2 class="text-white">تماس با ما !</h2>
+                    <p class="text-white-50 d-none d-sm-block mt-4 mb-2">اگه پروژه داری ، مشاوره میخوای یا دوست داری نظر بدی ما در خدمتیم</p>
+                </div>
+                <!-- Contact Us -->
+                <div class="contact-us">
+                    <ul>
+                        <!-- Contact Info -->
+                        <li class="contact-info color-1 bg-hover active hover-bottom dark-shadow text-center p-5 m-3">
+                            <span><i class="fas fa-mobile-alt fa-3x"></i></span>
+                            <a class="d-block my-2" href="tel:@Model.Phone1">
+                                <h3 class="text-white">@Model.Phone1</h3>
+                            </a>
+                            <p class="text-white-50">جهت رزرو وقت مشاوره و طراحی پروژه</p>
+                        </li>
+                        <!-- Contact Info -->
+                        <li class="contact-info color-3 bg-hover active hover-bottom dark-shadow text-center p-5 m-3">
+                            <span><i class="fas fa-envelope-open-text fa-3x"></i></span>
+                            <a class="d-none d-sm-block my-2" href="mailto:@Model.Email1">
+                                <h3 class="text-white">@Model.Email1</h3>
+                            </a>
+                            <p class="text-white-50">جهت رزرو وقت مشاوره و طراحی پروژه</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 pt-4 pt-lg-0">
+                <!-- Contact Box -->
+                <div class="contact-box text-center">
+                    <!-- Contact Form -->
+                    <form method="post" id="contact-form"
+                          asp-controller="ContactUs" asp-action="ContactPost" data-ajax="true"
+                          data-ajax-method="post" data-ajax-update="#alert-box" data-ajax-loading="#spinner" data-ajax-complete="contactFormSent">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input asp-for="ContactFormViewModel.UserFullName"
+                                           placeholder="@Html.DisplayNameFor(x=>x.ContactFormViewModel.UserFullName)" 
+                                           class="form-control">
+                                    <span asp-validation-for="ContactFormViewModel.UserFullName"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input asp-for="ContactFormViewModel.EmailOrPhoneNumber" 
+                                           placeholder="@Html.DisplayNameFor(x=>x.ContactFormViewModel.EmailOrPhoneNumber)" 
+                                           class="form-control">
+                                    <span asp-validation-for="ContactFormViewModel.EmailOrPhoneNumber"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input asp-for="ContactFormViewModel.Subject"
+                                           placeholder="@Html.DisplayNameFor(x=>x.ContactFormViewModel.Subject)" 
+                                           class="form-control">
+                                    <span asp-validation-for="ContactFormViewModel.Subject"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <textarea asp-for="ContactFormViewModel.Body"
+                                              placeholder="@Html.DisplayNameFor(x=>x.ContactFormViewModel.Body)" 
+                                              class="form-control"></textarea>
+                                    <span asp-validation-for="ContactFormViewModel.Body"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-bordered active btn-block mt-3">
+                                    <span id="spinner" style="display: none;">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                    </span>
+                                    <span class="text-white pl-3"><i class="fas fa-paper-plane"></i></span>ارسال
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <p class="form-message"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--====== Contact Area End ======-->
