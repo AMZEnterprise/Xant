@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "تماس با ما";
+}
+
+@await Html.PartialAsync("PartialViews/_BreadcrumbPartialView")
+
+@await Component.InvokeAsync("Contact")
+
+@await Component.InvokeAsync("CallToAction")
