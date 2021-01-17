@@ -43,7 +43,7 @@ namespace Xant.MVC
             {
                 options.TagName = "nav";
                 options.TagClasses = "";
-                options.OlClasses = "breadcrumb";
+                options.OlClasses = "breadcrumb d-flex justify-content-center";
                 options.LiClasses = "breadcrumb-item";
                 options.ActiveLiClasses = "breadcrumb-item active";
             });
@@ -67,6 +67,9 @@ namespace Xant.MVC
                         options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
                         options.User.RequireUniqueEmail = true;
                         options.Password.RequireDigit = false;
+                        options.Password.RequireLowercase = false;
+                        options.Password.RequireUppercase = false;
+                        options.Password.RequireNonAlphanumeric = false;
                         options.Password.RequiredLength = 6;
                         options.SignIn.RequireConfirmedPhoneNumber = true;
                     }
@@ -156,9 +159,10 @@ namespace Xant.MVC
                 {
                     FirstName = "FirstName",
                     LastName = "LastName",
-                    UserName = "Admin123",
+                    UserName = "A@dmin13",
                     Email = "example@gmail.com",
                     EmailConfirmed = true,
+                    PhoneNumberConfirmed = true,
                     IsActive = true,
                     FilesPathGuid = Guid.NewGuid(),
                     CreateDate = DateTime.Now,
@@ -166,7 +170,7 @@ namespace Xant.MVC
                 };
 
                 ApplicationDbInitializer.SeedData(context, userManager, roleManager, roles,
-                    ConstantUserRoles.SuperAdmin, user, "p@sS123");
+                    ConstantUserRoles.SuperAdmin, user, "pssdfh@23");
             }
         }
     }
