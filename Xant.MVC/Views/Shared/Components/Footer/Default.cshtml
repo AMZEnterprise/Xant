@@ -1,0 +1,164 @@
+﻿@model Xant.MVC.Models.ViewModels.FooterViewModel
+<!--====== Footer Area Start ======-->
+<footer class="section footer-area dark-bg">
+    <!-- Footer Top -->
+    <div class="footer-top ptb_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <!-- Footer Items -->
+                    <div class="footer-items">
+                        <!-- Footer Title -->
+                        <h3 class="footer-title text-white text-uppercase mb-2">نقشه ژانت</h3>
+                        <ul>
+                            <li class="py-2">
+                                <a class="text-white-50" asp-controller="Portfolios" asp-action="Index">نمونه کارها</a>
+                            </li>
+                            <li class="py-2">
+                                <a class="text-white-50" asp-controller="Services" asp-action="Index">خدمات</a>
+                            </li>
+                            <li class="py-2">
+                                <a class="text-white-50" asp-controller="Blog" asp-action="Index">وبلاگ</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <!-- Footer Items -->
+                    <div class="footer-items">
+                        <!-- Footer Title -->
+                        <h3 class="footer-title text-white text-uppercase mb-2">پیوندها مفید</h3>
+                        <ul>
+                            <li class="py-2"><a class="text-white-50" href="http://www.monolearn.ir">آکادمی مونولرن</a></li>
+                            <li class="py-2"><a class="text-white-50" href="http://www.amzenterprise.ir">وبسایت مدیر</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <!-- Footer Items -->
+                    <div class="footer-items">
+                        <!-- Footer Title -->
+                        <h3 class="footer-title text-white text-uppercase mb-2">تماس با ژانت</h3>
+                        <ul>
+                            @if (!string.IsNullOrWhiteSpace(Model.Phone1))
+                            {
+                                <li class="py-2">
+                                    <a class="text-white-50" href="tel:@Model.Phone1">@Model.Phone1</a>
+                                </li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(Model.Phone2))
+                            {
+                                <li class="py-2">
+                                    <a class="text-white-50" href="tel:@Model.Phone2">@Model.Phone2</a>
+                                </li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(Model.Email1))
+                            {
+                                <li class="py-2">
+                                    <a class="text-white-50" href="mailto:@Model.Email1">@Model.Email1</a>
+                                </li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(Model.Email2))
+                            {
+                                <li class="py-2">
+                                    <a class="text-white-50" href="mailto:@Model.Email2">@Model.Email2</a>
+                                </li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(Model.Address1))
+                            {
+                                <li class="py-2">
+                                    <span>@Model.Address1</span>
+                                </li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(Model.Address2))
+                            {
+                                <li class="py-2">
+                                    <span>@Model.Address2</span>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <!-- Footer Items -->
+                    <div class="footer-items">
+                        <!-- Footer Title -->
+                        <h3 class="footer-title text-white text-uppercase mb-2">ما را دنبال کن</h3>
+                        <p class="text-white-50 mb-2">ژانت در شبکه های اجتماعی</p>
+                        <!-- Social Icons -->
+                        <ul class="social-icons list-inline pt-2">
+                            @if (!string.IsNullOrWhiteSpace(Model.Instagram))
+                            {
+                                <li class="list-inline-item px-1">
+                                    <a class="text-white-50" href="@Model.Instagram"><i class="fab fa-instagram"></i></a>
+                                </li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(Model.Telegram))
+                            {
+                                <li class="list-inline-item px-1">
+                                    <a class="text-white-50" href="@Model.Telegram"><i class="fab fa-telegram-plane"></i></a>
+                                </li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(Model.GooglePlus))
+                            {
+                                <li class="list-inline-item px-1">
+                                    <a class="text-white-50" href="@Model.GooglePlus"><i class="fab fa-google-plus"></i></a>
+                                </li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(Model.FaceBook))
+                            {
+                                <li class="list-inline-item px-1">
+                                    <a class="text-white-50" href="@Model.FaceBook"><i class="fab fa-facebook-f"></i></a>
+                                </li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(Model.LinkedIn))
+                            {
+                                <li class="list-inline-item px-1">
+                                    <a class="text-white-50" href="@Model.LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                </li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(Model.Youtube))
+                            {
+                                <li class="list-inline-item px-1">
+                                    <a class="text-white-50" href="@Model.Youtube"><i class="fab fa-youtube"></i></a>
+                                </li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(Model.Aparat))
+                            {
+                                <li class="list-inline-item px-1">
+                                    <a class="text-white-50" href="@Model.Aparat"><i class="fab fa-file-movie-o"></i></a>
+                                </li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(Model.GitHub))
+                            {
+                                <li class="list-inline-item px-1">
+                                    <a class="text-white-50" href="@Model.GitHub"><i class="fab fa-github"></i></a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Bottom -->
+    <div class="footer-bottom dark-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Copyright Area -->
+                    <div class="copyright-area d-flex flex-wrap justify-content-center justify-content-sm-between text-center py-4">
+                        <!-- Copyright Left -->
+                        <div class="copyright-left text-white-50">
+                            تمامی حقوق مادی و معنوی متعلق به ژانت می باشد.
+                            @DateTime.Now.Year &copy;
+                        </div>
+                        <!-- Copyright Right -->
+                        <div class="copyright-right text-white-50">ساخته شده با <i class="fas fa-heart color-2"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--====== Footer Area End ======-->
