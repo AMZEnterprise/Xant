@@ -1,0 +1,81 @@
+﻿@using Xant.MVC.Utility
+@model Xant.MVC.Models.ViewModels.BlogSidebarViewModel
+<aside class="sidebar mb-5 mb-lg-0">
+    <!-- Single Widget -->
+    <div class="single-widget">
+        <!-- Search Widget -->
+        <div class="widget-content search-widget">
+            <form method="get" asp-controller="Blog" asp-action="Index">
+                <input type="search" asp-for="SearchString" placeholder="@Html.DisplayNameFor(x=>x.SearchString)">
+            </form>
+        </div>
+    </div>
+    <!-- Single Widget -->
+    <div class="single-widget">
+        <!-- Category Widget -->
+        <div class="widget catagory-widget">
+            <h5 class="text-uppercase d-block py-3 text-white">دسته بندی ها</h5>
+            <!-- Category Widget Content -->
+            <div class="widget-content">
+                <!-- Category Widget Items -->
+                <ul class="widget-items">
+                    @foreach (var postCategory in Model.PostCategoryViewModels)
+                    {
+                        <li>
+                            <a asp-controller="Blog" asp-action="Index" asp-route-postCategoryId="@postCategory.Id"
+                               class="d-flex py-3 a-white-50">
+                                <span>@postCategory.Title</span><span class="mr-auto">(@postCategory.PostsCount)</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Single Widget -->
+    <div class="single-widget">
+        <!-- Post Widget -->
+        <div class="widget post-widget">
+            <h5 class="text-uppercase d-block py-3 text-white">جدید ترین مطالب</h5>
+            <!-- Post Widget Content -->
+            <div class="widget-content">
+                <!-- Post Widget Items -->
+                <ul class="widget-items">
+                    @foreach (var post in Model.PostViewModels)
+                    {
+                        <li>
+                            <a asp-controller="Blog" asp-action="Post" asp-route-id="@post.Id" class="single-post media py-3">
+                                <!-- Post Thumb -->
+                                <div class="post-thumb avatar-lg h-100">
+                                    <img class="align-self-center" src="@post.FilePath" alt="@post.Title">
+                                </div>
+                                <div class="post-content media-body mr-3 py-2">
+                                    <p class="post-date mb-2 text-white-50">@FriendlyDate.ShortDate(post.CreateDate)</p>
+                                    <h6 class="text-white">@post.Title</h6>
+                                </div>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Single Widget -->
+    <div class="single-widget">
+        <!-- Tags Widget -->
+        <div class="widget tags-widget">
+            <h5 class="text-uppercase d-block py-3 text-white">برچسب های محبوب</h5>
+            <!-- Tags Widget Content -->
+            <div class="widget-content">
+                <!-- Tags Widget Items -->
+                <div class="widget-content tags-widget-items pt-2">
+                    @foreach (var postTag in Model.PostTags)
+                    {
+                        <a asp-controller="Blog" asp-action="Index" asp-route-postTag="@postTag"
+                           class="d-inline-block mt-2 ml-1 px-2 py-1 a-white-50">@postTag</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
