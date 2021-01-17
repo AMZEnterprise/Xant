@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Xant.Core.Domain;
 using Xant.MVC.Models.Constants;
 
 namespace Xant.MVC.Areas.Panel.Models.ViewModels
 {
-    public class ContactFormViewModel : IEntity,IValidatableObject
+    public class ContactFormViewModel
     {
         public int Id { get; set; }
         [Display(Name = "فرستنده")]
@@ -17,12 +15,10 @@ namespace Xant.MVC.Areas.Panel.Models.ViewModels
         [Required(ErrorMessage = ConstantValidationErrorMessages.RequiredMsg)]
         [MaxLength(256, ErrorMessage = ConstantValidationErrorMessages.MaxLengthMsg)]
         public string Subject { get; set; }
-        [Display(Name = "ایمیل")]
+        [Display(Name = "ایمیل یا تلفن همراه")]
+        [Required(ErrorMessage = ConstantValidationErrorMessages.RequiredMsg)]
         [MaxLength(256, ErrorMessage = ConstantValidationErrorMessages.MaxLengthMsg)]
-        public string Email { get; set; }
-        [Display(Name = "تلفن")]
-        [MaxLength(20, ErrorMessage = ConstantValidationErrorMessages.MaxLengthMsg)]
-        public string PhoneNumber { get; set; }
+        public string EmailOrPhoneNumber { get; set; }
         [Display(Name = "توضیحات")]
         [Required(ErrorMessage = ConstantValidationErrorMessages.RequiredMsg)]
         [MaxLength(1000, ErrorMessage = ConstantValidationErrorMessages.MaxLengthMsg)]
@@ -33,14 +29,5 @@ namespace Xant.MVC.Areas.Panel.Models.ViewModels
         public DateTime CreateDate { get; set; }
         [Display(Name = "تاریخ آخرین ویرایش")]
         public DateTime LastEditDate { get; set; }
-
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (string.IsNullOrWhiteSpace(Email) && string.IsNullOrWhiteSpace(PhoneNumber))
-            {
-                var errorMessage = string.Format(ConstantValidationErrorMessages.RequiredMsg, "شماره تلفن یا ایمیل");
-                yield return new ValidationResult(errorMessage, new[] { nameof(PhoneNumber) });
-            }
-        }
     }
 }
