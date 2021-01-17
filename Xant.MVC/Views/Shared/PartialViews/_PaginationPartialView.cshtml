@@ -1,0 +1,74 @@
+﻿@model Xant.MVC.Models.Pagination
+<!-- pager -->
+@if (Model.Pager.EndPage > 1)
+{
+    <ul class="pagination justify-content-center">
+        @*@if (Model.CurrentPage > 1)
+            {
+                <li>
+                    <a asp-action="Index">اول</a>
+                </li>
+                <li>
+                    <a asp-action="Index"  asp-route-page="@(Model.CurrentPage - 1)">قبلی</a>
+                </li>
+            }*@
+
+
+        @for (int page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+        {
+            <li class="@(page == Model.Pager.CurrentPage ? "active" : "") px-1">
+                @{
+                    int p = page;
+                    var newDic = new Dictionary<string, string>();
+                    foreach (var kvp in Model.Params)
+                    {
+                        newDic.Add(kvp.Key, kvp.Value);
+                    }
+                    newDic.Add("page", p.ToString());
+                }
+                <a asp-action="Index" asp-all-route-data="@newDic">@p</a>
+            </li>
+        }
+
+        @if (Model.Pager.CurrentPage < Model.Pager.TotalPages && Model.Pager.TotalPages > 10)
+        {
+            @*<li>
+                    <a asp-action="Index" asp-route-page="@(Model.CurrentPage + 1)">بعدی</a>
+                </li>*@
+
+            //var newDic = new Dictionary<string, string>();
+            //foreach (var kvp in Model.Params)
+            //{
+            //    newDic.Add(kvp.Key, kvp.Value);
+            //}
+            //newDic.Add("page", Model.Pager.TotalPages.ToString());
+
+            @*<li>
+                <a asp-action="Index" asp-all-route-data="@newDic">آخر</a>
+            </li>*@
+        }
+    </ul>
+}
+                    
+
+
+
+
+
+
+<!-- Pagination -->
+@*<ul class="pagination justify-content-center">
+    <li class="disabled px-1">
+        <a href="#" aria-label="Previous">
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </li>
+    <li class="px-1"><a href="#">1</a></li>
+    <li class="active px-1"><a href="#">2</a></li>
+    <li class="px-1"><a href="#">3</a></li>
+    <li>
+        <a href="#" aria-label="Next">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </li>
+</ul>*@
