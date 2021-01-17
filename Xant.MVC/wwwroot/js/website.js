@@ -1,5 +1,15 @@
 ﻿var Website = (function () {
 
+
+    //===================================
+    //          Text Reduce
+    //===================================
+    var textReduce = function shave(textSelector, numberOfChars) {
+        return $(textSelector).shave(`${numberOfChars}`);
+    }
+
+
+
     //===================================
     //          Json Result Handler
     //===================================
@@ -47,6 +57,7 @@
 
 
     return {
+        TextReduce: textReduce,
         JsonResultHandler: jsonResultHandler
     }
 })();
