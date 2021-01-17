@@ -1,0 +1,16 @@
+﻿@using Xant.MVC.Models.Constants
+@model Xant.MVC.Models.ViewModels.PostViewModel
+<!-- Single Case Studies -->
+<div class="single-case-studies">
+    <!-- Case Studies Thumb -->
+    <a asp-controller="Portfolios" asp-action="Portfolio" asp-route-id="@Model.Id">
+        <img src="@(Model.FilePath ?? ConstantFilePaths.NoImage)" alt="@Model.Title">
+    </a>
+    <!-- Case Studies Overlay -->
+    <a asp-controller="Portfolios" asp-action="Portfolio" asp-route-id="@Model.Id" class="case-studies-overlay">
+        <!-- Overlay Text -->
+        <span class="overlay-text text-center p-3">
+            <h3 class="text-white mb-3">@Model.Title</h3>
+        </span>
+    </a>
+</div>
