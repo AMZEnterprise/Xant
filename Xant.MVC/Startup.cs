@@ -10,6 +10,8 @@ using Microsoft.Extensions.Hosting;
 using SmartBreadcrumbs.Extensions;
 using System;
 using System.Collections.Generic;
+using ElmahCore;
+using ElmahCore.Mvc;
 using Xant.Core;
 using Xant.Core.Domain;
 using Xant.MVC.Models.Constants;
@@ -37,6 +39,13 @@ namespace Xant.MVC
 
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IFileHandler, FileHandler>();
+
+            //Elmah Error Logger
+            services.AddElmah<XmlFileErrorLog>(options =>
+            {
+                options.Path = "/Panel/elmah";
+                options.LogPath = "~/logs";
+            });
 
             services.Configure<EmailSenderOptions>(options =>
                 Configuration.GetSection("EmailService").Bind(options));
@@ -116,6 +125,8 @@ namespace Xant.MVC
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseElmah();
 
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
