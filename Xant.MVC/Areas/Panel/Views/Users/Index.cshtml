@@ -11,7 +11,7 @@
             "@Url.Action("Details")"
         );
 
-        $("body").on("click", ".chk-user-active input[type=checkbox]", function (e) {
+        $("body").on("click", ".chk-user-active", function (e) {
             let userId = ($(this).attr("id")).replace("user-", "");
             console.log(userId);
             $.ajax({

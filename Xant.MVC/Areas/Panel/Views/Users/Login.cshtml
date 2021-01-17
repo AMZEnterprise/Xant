@@ -14,7 +14,7 @@
             @if (ViewData["Error"] != null)
             {
                 <div class="form-group">
-                    @await Html.PartialAsync("PartialViews/_ErrorPV", ViewData["Error"].ToString())
+                    @await Html.PartialAsync("PartialViews/_ErrorPartialView", ViewData["Error"].ToString())
                 </div>
             }
             <div class="input-group">
@@ -39,8 +39,8 @@
             </div>
 
             <label class="container">
-                <input type="checkbox" asp-for="RememberMe">
-                @Html.DisplayNameFor(m => m.RememberMe)
+                <input asp-for="RememberMe">
+                <label asp-for="RememberMe"></label>
             </label>
 
             <div class="form-group text-center">
