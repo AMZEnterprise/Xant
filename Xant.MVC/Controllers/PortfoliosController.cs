@@ -24,7 +24,7 @@ namespace Xant.MVC.Controllers
         }
 
         [Breadcrumb("نمونه کارها")]
-        public async Task<IActionResult> Index(int? page, int? postCategoryId, PostSortFilterType postSortFilterType = PostSortFilterType.SortByDateDesc)
+        public IActionResult Index(int? page, int? postCategoryId, PostSortFilterType postSortFilterType = PostSortFilterType.SortByDateDesc)
         {
             var postSearch = new PostSearch()
             {
