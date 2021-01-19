@@ -1,8 +1,8 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -142,8 +142,8 @@ namespace Xant.MVC.Areas.Panel.Controllers
 
         public async Task<IActionResult> Reply(int id)
         {
-            var parentCommentForm = await _unitOfWork.PostCommentRepository.GetById(id);
-            if (parentCommentForm == null)
+            var parentPostComment = await _unitOfWork.PostCommentRepository.GetById(id);
+            if (parentPostComment == null)
             {
                 return NotFound();
             }
@@ -151,12 +151,12 @@ namespace Xant.MVC.Areas.Panel.Controllers
             var user = await _unitOfWork.UserRepository.GetByClaimsPrincipal(HttpContext.User);
 
             if (!await _unitOfWork.UserRepository
-                .IsUserAllowedForOperation(user, parentCommentForm.UserId, ConstantUserRoles.SuperAdmin))
+                .IsUserAllowedForOperation(user, parentPostComment.UserId, ConstantUserRoles.SuperAdmin))
             {
                 return Unauthorized();
             }
 
-            return View(_mapper.Map<PostComment, PostCommentReplyFormViewModel>(parentCommentForm));
+            return View(_mapper.Map<PostComment, PostCommentReplyFormViewModel>(parentPostComment));
         }
 
         [HttpPost]
@@ -165,10 +165,10 @@ namespace Xant.MVC.Areas.Panel.Controllers
         {
             if (ModelState.IsValid)
             {
-                var parentComment = await _unitOfWork.PostCommentRepository
+                var parentPostComment = await _unitOfWork.PostCommentRepository
                     .GetById(postCommentReplyFormViewModel.ParentId);
 
-                if (parentComment == null)
+                if (parentPostComment == null)
                 {
                     return NotFound();
                 }
@@ -176,7 +176,7 @@ namespace Xant.MVC.Areas.Panel.Controllers
                 var user = await _unitOfWork.UserRepository.GetByClaimsPrincipal(HttpContext.User);
 
                 if (!await _unitOfWork.UserRepository
-                    .IsUserAllowedForOperation(user, parentComment.UserId, ConstantUserRoles.SuperAdmin))
+                    .IsUserAllowedForOperation(user, parentPostComment.UserId, ConstantUserRoles.SuperAdmin))
                 {
                     return Unauthorized();
                 }
@@ -226,10 +226,10 @@ namespace Xant.MVC.Areas.Panel.Controllers
 
             if (ModelState.IsValid)
             {
-                var userFormDto = await _unitOfWork.UserRepository.GetByClaimsPrincipal(HttpContext.User);
+                var user = await _unitOfWork.UserRepository.GetByClaimsPrincipal(HttpContext.User);
 
                 if (!await _unitOfWork.UserRepository
-                    .IsUserAllowedForOperation(userFormDto, postCommentFormViewModel.PostUserId, ConstantUserRoles.SuperAdmin))
+                    .IsUserAllowedForOperation(user, postCommentFormViewModel.PostUserId, ConstantUserRoles.SuperAdmin))
                 {
                     return Unauthorized();
                 }
@@ -246,7 +246,7 @@ namespace Xant.MVC.Areas.Panel.Controllers
             return View(postCommentFormViewModel);
         }
 
-        public async Task<IActionResult> Delete(int id, string userId)
+        public async Task<IActionResult> Delete(int id)
         {
             var postComment = await _unitOfWork.PostCommentRepository.GetById(id);
 
@@ -270,6 +270,11 @@ namespace Xant.MVC.Areas.Panel.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id, string userId)
         {
+            if (userId == null)
+            {
+                return BadRequest();
+            }
+
             var user = await _unitOfWork.UserRepository.GetByClaimsPrincipal(HttpContext.User);
 
             if (!await _unitOfWork.UserRepository
