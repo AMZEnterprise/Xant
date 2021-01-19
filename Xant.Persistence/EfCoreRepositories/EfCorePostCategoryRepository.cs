@@ -66,7 +66,7 @@ namespace Xant.Persistence.EfCoreRepositories
                 ? await _context.PostCategories
                     .AnyAsync(x => x.Title == postCategory.Title)
                 : await _context.PostCategories
-                    .AnyAsync(x => x.Title == postCategory.Title && x.Id != postCategory.Id);
+                    .AnyAsync(x => x.Title == postCategory.Title && x.Id == postCategory.Id);
         }
 
         public async Task<int> Count()
