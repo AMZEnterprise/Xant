@@ -35,8 +35,7 @@ namespace Xant.Tests.EfCoreRepositories
             {
                 Id = 1,
                 UserFullName = null,
-                Email = "Email",
-                PhoneNumber = "PhoneNumber",
+                EmailOrPhoneNumber = "EmailOrPhoneNumber",
                 Subject = "Subject",
                 Body = "Body",
                 Ip = "Ip",
@@ -51,14 +50,34 @@ namespace Xant.Tests.EfCoreRepositories
         }
 
         [Test]
+        public void Insert_ContactEmailOrPhoneNumberIsNull_ThrowNullReferenceExceptionWithEmailOrPhoneNumberMessage()
+        {
+            var contact = new Contact()
+            {
+                Id = 1,
+                UserFullName = "UserFullName",
+                EmailOrPhoneNumber = null,
+                Subject = "Subject",
+                Body = "Body",
+                Ip = "Ip",
+                CreateDate = DateTime.Now,
+                LastEditDate = DateTime.Now
+            };
+
+            _repository.Invoking(x => x.Insert(contact))
+                .Should()
+                .Throw<NullReferenceException>()
+                .WithMessage(nameof(Contact.EmailOrPhoneNumber));
+        }
+
+        [Test]
         public void Insert_ContactSubjectIsNull_ThrowNullReferenceExceptionWithSubjectMessage()
         {
             var contact = new Contact()
             {
                 Id = 1,
                 UserFullName = "UserFullName",
-                Email = "Email",
-                PhoneNumber = "PhoneNumber",
+                EmailOrPhoneNumber = "EmailOrPhoneNumber",
                 Subject = null,
                 Body = "Body",
                 Ip = "Ip",
@@ -79,8 +98,7 @@ namespace Xant.Tests.EfCoreRepositories
             {
                 Id = 1,
                 UserFullName = "UserFullName",
-                Email = "Email",
-                PhoneNumber = "PhoneNumber",
+                EmailOrPhoneNumber = "EmailOrPhoneNumber",
                 Subject = "Subject",
                 Body = null,
                 Ip = "Ip",
@@ -101,8 +119,7 @@ namespace Xant.Tests.EfCoreRepositories
             {
                 Id = 1,
                 UserFullName = "UserFullName",
-                Email = "Email",
-                PhoneNumber = "PhoneNumber",
+                EmailOrPhoneNumber = "EmailOrPhoneNumber",
                 Subject = "Subject",
                 Body = "Body",
                 Ip = null,
@@ -123,8 +140,7 @@ namespace Xant.Tests.EfCoreRepositories
             {
                 Id = 1,
                 UserFullName = null,
-                Email = "Email",
-                PhoneNumber = "PhoneNumber",
+                EmailOrPhoneNumber = "EmailOrPhoneNumber",
                 Subject = "Subject",
                 Body = "Body",
                 Ip = "Ip",
@@ -139,14 +155,34 @@ namespace Xant.Tests.EfCoreRepositories
         }
 
         [Test]
+        public void Update_ContactEmailOrPhoneNumberIsNull_ThrowNullReferenceExceptionWithEmailOrPhoneNumberMessage()
+        {
+            var contact = new Contact()
+            {
+                Id = 1,
+                UserFullName = "UserFullName",
+                EmailOrPhoneNumber = null,
+                Subject = "Subject",
+                Body = "Body",
+                Ip = "Ip",
+                CreateDate = DateTime.Now,
+                LastEditDate = DateTime.Now
+            };
+
+            _repository.Invoking(x => x.Update(contact))
+                .Should()
+                .Throw<NullReferenceException>()
+                .WithMessage(nameof(Contact.EmailOrPhoneNumber));
+        }
+
+        [Test]
         public void Update_ContactSubjectIsNull_ThrowNullReferenceExceptionWithSubjectMessage()
         {
             var contact = new Contact()
             {
                 Id = 1,
                 UserFullName = "UserFullName",
-                Email = "Email",
-                PhoneNumber = "PhoneNumber",
+                EmailOrPhoneNumber = "EmailOrPhoneNumber",
                 Subject = null,
                 Body = "Body",
                 Ip = "Ip",
@@ -167,8 +203,7 @@ namespace Xant.Tests.EfCoreRepositories
             {
                 Id = 1,
                 UserFullName = "UserFullName",
-                Email = "Email",
-                PhoneNumber = "PhoneNumber",
+                EmailOrPhoneNumber = "EmailOrPhoneNumber",
                 Subject = "Subject",
                 Body = null,
                 Ip = "Ip",
@@ -189,8 +224,7 @@ namespace Xant.Tests.EfCoreRepositories
             {
                 Id = 1,
                 UserFullName = "UserFullName",
-                Email = "Email",
-                PhoneNumber = "PhoneNumber",
+                EmailOrPhoneNumber = "EmailOrPhoneNumber",
                 Subject = "Subject",
                 Body = "Body",
                 Ip = null,
