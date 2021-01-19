@@ -4,6 +4,7 @@ using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xant.Core.Domain;
 using Xant.Persistence;
 using Xant.Persistence.EfCoreRepositories;
@@ -18,6 +19,8 @@ namespace Xant.Tests.EfCoreRepositories
         private List<User> _data;
         private ApplicationDbContext _context;
         private EfCoreUserRepository _repository;
+        private Mock<FakeUserManager> _fakeUserManager;
+        private Mock<FakeSignInManger> _fakeSignInManager;
 
         [SetUp]
         public void Setup()
@@ -28,7 +31,11 @@ namespace Xant.Tests.EfCoreRepositories
             _context.Users.AddRange(_data);
             _context.SaveChanges();
 
-            _repository = new EfCoreUserRepository(new FakeUserManager(), new FakeSignInManger(), new PasswordHasher<User>());
+            _fakeUserManager = new Mock<FakeUserManager>();
+            _fakeSignInManager = new Mock<FakeSignInManger>();
+
+            _repository = new EfCoreUserRepository(
+                _fakeUserManager.Object, _fakeSignInManager.Object, new PasswordHasher<User>());
         }
 
         [Test]
@@ -109,6 +116,35 @@ namespace Xant.Tests.EfCoreRepositories
                 .Should()
                 .Throw<NullReferenceException>()
                 .WithMessage(nameof(User.LastName));
+        }
+
+        [Test]
+        public async Task UpdateRole_UpdateRoleFailed_ReturnFailedIdentityResult()
+        {
+            var user = new User()
+            {
+                FirstName = "FirstName",
+                LastName = "LastName",
+                Biography = "Biography",
+                IsActive = false,
+                FilesPathGuid = Guid.NewGuid(),
+                CreateDate = DateTime.Now,
+                LastEditDate = DateTime.Now
+            };
+
+            _fakeUserManager
+                .Setup(x => x.GetRolesAsync(It.IsAny<User>()))
+                .ReturnsAsync(new List<string>());
+
+            _fakeUserManager
+                .Setup(x => x.RemoveFromRolesAsync(It.IsAny<User>(), It.IsAny<List<string>>()))
+                .ReturnsAsync(IdentityResult.Failed());
+
+            var result = await _repository.UpdateRole(user, It.IsAny<string>());
+
+            result.Should()
+                .BeOfType<IdentityResult>()
+                .Which.Succeeded.Should().BeFalse();
         }
     }
 }
