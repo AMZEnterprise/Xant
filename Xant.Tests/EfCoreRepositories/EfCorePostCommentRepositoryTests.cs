@@ -2,6 +2,8 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Xant.Core.Domain;
 using Xant.Persistence;
 using Xant.Persistence.EfCoreRepositories;
@@ -19,7 +21,75 @@ namespace Xant.Tests.EfCoreRepositories
         [SetUp]
         public void Setup()
         {
-            _data = new List<PostComment>();
+            _data = new List<PostComment>()
+            {
+                new PostComment()
+                {
+                    Id = 1,
+                    ParentId = null,
+                    Status = PostCommentStatus.Accepted,
+                    User = new User(),
+                    Post = new Post(),
+                    UserId = null,
+                    UserFullName = "UserFullName",
+                    Email = "Email",
+                    Body = "Body",
+                    Ip = "Ip"
+                },
+                new PostComment()
+                {
+                    Id = 2,
+                    ParentId = 1,
+                    Status = PostCommentStatus.Unclear,
+                    User = new User(),
+                    Post = new Post(),
+                    UserId = null,
+                    UserFullName = "UserFullName",
+                    Email = "Email",
+                    Body = "Body",
+                    Ip = "Ip"
+                },
+                new PostComment()
+                {
+                    Id = 3,
+                    ParentId = 1,
+                    Status = PostCommentStatus.Accepted,
+                    User = new User(),
+                    Post = new Post(),
+                    UserId = null,
+                    UserFullName = "UserFullName",
+                    Email = "Email",
+                    Body = "Body",
+                    Ip = "Ip"
+                },
+                new PostComment()
+                {
+                    Id = 4,
+                    ParentId = 1,
+                    Status = PostCommentStatus.Unclear,
+                    User = new User(),
+                    Post = new Post(),
+                    UserId = null,
+                    UserFullName = "UserFullName",
+                    Email = "Email",
+                    Body = "Body",
+                    Ip = "Ip"
+                },
+                new PostComment()
+                {
+                    Id = 5,
+                    ParentId = 1,
+                    Status = PostCommentStatus.Rejected,
+                    User = new User(),
+                    Post = new Post(),
+                    UserId = null,
+                    UserFullName = "UserFullName",
+                    Email = "Email",
+                    Body = "Body",
+                    Ip = "Ip"
+                }
+            };
+
             _context = InMemoryDatabaseUtility.GetInMemoryDatabaseContext();
 
             _context.PostComments.AddRange(_data);
@@ -29,13 +99,13 @@ namespace Xant.Tests.EfCoreRepositories
         }
 
         [Test]
-        public void Insert_PostCommentUserFullNameIsNull_ThrowNullReferenceExceptionWithUserFullNameMessage()
+        public void Insert_PostCommentUserIdIsNullAndUserFullNameIsNull_ThrowNullReferenceExceptionWithUserFullNameMessage()
         {
             var postComment = new PostComment()
             {
                 Id = 1,
                 ParentId = 0,
-                UserId = "UserId",
+                UserId = null,
                 PostId = 1,
                 UserFullName = null,
                 Email = "Email",
@@ -54,13 +124,13 @@ namespace Xant.Tests.EfCoreRepositories
         }
 
         [Test]
-        public void Insert_PostCommentEmailIsNull_ThrowNullReferenceExceptionWithEmailMessage()
+        public void Insert_PostCommentUserIdIsNullAndEmailIsNull_ThrowNullReferenceExceptionWithEmailMessage()
         {
             var postComment = new PostComment()
             {
                 Id = 1,
                 ParentId = 0,
-                UserId = "UserId",
+                UserId = null,
                 PostId = 1,
                 UserFullName = "UserFullName",
                 Email = null,
@@ -129,13 +199,13 @@ namespace Xant.Tests.EfCoreRepositories
         }
 
         [Test]
-        public void Update_PostCommentUserFullNameIsNull_ThrowNullReferenceExceptionWithUserFullNameMessage()
+        public void Update_PostCommentUserIdIsNullAndUserFullNameIsNull_ThrowNullReferenceExceptionWithUserFullNameMessage()
         {
             var postComment = new PostComment()
             {
                 Id = 1,
                 ParentId = 0,
-                UserId = "UserId",
+                UserId = null,
                 PostId = 1,
                 UserFullName = null,
                 Email = "Email",
@@ -154,13 +224,13 @@ namespace Xant.Tests.EfCoreRepositories
         }
 
         [Test]
-        public void Update_PostCommentEmailIsNull_ThrowNullReferenceExceptionWithEmailMessage()
+        public void Update_PostCommentUserIdIsNullAndEmailIsNull_ThrowNullReferenceExceptionWithEmailMessage()
         {
             var postComment = new PostComment()
             {
                 Id = 1,
                 ParentId = 0,
-                UserId = "UserId",
+                UserId = null,
                 PostId = 1,
                 UserFullName = "UserFullName",
                 Email = null,
@@ -226,6 +296,32 @@ namespace Xant.Tests.EfCoreRepositories
                 .Should()
                 .Throw<NullReferenceException>()
                 .WithMessage(nameof(PostComment.Ip));
+        }
+
+        [Test]
+        public async Task UpdateChildrenStatus_StatusIsRejected_AllPostCommentChildrenHaveRejectedStatus()
+        {
+            await _repository.UpdateChildrenStatus(1, PostCommentStatus.Rejected);
+
+
+            _data
+                .Where(x => x.ParentId == 1)
+                .All(x => x.Status == PostCommentStatus.Rejected)
+                .Should()
+                .BeTrue();
+        }
+
+        [Test]
+        public async Task UpdateChildrenStatus_StatusIsUnclear_AllPostCommentChildrenHaveUnclearStatus()
+        {
+            await _repository.UpdateChildrenStatus(1, PostCommentStatus.Unclear);
+
+
+            _data
+                .Where(x => x.ParentId == 1)
+                .All(x => x.Status == PostCommentStatus.Unclear)
+                .Should()
+                .BeTrue();
         }
     }
 }
