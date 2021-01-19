@@ -101,7 +101,7 @@ namespace Xant.MVC.Controllers
 
             return new JsonResult(new JsonResultModel()
             {
-                StatusCode = JsonResultStatusCode.ModelSatedNotValid,
+                StatusCode = JsonResultStatusCode.ModelStateIsNotValid,
                 Message = ConstantMessages.CommentFailedToSend
             });
         }
