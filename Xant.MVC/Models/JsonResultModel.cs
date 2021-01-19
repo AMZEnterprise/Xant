@@ -16,7 +16,7 @@
     public enum JsonResultStatusCode
     {
         Success = 200,
-        ModelSatedNotValid = 422,
+        ModelStateIsNotValid = 422,
         ServerError = 500
     }
 }
