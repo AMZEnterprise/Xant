@@ -59,15 +59,7 @@ namespace Xant.MVC.Controllers
                 return NotFound();
             }
 
-            var postViewModel = _mapper.Map<Post, PostViewModel>(post);
-
-            var postComments = await _unitOfWork.PostCommentRepository
-                .GetAllByPostId(post.Id);
-
-            postViewModel.PostCommentViewModels =
-                _mapper.Map<IEnumerable<PostComment>, IEnumerable<PostCommentViewModel>>(postComments);
-
-            return View(postViewModel);
+            return View(_mapper.Map<Post, PostViewModel>(post));
         }
     }
 }
