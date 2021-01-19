@@ -31,7 +31,7 @@ namespace Xant.Persistence.EfCoreRepositories
             if (contact.UserFullName == null)
                 throw new NullReferenceException(nameof(Contact.UserFullName));
 
-            if (contact.UserFullName == null)
+            if (contact.EmailOrPhoneNumber == null)
                 throw new NullReferenceException(nameof(Contact.EmailOrPhoneNumber));
 
             if (contact.Subject == null)
@@ -53,7 +53,7 @@ namespace Xant.Persistence.EfCoreRepositories
             if (contact.UserFullName == null)
                 throw new NullReferenceException(nameof(Contact.UserFullName));
 
-            if (contact.UserFullName == null)
+            if (contact.EmailOrPhoneNumber == null)
                 throw new NullReferenceException(nameof(Contact.EmailOrPhoneNumber));
 
             if (contact.Subject == null)
