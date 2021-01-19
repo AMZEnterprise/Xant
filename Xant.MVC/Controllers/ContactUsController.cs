@@ -14,17 +14,17 @@ namespace Xant.MVC.Controllers
     public class ContactUsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IHttpContextAccessor _accessor;
         private readonly IMapper _mapper;
+        private readonly IHttpContextAccessor _accessor;
 
         public ContactUsController(
             IUnitOfWork unitOfWork,
-            IHttpContextAccessor accessor,
-            IMapper mapper)
+            IMapper mapper,
+            IHttpContextAccessor accessor)
         {
             _unitOfWork = unitOfWork;
-            _accessor = accessor;
             _mapper = mapper;
+            _accessor = accessor;
         }
 
         [Breadcrumb("ViewData.Title")]
@@ -55,7 +55,7 @@ namespace Xant.MVC.Controllers
 
             return new JsonResult(new JsonResultModel()
             {
-                StatusCode = JsonResultStatusCode.ModelSatedNotValid,
+                StatusCode = JsonResultStatusCode.ModelStateIsNotValid,
                 Message = ConstantMessages.ContactFailedToSend
             });
         }
