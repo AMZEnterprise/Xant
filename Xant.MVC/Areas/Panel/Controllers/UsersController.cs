@@ -1,8 +1,8 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -244,7 +244,7 @@ namespace Xant.MVC.Areas.Panel.Controllers
         {
             if (id != userFormViewModel.Id)
             {
-                return NotFound();
+                return BadRequest();
             }
 
             var user = await _unitOfWork.UserRepository.FindById(userFormViewModel.Id);
@@ -254,16 +254,21 @@ namespace Xant.MVC.Areas.Panel.Controllers
                 return NotFound();
             }
 
-            var currentUser = await _unitOfWork.UserRepository.GetByClaimsPrincipal(HttpContext.User);
-
-            if (!await _unitOfWork.UserRepository
-                .IsUserAllowedForOperation(currentUser, user.Id, ConstantUserRoles.SuperAdmin))
+            if (userFormViewModel.Role == UserRoleEnumViewModel.SuperAdmin)
             {
-                return Unauthorized();
+                return BadRequest();
             }
 
             if (ModelState.IsValid)
             {
+                var currentUser = await _unitOfWork.UserRepository.GetByClaimsPrincipal(HttpContext.User);
+
+                if (!await _unitOfWork.UserRepository
+                    .IsUserAllowedForOperation(currentUser, user.Id, ConstantUserRoles.SuperAdmin))
+                {
+                    return Unauthorized();
+                }
+
                 if (!string.IsNullOrWhiteSpace(userFormViewModel.Password))
                 {
                     var removePassResult = await _unitOfWork.UserRepository.RemovePassword(user);
@@ -328,6 +333,11 @@ namespace Xant.MVC.Areas.Panel.Controllers
         [Authorize(Roles = ConstantUserRoles.SuperAdmin)]
         public async Task<JsonResult> ToggleActive(string id)
         {
+            if (id == null)
+            {
+                return new JsonResult(BadRequest());
+            }
+
             var user = await _unitOfWork.UserRepository.FindById(id);
             var isSuperAdmin = await _unitOfWork.UserRepository.IsInRole(user, ConstantUserRoles.SuperAdmin);
 
@@ -480,6 +490,7 @@ namespace Xant.MVC.Areas.Panel.Controllers
 
                 if (user == null)
                 {
+                    // Don't reveal that the user does not exist
                     return RedirectToAction(nameof(ResetPasswordConfirmation));
                 }
 
