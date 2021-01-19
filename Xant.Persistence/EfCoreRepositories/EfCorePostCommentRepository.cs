@@ -86,9 +86,6 @@ namespace Xant.Persistence.EfCoreRepositories
                     throw new NullReferenceException(nameof(PostComment.Email));
             }
 
-            if (postComment.Email == null)
-                throw new NullReferenceException(nameof(PostComment.Email));
-
             if (postComment.Body == null)
                 throw new NullReferenceException(nameof(PostComment.Body));
 
