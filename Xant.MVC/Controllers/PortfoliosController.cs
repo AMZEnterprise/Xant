@@ -33,7 +33,7 @@ namespace Xant.MVC.Controllers
                 PostSortFilterType = postSortFilterType
             };
 
-            int pageSize = 6;
+            int pageSize = int.MaxValue;
 
             var posts = GetPosts(PostCategoryType.Portfolio, postSearch, pageIndex: page - 1 ?? 0, pageSize: pageSize);
 
