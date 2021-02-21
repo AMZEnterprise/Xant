@@ -5,7 +5,7 @@ namespace Xant.MVC.Controllers
 {
     public class AboutUsController : Controller
     {
-        [Breadcrumb("وبلاگ")]
+        [Breadcrumb("درباره ما")]
         public IActionResult Index()
         {
             return View();
