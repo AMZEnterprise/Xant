@@ -1,4 +1,5 @@
 ﻿@using Xant.MVC.Models.ViewModels
+@using Xant.MVC.Models
 @model Xant.MVC.Models.ViewModels.PostsViewModel
 
 @{
@@ -28,6 +29,20 @@
                 </div>
             }
 
+        </div>
+        <div class="row mt-3">
+            <div class="col-12">
+                @await Html.PartialAsync("PartialViews/_PaginationPartialView", new Pagination()
+                {
+                    Pager = Model.Pager,
+                    Params = new Dictionary<string, string>()
+                    {
+                        {nameof(PostsViewModel.SearchString), Model.SearchString},
+                        {nameof(PostsViewModel.PostCategoryId), Model.PostCategoryId.ToString()},
+                        {nameof(PostsViewModel.PostSortFilterType), Model.PostSortFilterType.ToString()},
+                    }
+                })
+            </div>
         </div>
     </div>
 </section>
