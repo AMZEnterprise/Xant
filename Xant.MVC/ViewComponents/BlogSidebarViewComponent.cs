@@ -43,7 +43,7 @@ namespace Xant.MVC.ViewComponents
 
             var postTags = _unitOfWork.PostRepository.GetAll(PostCategoryType.Blog)
                 .OrderByDescending(x => x.CreateDate)
-                .FirstOrDefault()?.Tags.Split(',').ToList();
+                .FirstOrDefault()?.Tags?.Split(',').ToList();
 
             var blogSidebarViewModel = new BlogSidebarViewModel()
             {

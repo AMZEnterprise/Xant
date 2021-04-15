@@ -113,19 +113,22 @@
 
                             @Html.Raw(Model.Body)
 
-                            <div class="border-top mt-5">
-                                <span>
-                                    برچسب ها
-                                </span>
-                                <ul class="d-inline-block">
-                                    @foreach (var postTag in Model.Tags.Split(","))
-                                    {
-                                        <li class="d-inline-block p-2">
-                                            <a asp-controller="Blog" asp-action="Index" asp-route-postTag="@postTag">#@postTag</a>
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
+                            @if (!string.IsNullOrWhiteSpace(Model.Tags))
+                            {
+                                <div class="border-top mt-5">
+                                    <span>
+                                        برچسب ها
+                                    </span>
+                                    <ul class="d-inline-block">
+                                        @foreach (var postTag in Model.Tags.Split(","))
+                                        {
+                                            <li class="d-inline-block p-2">
+                                                <a asp-controller="Blog" asp-action="Index" asp-route-postTag="@postTag">#@postTag</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
                         </div>
                     </div>
                     <!-- Blog Comments -->
