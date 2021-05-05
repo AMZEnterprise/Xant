@@ -157,14 +157,18 @@
         font-size: 0;
     }
 
-    header .navbar-expand .navbar-nav.action .btn .contact-icon {
-        font-size: initial;
-        margin: 0;
-    }
+        header .navbar-expand .navbar-nav.action .btn .contact-icon {
+            font-size: initial;
+            margin: 0;
+        }
 
     .navbar-brand {
         margin: 0;
     }
+
+        .navbar-brand img {
+            width: 120px;
+        }
 }
 
 @media (max-width: 575px) {
@@ -226,9 +230,9 @@
         margin-top: 30px;
     }
 
-    .welcome-intro h1 {
-        font-size: 50px;
-    }
+        .welcome-intro h1 {
+            font-size: 50px;
+        }
 
     .welcome-thumb-2 {
         right: 15%;
@@ -268,9 +272,9 @@
         margin-top: 0;
     }
 
-    .welcome-intro h1 {
-        font-size: 45px;
-    }
+        .welcome-intro h1 {
+            font-size: 45px;
+        }
 
     .welcome-thumb-2 {
         right: -4%;
