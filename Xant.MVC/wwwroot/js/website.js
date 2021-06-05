@@ -54,10 +54,28 @@
         }
     }
 
+    //===================================
+    //          Lazy load
+    //===================================
+    var lazyLoad = function lazy() {
+        $(window).on('load', function () {
+            $(".lazy").each(function () {
+                let src = $(this).attr("data-src");
 
+                if ($(this).prop("tagName") === "IMG") {
+                    $(this).attr("src", src);
+                }
+
+                if ($(this).prop("tagName") === "VIDEO") {
+                    $(this).find("source").attr("src", src);
+                }
+            });
+        });
+    }
 
     return {
         TextReduce: textReduce,
-        JsonResultHandler: jsonResultHandler
+        JsonResultHandler: jsonResultHandler,
+        LazyLoad: lazyLoad
     }
 })();

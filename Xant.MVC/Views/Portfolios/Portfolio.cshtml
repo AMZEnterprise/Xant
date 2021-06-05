@@ -21,7 +21,7 @@
                 <article class="single-blog-details">
                     <!-- Blog Thumb -->
                     <div class="blog-thumb">
-                        <img src="@(Model.FilePath ?? ConstantFilePaths.NoImage)" alt="@Model.Title">
+                        <img src="@ConstantFilePaths.NoImage" alt="@Model.Title" class="lazy" data-src="@(Model.FilePath ?? ConstantFilePaths.NoImage)">
                     </div>
                     <!-- Blog Content -->
                     <div class="blog-content digimax-blog p-3">

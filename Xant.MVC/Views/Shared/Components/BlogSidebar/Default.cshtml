@@ -1,4 +1,5 @@
 ﻿@using Xant.MVC.Utility
+@using Xant.MVC.Models.Constants
 @model Xant.MVC.Models.ViewModels.BlogSidebarViewModel
 <aside class="sidebar mb-5 mb-lg-0">
     <!-- Single Widget -->
@@ -47,7 +48,7 @@
                             <a asp-controller="Blog" asp-action="Post" asp-route-id="@post.Id" class="single-post media py-3">
                                 <!-- Post Thumb -->
                                 <div class="post-thumb avatar-lg h-100">
-                                    <img class="align-self-center" src="@post.FilePath" alt="@post.Title">
+                                    <img src="@ConstantFilePaths.NoImage" class="align-self-center lazy" data-src="@(post.FilePath?? ConstantFilePaths.NoImage)" alt="@post.Title">
                                 </div>
                                 <div class="post-content media-body mr-3 py-2">
                                     <p class="post-date mb-2 text-white-50">@FriendlyDate.ShortDate(post.CreateDate)</p>

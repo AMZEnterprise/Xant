@@ -6,7 +6,7 @@
     <!-- Blog Thumb -->
     <div class="blog-thumb">
         <a asp-controller="Blog" asp-action="Post" asp-route-id="@Model.Id">
-            <img src="@(Model.FilePath ?? ConstantFilePaths.NoImage)" alt="@Model.Title">
+            <img src="@ConstantFilePaths.NoImage" alt="@Model.Title" class="lazy" data-src="@(Model.FilePath ?? ConstantFilePaths.NoImage)">
         </a>
     </div>
     <!-- Blog Content -->

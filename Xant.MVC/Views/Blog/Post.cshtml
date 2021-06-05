@@ -69,7 +69,7 @@
                     <!-- Blog Thumb -->
                     <div class="blog-thumb">
                         <a href="#">
-                            <img src="@Model.FilePath" alt="@Model.Title">
+                            <img src="@ConstantFilePaths.NoImage" alt="@Model.Title" class="lazy" data-src="@(Model.FilePath ?? ConstantFilePaths.NoImage)">
                         </a>
                     </div>
                     <!-- Blog Content -->
@@ -152,7 +152,7 @@
                         <div class="admin media py-4">
                             <!-- Admin Thumb -->
                             <div class="admin-thumb avatar-lg">
-                                <img class="rounded-circle" src="@(Model.UserFilePath ?? ConstantFilePaths.NoImage)" alt="@Model.UserFullName">
+                                <img class="rounded-circle lazy" src="@ConstantFilePaths.NoImage" data-src="@(Model.UserFilePath ?? ConstantFilePaths.NoImage)" alt="@Model.UserFullName">
                             </div>
                             <!-- Admin Content -->
                             <div class="admin-content media-body pr-3 pr-sm-4">

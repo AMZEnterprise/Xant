@@ -161,6 +161,8 @@
             $("#ContactFormViewModel_Subject").val("");
             $("#ContactFormViewModel_Body").val("");
         }
+
+        Website.LazyLoad();
     </script>
 
     @await RenderSectionAsync("Scripts", required: false)
