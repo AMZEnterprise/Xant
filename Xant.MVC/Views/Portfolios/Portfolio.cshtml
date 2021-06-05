@@ -5,6 +5,11 @@
     ViewData["Title"] = Model.Title;
 }
 
+@section Meta
+{
+    <Seo-Meta title="@Model.Title" />
+}
+
 @await Html.PartialAsync("PartialViews/_BreadcrumbPartialView")
 
 <!-- ***** Blog Area Start ***** -->

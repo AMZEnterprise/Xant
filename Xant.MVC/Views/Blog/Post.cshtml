@@ -6,6 +6,21 @@
     ViewData["Title"] = Model.Title;
 }
 
+@section Meta
+{
+    @{
+        string tags = "";
+
+        @foreach (var postTag in Model.Tags.Split(","))
+        {
+            tags += postTag;
+        }
+    }
+
+    <Seo-Meta title="@Model.Title"
+              key-words="@tags" />
+}
+
 @section Scripts
 {
     <script>
